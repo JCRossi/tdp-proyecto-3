@@ -1,5 +1,5 @@
 package Entidades;
 
-public class Consumible {
+public abstract class Consumible extends Entidad {
 
 }

@@ -1,5 +1,5 @@
 package Entidades;
 
-public class Personaje {
+public class Personaje extends Entidad{
 
 }
