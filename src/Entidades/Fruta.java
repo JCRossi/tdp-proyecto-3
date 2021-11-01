@@ -1,8 +1,8 @@
 package Entidades;
 
-public class PacDot extends Consumible {
-
-	public PacDot(String imagen) {
+public class Fruta extends Consumible {
+	
+	public Fruta(String imagen) {
 		
 	}
 
@@ -23,5 +23,5 @@ public class PacDot extends Consumible {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 }

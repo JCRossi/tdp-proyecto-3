@@ -1,11 +1,11 @@
 package Entidades;
 
-public class PacDot extends Consumible {
-
-	public PacDot(String imagen) {
+public class Inmunidad extends Pocion {
+	
+	public Inmunidad(String imagen) {
 		
 	}
-
+	
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
 		// TODO Auto-generated method stub
@@ -17,11 +17,8 @@ public class PacDot extends Consumible {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
+	
 	public void serComido() {
-		// TODO Auto-generated method stub
 		
 	}
-	
 }

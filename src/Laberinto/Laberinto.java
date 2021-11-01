@@ -1,7 +1,9 @@
 package Laberinto;
 
+import Entidades.Entidad;
 import Entidades.PacDot;
 import Entidades.Pared;
+import Estructuras.ListaSimplementeEnlazada;
 
 public class Laberinto {
 	
@@ -96,6 +98,25 @@ public class Laberinto {
 		
 	}
 	
+	public void chequearObjetoPosicion(int[] posicion) {
+		
+	}
+	
+	public ListaSimplementeEnlazada<Entidad> chequearColision(int posx, int posy, int velocidad, char direccion){
+		ListaSimplementeEnlazada<Entidad> listaEntidades;
+		listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
+		
+		for(Entidad ent : listaEntidades) {
+			
+		}
+			
+		return listaEntidades;
+	}
+	
+	private int identificarZona(int posicion) {
+		
+		return posicion / 10;
+	}
 	
 	
 	

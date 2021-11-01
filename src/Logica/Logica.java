@@ -15,4 +15,24 @@ public class Logica {
 	public void generarNivel() {
 		
 	}
+	
+	public void chequearEstadoJugador() {
+		
+	}
+	
+	public void cambiarDireccionJugador() {
+		
+	}
+	
+	public void actualizarPuntaje(int puntos) {
+		
+	}
+	
+	public void avisarActualizacionLaberintoGrafico() {
+		
+	}
+	
+	public void finalizarJuego() {
+		
+	}
 }
