@@ -1,11 +1,11 @@
 package Entidades;
 
-public class Fruta extends Consumible {
+public class zaWarudo extends Pocion {
 	
-	public Fruta(String imagen) {
+	public zaWarudo(String imagen) {
 		
 	}
-
+	
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
 		// TODO Auto-generated method stub
@@ -17,10 +17,8 @@ public class Fruta extends Consumible {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
+	
 	public void serComido() {
-		// TODO Auto-generated method stub
 		
 	}
 

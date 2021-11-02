@@ -9,5 +9,7 @@ public abstract class Entidad {
 	public abstract boolean colisionasteConEnemigo(Personaje personaje);
 	
 	public abstract Posicion getPosicion();
+	
+	public abstract EntidadGrafica getEntidadGrafica();
 
 }

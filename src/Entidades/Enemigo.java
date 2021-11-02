@@ -47,7 +47,13 @@ public class Enemigo extends Personaje{
 	}
 
 	@Override
-	public int[] getPosicion() {
+	public Posicion getPosicion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EntidadGrafica getEntidadGrafica() {
 		// TODO Auto-generated method stub
 		return null;
 	}

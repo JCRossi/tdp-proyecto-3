@@ -2,9 +2,9 @@ package Entidades;
 
 public class Pared extends Entidad{
 	
-	public Pared(int posX, int posY, String imagen) {
-		pos = new Posicion( posX, posY, 99999999, 11111111);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(imagen);
+	public Pared(int posX, int posY) {
+		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+		entGrafica = new EntidadGrafica(5, pos);
 	}
 
 	@Override
@@ -17,5 +17,16 @@ public class Pared extends Entidad{
 	public boolean colisionasteConEnemigo(Personaje personaje) {
 		
 		return false;
+	}
+
+	@Override
+	public Posicion getPosicion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EntidadGrafica getEntidadGrafica() {
+		return entGrafica;
 	}
 }

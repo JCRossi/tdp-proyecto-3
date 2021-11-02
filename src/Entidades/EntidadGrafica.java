@@ -1,74 +1,21 @@
 package Entidades;
 
 import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.Toolkit;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
-public class EntidadGrafica implements Shape {
+public class EntidadGrafica extends JLabel {
 	
 	private ImageIcon grafico;
+	private String[] imagenes = new String[] {"/images/bomb25px.png", "/images/fruit25px.png", "/images/Bloque L.png", "/images/inmune25px.png", "/images/pacdot25px.png", "/images/pared25px.png", "/images/powerpellet25px.png","/images/x2speed25px.png", "/images/zaWarudo25px.png"};
 	
-	
-	public EntidadGrafica(String url) {
-		grafico = new ImageIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(EntidadGrafica.class.getResource(url))).getImage().getScaledInstance(28,28,Image.SCALE_DEFAULT) );
+	public EntidadGrafica(int index, Posicion pos) {
+		grafico = new ImageIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(EntidadGrafica.class.getResource(imagenes[index]))).getImage().getScaledInstance(pos.getAncho(),pos.getAlto(),Image.SCALE_DEFAULT) );
+		this.setIcon(grafico);
+		this.setBounds(52,50,pos.getAncho(),pos.getAlto());
 	}
 	
-	@Override
-	public Rectangle getBounds() {
-		return null;
-	}
-
-	@Override
-	public Rectangle2D getBounds2D() {
-		return null;
-	}
-
-	@Override
-	public boolean contains(double x, double y) {
-		return false;
-	}
-
-	@Override
-	public boolean contains(Point2D p) {
-		return false;
-	}
-
-	@Override
-	public boolean intersects(double x, double y, double w, double h) {
-		return false;
-	}
-
-	@Override
-	public boolean intersects(Rectangle2D r) {
-		return false;
-	}
-
-	@Override
-	public boolean contains(double x, double y, double w, double h) {
-		return false;
-	}
-
-	@Override
-	public boolean contains(Rectangle2D r) {
-		return false;
-	}
-
-	@Override
-	public PathIterator getPathIterator(AffineTransform at) {
-		return null;
-	}
-
-	@Override
-	public PathIterator getPathIterator(AffineTransform at, double flatness) {
-		return null;
-	}
 	
 }

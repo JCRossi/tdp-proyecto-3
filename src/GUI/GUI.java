@@ -1,17 +1,17 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
 import javax.swing.JLabel;
 import java.awt.Color;
 
 public class GUI extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel contentPane, panel;
 
 	/**
 	 * Launch the application.
@@ -34,7 +34,7 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 656, 421);
+		setBounds(100, 100, 656, 564);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -42,9 +42,15 @@ public class GUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		//Poner new Fondo() despues
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 32, 640, 350);
+		panel = new JPanel();
+		panel.setBounds(0, 0, 525, 525);
 		contentPane.add(panel);
 		panel.setLayout(null);
+
+	}
+	
+	public void agregarEntidad(JLabel entidad) {
+		panel.add(entidad);
 	}
 }
+

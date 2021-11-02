@@ -21,4 +21,16 @@ public class Inmunidad extends Pocion {
 	public void serComido() {
 		
 	}
+
+	@Override
+	public Posicion getPosicion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EntidadGrafica getEntidadGrafica() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

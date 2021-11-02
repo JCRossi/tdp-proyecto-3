@@ -83,8 +83,14 @@ public class Jugador extends Personaje {
 	}
 
 	@Override
-	public int[] getPosicion() {
+	public Posicion getPosicion() {
 		
+		return null;
+	}
+
+	@Override
+	public EntidadGrafica getEntidadGrafica() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

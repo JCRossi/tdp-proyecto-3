@@ -1,6 +1,7 @@
 package Laberinto;
 
 import java.awt.Rectangle;
+import java.util.HashSet;
 
 import Entidades.Entidad;
 import Estructuras.BoundaryViolationException;
