@@ -2,7 +2,9 @@ package Entidades;
 
 public class Pared extends Entidad{
 	
-	public Pared() {}
+	public Pared(String imagen) {
+		entGrafica = new EntidadGrafica(imagen);
+	}
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
@@ -15,5 +17,4 @@ public class Pared extends Entidad{
 		
 		return false;
 	}
-
 }

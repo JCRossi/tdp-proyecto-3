@@ -7,15 +7,11 @@ public class Zona {
 	
 	protected int posX;
 	protected int posY;
-	protected int fila;
-	protected int columna;
 	protected ListaSimplementeEnlazada<Entidad> listaEntidades;
 	
-	public Zona(int posx, int posy, int fila, int columna) {
+	public Zona(int posx, int posy) {
 		this.posX = posx;
 		this.posY = posy;
-		this.fila = fila;
-		this.columna = columna;
 			
 		this.listaEntidades = new ListaSimplementeEnlazada<Entidad>();
 		
@@ -32,7 +28,4 @@ public class Zona {
 	public void enlistarEntidad(Entidad EntidadAEnlistar) {
 		listaEntidades.addLast(EntidadAEnlistar);
 	}
-	
-	
-
 }

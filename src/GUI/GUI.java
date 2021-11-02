@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
 
 public class GUI extends JFrame {
 
@@ -32,11 +34,17 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 656, 421);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		//Poner new Fondo() despues
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 32, 640, 350);
+		contentPane.add(panel);
+		panel.setLayout(null);
 	}
-
 }

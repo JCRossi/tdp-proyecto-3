@@ -3,7 +3,7 @@ package Entidades;
 public class PacDot extends Consumible {
 
 	public PacDot(String imagen) {
-		
+		entGrafica = new EntidadGrafica(imagen);
 	}
 
 	@Override

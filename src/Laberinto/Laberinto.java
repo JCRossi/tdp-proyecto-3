@@ -1,60 +1,117 @@
 package Laberinto;
 
 import Entidades.Entidad;
-import Entidades.PacDot;
-import Entidades.Pared;
+import Entidades.*;
 import Estructuras.ListaSimplementeEnlazada;
 
 public class Laberinto {
 	
 	protected Zona[][] zonas;
 	
-	public Laberinto(int nivel) {
+	public Laberinto() {
 		
-		this.zonas = new Zona[20][20];
+		this.zonas = new Zona[21][21];
 		
 		generarMatrizZonas();
-		
-		switch(nivel) {
-			case 1 :
-				generarNivelUno();
-				break;
-				
-			case 2:
-				generarNivelDos();
-				break;
-				
-			case 3:
-				generarNivelTres();
-				break;
-				
-		}
-		
-		
-		
+		generarParedes();
 	}
 	
+	public void generarConsumiblesLaberinto(int nivel) {
+		switch(nivel) {
+		case 1 :
+			generarNivelUno();
+			break;
+			
+		case 2:
+			generarNivelDos();
+			break;
+			
+		case 3:
+			generarNivelTres();
+			break;
+		}
+	}
 	
 	private void generarNivelUno() {
+		//Frutas
+        zonas[1][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+        zonas[12][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+
+        //PowerPellets
+        zonas[3][5].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[5][19].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[15][3].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[18][17].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+
+        //x2Velocidad
+        zonas[12][19].enlistarEntidad(new x2Velocidad("/images/x2speed25px.png"));
+
+        //Inmunidad
+        zonas[8][10].enlistarEntidad(new Inmunidad("/images/inmune25px.png"));
+
+        //Bomba
+        zonas[9][1].enlistarEntidad(new Bomba("/images/bomb25px.png"));
+        
+		rellenarPacDots();
+	}
+	
+	private void generarNivelDos() {
+		//Frutas
+        zonas[1][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+        zonas[12][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+
+        //PowerPellets
+        zonas[3][5].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[5][19].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[15][3].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[18][17].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+
+        //x2Velocidad
+        zonas[12][19].enlistarEntidad(new x2Velocidad("/images/x2speed25px.png"));
+
+        //Bomba
+        zonas[9][1].enlistarEntidad(new Bomba("/images/bomb25px.png"));
+        
+		rellenarPacDots();
+	}
+	
+	private void generarNivelTres() {
+		//Frutas
+        zonas[1][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+        zonas[12][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+
+        //PowerPellets
+        zonas[3][5].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[5][19].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[15][3].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[18][17].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+
+        //Bomba
+        zonas[9][1].enlistarEntidad(new Bomba("/images/bomb25px.png"));
+        
+		rellenarPacDots();
+	}
+	
+	private void rellenarPacDots() {
 		
-		
-		for(int i = 0; i<19 ; i++) {
+		for(int i = 0; i<21;i++) {
+			
+			for(int j = 0; j<21;j++) {
+				
+				//Si no es la pos en la que spawnean los personajes 
+				if( !((i == 10 && j ==9) || (i == 10 && j == 10) || (i == 10 && j == 11) || (i == 9 && j ==10) || (i == 14 && j ==10) )) {
 					
-			if(i != 10) {
-				for(int j = 0; j<19 ; j++) {
-					zonas[i][j].enlistarEntidad(new PacDot());
+					if(zonas[i][j] != null) {
+						zonas[i][j].enlistarEntidad(new PacDot("/images/pacdot35px.png"));
+						
+					}
 					
-				}	
+				}
+	
 			}
 			
 		}
-		
-		
 	}
-	private void generarNivelDos() {}
-	private void generarNivelTres() {}
-	
-	
 	
 	private void generarMatrizZonas() {
 		int posx;
@@ -63,26 +120,16 @@ public class Laberinto {
 		posx = 0;
 		posy = 0;
 				
-		
-		for(int i = 0; i<19 ; i++) {
-			
+		for(int i = 0; i<20 ; i++) {
 			
 			posy = 0;
-			for(int j = 0; j<19 ; j++) {
-				zonas[i][j] = new Zona(posx,posy,i,j);
+			for(int j = 0; j<20 ; j++) {
+				zonas[i][j] = new Zona(posx,posy);
 				
-				if(posy == 0)
-					posy+=9;
-				else
-					posy+=10;
+				posy += 25;
 			}
 			
-			if(posx == 0)
-				posx+=9;
-			else
-				posx+=10;
-			
-			
+			posx += 25;
 		}
 		
 	}
@@ -90,13 +137,197 @@ public class Laberinto {
 	
 	public void generarParedes() {
 		
-		for(int i = 1; i<19;i++) {
-			zonas[10][i].enlistarEntidad(new Pared()); 
+		for(int i = 0; i<20;i++) {
+			zonas[0][i].enlistarEntidad(new Pared("/images/pared25px.png"));
+			
+			zonas[i][0].enlistarEntidad(new Pared("/images/pared25px.png"));
+			
+			zonas[i][20].enlistarEntidad(new Pared("/images/pared25px.png"));
+			
+			zonas[20][i].enlistarEntidad(new Pared("/images/pared25px.png"));
 		}
 		
 		
+		//Fila 1
+		zonas[1][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[1][12].enlistarEntidad(new Pared("/images/pared25px.png"));
 		
-	}
+		//Fila 2
+		zonas[2][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][7].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][9].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][15].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		
+		//Fila 3
+		zonas[3][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[3][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[3][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		
+		//Fila 4
+		zonas[4][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][5].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][7].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][9].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][11].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][13].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][15].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 5
+		zonas[5][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[5][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 6
+		zonas[6][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][5].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 7
+		zonas[7][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][7].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][9].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][11].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][13].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 8
+		zonas[8][1].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][3].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 9
+		zonas[9][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[9][9].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[9][11].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[9][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[9][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[9][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 10
+		zonas[10][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][3].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][5].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][15].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 11
+		zonas[11][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[11][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[11][9].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[11][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[11][11].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[11][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[17][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 12
+		zonas[12][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[12][3].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[12][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[12][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[12][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[12][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[12][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 13
+		zonas[13][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][5].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][9].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][11].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 14
+		zonas[14][1].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][15].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 15
+		zonas[15][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[15][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[15][15].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[15][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 16
+		zonas[16][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][3].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][7].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][11].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][13].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 17
+		zonas[17][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[17][13].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[17][14].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[17][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[17][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[17][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 18
+		zonas[18][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][4].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][5].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][10].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][11].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][13].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+		//Fila 19
+		zonas[19][2].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[19][8].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[19][15].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[19][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		
+}
 	
 	public void chequearObjetoPosicion(int[] posicion) {
 		
@@ -118,6 +349,13 @@ public class Laberinto {
 		return posicion / 10;
 	}
 	
-	
-	
+	public ListaSimplementeEnlazada<Entidad>[][] recuperarEntidades() {
+		ListaSimplementeEnlazada<Entidad>[][] entidades =  new ListaSimplementeEnlazada [21][21];
+		
+		for(int i = 0; i < 21; i++)
+			for(int j = 0; j < 21; j++)
+				entidades[i][j] = zonas[i][j].getListaEntidades();
+		
+		return entidades;
+	}
 }
