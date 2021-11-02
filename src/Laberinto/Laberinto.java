@@ -138,194 +138,211 @@ public class Laberinto {
 	public void generarParedes() {
 		
 		for(int i = 0; i<20;i++) {
-			zonas[0][i].enlistarEntidad(new Pared("/images/pared25px.png"));
+			zonas[0][i].enlistarEntidad(new Pared(0, i*25));
 			
-			zonas[i][0].enlistarEntidad(new Pared("/images/pared25px.png"));
+			zonas[i][0].enlistarEntidad(new Pared(i*25, 0));
 			
-			zonas[i][20].enlistarEntidad(new Pared("/images/pared25px.png"));
+			zonas[i][20].enlistarEntidad(new Pared(i*25, 25*20));
 			
-			zonas[20][i].enlistarEntidad(new Pared("/images/pared25px.png"));
+			zonas[20][i].enlistarEntidad(new Pared(20*25, i*25));
 		}
 		
+		int x = 1;
 		
 		//Fila 1
-		zonas[1][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[1][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[1][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[1][12].enlistarEntidad(new Pared(x*25, 12*25));
 		
+		x = 2;
 		//Fila 2
-		zonas[2][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][7].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][9].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][15].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][16].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][17].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[2][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[2][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[2][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[2][7].enlistarEntidad(new Pared(x*25, 7*25));
+		zonas[2][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[2][9].enlistarEntidad(new Pared(x*25, 9*25));
+		zonas[2][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[2][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[2][15].enlistarEntidad(new Pared(x*25, 15*25));
+		zonas[2][16].enlistarEntidad(new Pared(x*25, 16*25));
+		zonas[2][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[2][18].enlistarEntidad(new Pared(x*25, 18*25));
 		
-		
+		x = 3;
 		//Fila 3
-		zonas[3][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[3][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[3][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[3][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[3][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[3][12].enlistarEntidad(new Pared(x*25, 12*25));
 		
-		
+		x = 4;
 		//Fila 4
-		zonas[4][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][5].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][7].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][9].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][11].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][12].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][13].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][15].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][16].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][17].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[4][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[4][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[4][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[4][5].enlistarEntidad(new Pared(x*25, 5*25));
+		zonas[4][7].enlistarEntidad(new Pared(x*25, 7*25));
+		zonas[4][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[4][9].enlistarEntidad(new Pared(x*25, 9*25));
+		zonas[4][11].enlistarEntidad(new Pared(x*25, 11*25));
+		zonas[4][12].enlistarEntidad(new Pared(x*25, 12*25));
+		zonas[4][13].enlistarEntidad(new Pared(x*25, 13*25));
+		zonas[4][15].enlistarEntidad(new Pared(x*25, 15*25));
+		zonas[4][16].enlistarEntidad(new Pared(x*25, 16*25));
+		zonas[4][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[4][18].enlistarEntidad(new Pared(x*25, 18*25));
 		
+		x = 5;
 		//Fila 5
-		zonas[5][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[5][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[5][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[5][12].enlistarEntidad(new Pared(x*25, 12*25));
 		
+		x = 6;
 		//Fila 6
-		zonas[6][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][5].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][16].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][17].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[6][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[6][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[6][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[6][5].enlistarEntidad(new Pared(x*25, 5*25));
+		zonas[6][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[6][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[6][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[6][16].enlistarEntidad(new Pared(x*25, 16*25));
+		zonas[6][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[6][19].enlistarEntidad(new Pared(x*25, 19*25));
 		
+		x = 7;
 		//Fila 7
-		zonas[7][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][7].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][9].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][11].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][13].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[7][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[7][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[7][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[7][7].enlistarEntidad(new Pared(x*25, 7*25));
+		zonas[7][9].enlistarEntidad(new Pared(x*25, 9*25));
+		zonas[7][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[7][11].enlistarEntidad(new Pared(x*25, 11*25));
+		zonas[7][13].enlistarEntidad(new Pared(x*25, 13*25));
+		zonas[7][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[7][19].enlistarEntidad(new Pared(x*25, 19*25));
 		
+		x = 8;
 		//Fila 8
-		zonas[8][1].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[8][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[8][3].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[8][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[8][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[8][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[8][16].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[8][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[8][1].enlistarEntidad(new Pared(x*25, 1*25));
+		zonas[8][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[8][3].enlistarEntidad(new Pared(x*25, 3*25));
+		zonas[8][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[8][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[8][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[8][16].enlistarEntidad(new Pared(x*25, 16*25));
+		zonas[8][17].enlistarEntidad(new Pared(x*25, 17*25));
 		
+		x = 9;
 		//Fila 9
-		zonas[9][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[9][9].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[9][11].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[9][12].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[9][17].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[9][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[9][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[9][9].enlistarEntidad(new Pared(x*25, 9*25));
+		zonas[9][11].enlistarEntidad(new Pared(x*25, 11*25));
+		zonas[9][12].enlistarEntidad(new Pared(x*25, 12*25));
+		zonas[9][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[9][18].enlistarEntidad(new Pared(x*25, 18*25));
 		
+		x = 10;
 		//Fila 10
-		zonas[10][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[10][3].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[10][5].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[10][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[10][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[10][12].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[10][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[10][15].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[10][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[10][3].enlistarEntidad(new Pared(x*25, 3*25));
+		zonas[10][5].enlistarEntidad(new Pared(x*25, 5*25));
+		zonas[10][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[10][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[10][12].enlistarEntidad(new Pared(x*25, 12*25));
+		zonas[10][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[10][15].enlistarEntidad(new Pared(x*25, 15*25));
 		
+		x = 11;
 		//Fila 11
-		zonas[11][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[11][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[11][9].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[11][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[11][11].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[11][12].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[17][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][6].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[11][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[11][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[11][9].enlistarEntidad(new Pared(x*25, 9*25));
+		zonas[11][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[11][11].enlistarEntidad(new Pared(x*25, 11*25));
+		zonas[11][12].enlistarEntidad(new Pared(x*25, 12*25));
+		zonas[11][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[11][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[11][18].enlistarEntidad(new Pared(x*25, 18*25));
 		
+		x = 12;
 		//Fila 12
-		zonas[12][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[12][3].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[12][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[12][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[12][16].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[12][17].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[12][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[12][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[12][3].enlistarEntidad(new Pared(x*25, 3*25));
+		zonas[12][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[12][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[12][16].enlistarEntidad(new Pared(x*25, 16*25));
+		zonas[12][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[12][18].enlistarEntidad(new Pared(x*25, 18*25));
 		
+		x = 13;
 		//Fila 13
-		zonas[13][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[13][5].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[13][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[13][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[13][9].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[13][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[13][11].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[13][12].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[13][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[13][5].enlistarEntidad(new Pared(x*25, 5*25));
+		zonas[13][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[13][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[13][9].enlistarEntidad(new Pared(x*25, 9*25));
+		zonas[13][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[13][11].enlistarEntidad(new Pared(x*25, 11*25));
+		zonas[13][12].enlistarEntidad(new Pared(x*25, 12*25));
 		
+		x = 14;
 		//Fila 14
-		zonas[14][1].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][12].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][15].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][16].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][17].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][18].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[14][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[14][1].enlistarEntidad(new Pared(x*25, 1*25));
+		zonas[14][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[14][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[14][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[14][12].enlistarEntidad(new Pared(x*25, 12*25));
+		zonas[14][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[14][15].enlistarEntidad(new Pared(x*25, 15*25));
+		zonas[14][16].enlistarEntidad(new Pared(x*25, 16*25));
+		zonas[14][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[14][18].enlistarEntidad(new Pared(x*25, 18*25));
+		zonas[14][19].enlistarEntidad(new Pared(x*25, 19*25));
 		
+		x = 15;
 		//Fila 15
-		zonas[15][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[15][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[15][15].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[15][19].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[15][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[15][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[15][15].enlistarEntidad(new Pared(x*25, 15*25));
+		zonas[15][19].enlistarEntidad(new Pared(x*25, 19*25));
 		
+		x = 16;
 		//Fila 16
-		zonas[16][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][3].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][7].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][11].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][13].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[16][17].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[16][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[16][3].enlistarEntidad(new Pared(x*25, 3*25));
+		zonas[16][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[16][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[16][7].enlistarEntidad(new Pared(x*25, 7*25));
+		zonas[16][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[16][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[16][11].enlistarEntidad(new Pared(x*25, 11*25));
+		zonas[16][13].enlistarEntidad(new Pared(x*25, 13*25));
+		zonas[16][17].enlistarEntidad(new Pared(x*25, 17*25));
 		
+		x = 17;
 		//Fila 17
-		zonas[17][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[17][13].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[17][14].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[17][16].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[17][17].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[17][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[17][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[17][13].enlistarEntidad(new Pared(x*25, 13*25));
+		zonas[17][14].enlistarEntidad(new Pared(x*25, 14*25));
+		zonas[17][16].enlistarEntidad(new Pared(x*25, 16*25));
+		zonas[17][17].enlistarEntidad(new Pared(x*25, 17*25));
+		zonas[17][18].enlistarEntidad(new Pared(x*25, 18*25));
 		
+		x = 18;
 		//Fila 18
-		zonas[18][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][4].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][5].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][6].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][10].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][11].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][12].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][13].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[18][18].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[18][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[18][4].enlistarEntidad(new Pared(x*25, 4*25));
+		zonas[18][5].enlistarEntidad(new Pared(x*25, 5*25));
+		zonas[18][6].enlistarEntidad(new Pared(x*25, 6*25));
+		zonas[18][10].enlistarEntidad(new Pared(x*25, 10*25));
+		zonas[18][11].enlistarEntidad(new Pared(x*25, 11*25));
+		zonas[18][12].enlistarEntidad(new Pared(x*25, 12*25));
+		zonas[18][13].enlistarEntidad(new Pared(x*25, 13*25));
+		zonas[18][18].enlistarEntidad(new Pared(x*25, 18*25));
 		
+		x = 19;
 		//Fila 19
-		zonas[19][2].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[19][8].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[19][15].enlistarEntidad(new Pared("/images/pared25px.png"));
-		zonas[19][16].enlistarEntidad(new Pared("/images/pared25px.png"));
+		zonas[19][2].enlistarEntidad(new Pared(x*25, 2*25));
+		zonas[19][8].enlistarEntidad(new Pared(x*25, 8*25));
+		zonas[19][15].enlistarEntidad(new Pared(x*25, 15*25));
+		zonas[19][16].enlistarEntidad(new Pared(x*25, 16*25));
 		
 }
 	

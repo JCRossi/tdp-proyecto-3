@@ -49,7 +49,7 @@ public class GUI extends JFrame {
 		panel.setBounds(0, 0, 525, 525);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+		panel.setFocusable(true);
 		
 		KeyListener eventoTeclado = new KeyListener() {
 
