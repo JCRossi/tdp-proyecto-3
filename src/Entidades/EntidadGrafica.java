@@ -16,6 +16,7 @@ public class EntidadGrafica implements Shape {
 	
 	private ImageIcon grafico;
 	
+	
 	public EntidadGrafica(String url) {
 		grafico = new ImageIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(EntidadGrafica.class.getResource(url))).getImage().getScaledInstance(28,28,Image.SCALE_DEFAULT) );
 	}

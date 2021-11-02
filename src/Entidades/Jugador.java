@@ -9,10 +9,14 @@ public class Jugador extends Personaje {
 	
 	private EstadoJugador[] estados;
 	private EstadoJugador estadoActual;
+	private Posicion pos;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto) {
-		this.posicionX = posX;
-		this.posicionY = posY;
+		
+		pos = new Posicion( posX, posY, 99999999, 11111111);  //999999 = ancho        111111111 = alto
+		
+		
+		
 		this.direccion = direcc;
 		estados = new EstadoJugador[3];
 		estados[0] = new Normal();

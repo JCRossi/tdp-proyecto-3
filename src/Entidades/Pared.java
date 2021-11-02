@@ -2,7 +2,8 @@ package Entidades;
 
 public class Pared extends Entidad{
 	
-	public Pared(String imagen) {
+	public Pared(int posX, int posY, String imagen) {
+		pos = new Posicion( posX, posY, 99999999, 11111111);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(imagen);
 	}
 
