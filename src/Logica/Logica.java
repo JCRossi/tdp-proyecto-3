@@ -31,8 +31,8 @@ public class Logica {
 		
 	}
 	
-	public void cambiarDireccionJugador() {
-		
+	public void cambiarDireccionJugador(char c) {
+		personajePrincipal.cambiarDireccion(c);
 	}
 	
 	public void actualizarPuntaje(int puntos) {

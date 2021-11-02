@@ -93,5 +93,12 @@ public class Jugador extends Personaje {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
+	public void cambiarDireccion(char c) {
+		direccion = c;
+	}
+	
 
 }
