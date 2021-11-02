@@ -2,7 +2,10 @@ package Entidades;
 
 public class zaWarudo extends Pocion {
 	
-	public zaWarudo(String imagen) {
+	public zaWarudo(int posX, int posY) {
+		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+		entGrafica = new EntidadGrafica(8, pos);
+		
 		
 	}
 	

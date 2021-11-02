@@ -2,7 +2,9 @@ package Entidades;
 
 public class PowerPellet extends PowerUp {
 	
-	public PowerPellet(String imagen) {
+	public PowerPellet(int posX, int posY) {
+		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+		entGrafica = new EntidadGrafica(6, pos);
 		
 	}
 	

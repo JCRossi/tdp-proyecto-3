@@ -2,7 +2,10 @@ package Entidades;
 
 public class PacDot extends Consumible {
 
-	public PacDot(String imagen) {
+	public PacDot(int posX, int posY) {
+		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+		entGrafica = new EntidadGrafica(4, pos);
+		
 		
 	}
 

@@ -34,60 +34,60 @@ public class Laberinto {
 	
 	private void generarNivelUno() {
 		//Frutas
-        zonas[1][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
-        zonas[12][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
+        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
 
         //PowerPellets
-        zonas[3][5].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[5][19].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[15][3].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[18][17].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25));
+        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25));
+        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25));
+        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25));
 
         //x2Velocidad
-        zonas[12][19].enlistarEntidad(new x2Velocidad("/images/x2speed25px.png"));
+        zonas[12][19].enlistarEntidad(new x2Velocidad(12*25, 19*25));
 
         //Inmunidad
-        zonas[8][10].enlistarEntidad(new Inmunidad("/images/inmune25px.png"));
+        zonas[8][10].enlistarEntidad(new Inmunidad(8*25, 10*25));
 
         //Bomba
-        zonas[9][1].enlistarEntidad(new Bomba("/images/bomb25px.png"));
+        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
         
 		rellenarPacDots();
 	}
 	
 	private void generarNivelDos() {
 		//Frutas
-        zonas[1][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
-        zonas[12][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
+        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
 
         //PowerPellets
-        zonas[3][5].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[5][19].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[15][3].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[18][17].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25));
+        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25));
+        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25));
+        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25));
 
         //x2Velocidad
-        zonas[12][19].enlistarEntidad(new x2Velocidad("/images/x2speed25px.png"));
+        zonas[12][19].enlistarEntidad(new x2Velocidad(12*25, 19*25));
 
         //Bomba
-        zonas[9][1].enlistarEntidad(new Bomba("/images/bomb25px.png"));
+        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
         
 		rellenarPacDots();
 	}
 	
 	private void generarNivelTres() {
 		//Frutas
-        zonas[1][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
-        zonas[12][10].enlistarEntidad(new Fruta("/images/fruit25px.png"));
+        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
+        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
 
         //PowerPellets
-        zonas[3][5].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[5][19].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[15][3].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
-        zonas[18][17].enlistarEntidad(new PowerPellet("/images/powerpellet25px.png"));
+        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25));
+        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25));
+        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25));
+        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25));
 
         //Bomba
-        zonas[9][1].enlistarEntidad(new Bomba("/images/bomb25px.png"));
+        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
         
 		rellenarPacDots();
 	}
@@ -102,7 +102,7 @@ public class Laberinto {
 				if( !((i == 10 && j ==9) || (i == 10 && j == 10) || (i == 10 && j == 11) || (i == 9 && j ==10) || (i == 14 && j ==10) )) {
 					
 					if(zonas[i][j] != null) {
-						zonas[i][j].enlistarEntidad(new PacDot("/images/pacdot35px.png"));
+						zonas[i][j].enlistarEntidad(new PacDot(i*25, j*25));
 						
 					}
 					

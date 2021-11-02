@@ -2,7 +2,9 @@ package Entidades;
 
 public class Fruta extends Consumible {
 	
-	public Fruta(String imagen) {
+	public Fruta(int posX, int posY) {
+		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+		entGrafica = new EntidadGrafica(1, pos);
 		
 	}
 
