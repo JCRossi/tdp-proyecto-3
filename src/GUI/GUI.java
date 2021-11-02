@@ -1,6 +1,9 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -46,6 +49,51 @@ public class GUI extends JFrame {
 		panel.setBounds(0, 0, 525, 525);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		
+		KeyListener eventoTeclado = new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch(e.getKeyCode()) {
+                    case 37:{
+                    	//Juego.cambiarDireccionJugador(l)
+                        break;
+                    }
+
+                    case 39:{
+                    	//Juego.cambiarDireccionJugador(r)
+                        break;
+                    }
+
+                    case 40:{
+                    	//Juego.cambiarDireccionJugador(d)
+                        break;
+                    }
+
+                    case 38:{
+                    	//Juego.cambiarDireccionJugador(u)
+                        break;
+                    }
+
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+
+        panel.addKeyListener(eventoTeclado);
+		
+		
+		
+		
+		
 
 	}
 	
