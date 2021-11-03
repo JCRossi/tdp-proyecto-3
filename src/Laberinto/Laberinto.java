@@ -1,6 +1,9 @@
 package Laberinto;
 
 import Entidades.Entidad;
+
+import java.awt.Rectangle;
+
 import Entidades.*;
 import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
@@ -353,13 +356,18 @@ public class Laberinto {
 		
 	}
 	
-	public ListaSimplementeEnlazada<Entidad> chequearColision(int posx, int posy, int velocidad, char direccion){
-		ListaSimplementeEnlazada<Entidad> listaEntidades;
-		listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
+	public ListaSimplementeEnlazada<Entidad> chequearColision(Posicion pos, int velocidad, char direccion){
+		ListaSimplementeEnlazada<Entidad> listaEntidades = new ListaSimplementeEnlazada<Entidad>();
+		ListaSimplementeEnlazada<Zona> listaZonas = new ListaSimplementeEnlazada<Zona>();
+		//listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
 		
-		for(Entidad ent : listaEntidades) {
-			
+		//Para cada zona a la que pertenece deberia ejecutar el metodo checkearColisionse de zona
+		listaZonas = calcularZonasOcupadas(pos);
+		
+		for(Zona zon: listaZonas) {
+			zon.checkearColisiones(calcularRectanguloHipotetico(pos,velocidad,direccion), listaEntidades);	
 		}
+		
 			
 		return listaEntidades;
 	}
@@ -377,5 +385,55 @@ public class Laberinto {
 				entidades[i][j] = zonas[i][j].getListaEntidades();
 		
 		return entidades;
+	}
+	
+	
+	private Rectangle calcularRectanguloHipotetico(Posicion pos, int velocidad, char direccion) {
+		Rectangle r = null;
+		int posx = pos.getX();
+		int posy = pos.getY();
+		int ancho = pos.getAncho();
+		int alto = pos.getAlto();
+		
+		switch(direccion) {
+			case 'l':
+				r = new Rectangle(posx-velocidad,posy,ancho,alto);
+			break;
+			case'r':
+				r = new Rectangle(posx+velocidad,posy,ancho,alto);
+			break;
+			case 'u':
+				r = new Rectangle(posx,posy-velocidad,ancho,alto);
+			break;
+			case 'd':
+				r = new Rectangle(posx,posy+velocidad,ancho,alto);
+			break;
+		
+		
+		}
+		
+		return r;
+	}
+	
+	
+	
+	//Esto se podria hacer con listas que no repiten elementos
+	private ListaSimplementeEnlazada<Zona> calcularZonasOcupadas(Posicion pos){
+		ListaSimplementeEnlazada<Zona> listaZonas = new ListaSimplementeEnlazada<Zona>();
+		
+		int posx = pos.getX();
+		int posy = pos.getY();
+		int ancho = pos.getAncho();
+		int alto = pos.getAlto();
+		
+		
+		listaZonas.addLast(zonas[identificarZona(posx)][identificarZona(posy)]);
+		listaZonas.addLast(zonas[identificarZona(posx+ancho)][identificarZona(posy)]);
+		listaZonas.addLast(zonas[identificarZona(posx)][identificarZona(posy+alto)]);
+		listaZonas.addLast(zonas[identificarZona(posx+ancho)][identificarZona(posy+alto)]);
+		
+		
+		return listaZonas;
+		
 	}
 }

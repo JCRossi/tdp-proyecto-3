@@ -73,7 +73,7 @@ public class Jugador extends Personaje {
 	@Override
 	public ListaSimplementeEnlazada<Entidad> chequearMovimiento() {
 		
-		return miLaberinto.chequearColision(posicionX, posicionY, estadoActual.getMovimiento(), direccion);
+		return miLaberinto.chequearColision(pos, estadoActual.getMovimiento(), direccion);
 	}
 
 	@Override

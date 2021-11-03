@@ -36,13 +36,13 @@ public class Zona {
 		listaEntidades.addLast(EntidadAEnlistar);
 	}
 	
-	
-	public void checkearColisiones (Rectangle R, HashSet<Entidad> lista){
+	//REEMPLAZAR ListaSimplementeEnlazada POR HASHSET<ENTIDAD>
+	public void checkearColisiones (Rectangle R, ListaSimplementeEnlazada<Entidad> lista){
         Rectangle rectanguloActual;
         for(Entidad e : listaEntidades) {
             rectanguloActual = e.getPosicion().getRectangulo();
             if (R.intersects(rectanguloActual))
-                lista.add(e);
+                lista.addLast(e);
         }
 	}
 	
