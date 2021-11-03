@@ -57,6 +57,8 @@ public class GUI extends JFrame {
 		
 		Logica logica = new Logica(this);
 		logica.avisarActualizacionLaberintoGrafico();
+		
+		
 		KeyListener eventoTeclado = new KeyListener() {
 
 			

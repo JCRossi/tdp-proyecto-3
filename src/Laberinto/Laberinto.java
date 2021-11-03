@@ -426,10 +426,10 @@ public class Laberinto {
 		int alto = pos.getAlto();
 		
 		
-		listaZonas.addLast(zonas[identificarZona(posx)][identificarZona(posy)]);
-		listaZonas.addLast(zonas[identificarZona(posx+ancho)][identificarZona(posy)]);
-		listaZonas.addLast(zonas[identificarZona(posx)][identificarZona(posy+alto)]);
-		listaZonas.addLast(zonas[identificarZona(posx+ancho)][identificarZona(posy+alto)]);
+		listaZonas.addLast(zonas[identificarZona(posy)][identificarZona(posx)]);
+		listaZonas.addLast(zonas[identificarZona(posy+ancho)][identificarZona(posx)]);
+		listaZonas.addLast(zonas[identificarZona(posy)][identificarZona(posx+alto)]);
+		listaZonas.addLast(zonas[identificarZona(posy+ancho)][identificarZona(posx+alto)]);
 		
 		
 		return listaZonas;

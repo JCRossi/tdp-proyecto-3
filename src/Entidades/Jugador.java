@@ -39,7 +39,6 @@ public class Jugador extends Personaje {
 
 	@Override
 	public void mover() {
-		System.out.println("Entraste a mover");	
 		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento();
 		Position<Entidad> actualLeida = null;
 		//boolean noSePuedeMover = false;
@@ -62,7 +61,6 @@ public class Jugador extends Personaje {
 			exc.printStackTrace();
 		}
 			
-		System.out.println("La posicion es "+pos.getX()+" y "+pos.getY());	
 	}
 
 	@Override
@@ -126,7 +124,6 @@ public class Jugador extends Personaje {
 		int posx = pos.getX();
 		int posy = pos.getY();
 		int velocidad = estadoActual.getMovimiento();
-		System.out.println("La velocidad es "+velocidad);
 		switch(direccion) {
 		case 'l':
 			pos.setX(posx-velocidad);
@@ -138,7 +135,7 @@ public class Jugador extends Personaje {
 			pos.setY(posy-velocidad);
 		break;
 		case 'd':
-			pos.setX(posx+velocidad);
+			pos.setY(posy+velocidad);
 		break;
 	
 	
