@@ -256,7 +256,7 @@ public class Laberinto {
 		zonas[10][15].enlistarEntidad(new Pared(x*25, 15*25));
 		
 		x = 11;
-		//Fila 11
+		//Columna 11
 		zonas[11][6].enlistarEntidad(new Pared(x*25, 6*25));
 		zonas[11][8].enlistarEntidad(new Pared(x*25, 8*25));
 		zonas[11][9].enlistarEntidad(new Pared(x*25, 9*25));
@@ -437,7 +437,7 @@ public class Laberinto {
 	}
 	
 	public void incorporarEntidad(Entidad e) { 
-		zonas[identificarZona(e.getPosicion().getX())][identificarZona(e.getPosicion().getY())].enlistarEntidad(e);
+		zonas[identificarZona(e.getPosicion().getY())][identificarZona(e.getPosicion().getX())].enlistarEntidad(e);
 		
 	}
 }

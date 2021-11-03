@@ -5,8 +5,6 @@ import Laberinto.Laberinto;
 
 public abstract class Personaje extends Entidad{
 	
-	protected int posicionX;
-	protected int posicionY;
 	protected char direccion;
 	protected Laberinto miLaberinto;
 		

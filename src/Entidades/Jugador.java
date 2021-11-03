@@ -11,21 +11,20 @@ public class Jugador extends Personaje {
 	
 	private EstadoJugador[] estados;
 	private EstadoJugador estadoActual;
-	private Posicion pos;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto) {
 		
-		pos = new Posicion( posX, posY, 25, 25);  //250 - 350     		
+		pos = new Posicion( posX, posY, 18, 19);  //250 - 350     		
 		
-		entGrafica = new EntidadGrafica(3,pos); 
+		entGrafica = new EntidadGrafica(5 ,pos); 
 		this.direccion = direcc;
 		estados = new EstadoJugador[3];
 		estados[0] = new Normal();
 		estados[1] = new Rapido(); 
 		estados[2] = new Inmune();
 		estadoActual = estados[0];
-		
-		milaberinto.incorporarEntidad(this);
+		miLaberinto = milaberinto;
+		miLaberinto.incorporarEntidad(this);
 	}
 
 	@Override

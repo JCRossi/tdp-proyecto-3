@@ -23,7 +23,7 @@ public class Logica {
 		this.interfaz = interfaz;
 		laberinto = new Laberinto();
 		generarNivel(1);
-		personajePrincipal = new Jugador(250,350,'r',laberinto);
+		personajePrincipal = new Jugador(250, 350,'r',laberinto);
 	}
 	
 	public void generarNivel(int numero) {
