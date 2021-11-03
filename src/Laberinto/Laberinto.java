@@ -361,7 +361,6 @@ public class Laberinto {
 		ListaSimplementeEnlazada<Zona> listaZonas = new ListaSimplementeEnlazada<Zona>();
 		//listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
 		
-		//Para cada zona a la que pertenece deberia ejecutar el metodo checkearColisionse de zona
 		listaZonas = calcularZonasOcupadas(pos);
 		
 		for(Zona zon: listaZonas) {
@@ -374,7 +373,7 @@ public class Laberinto {
 	
 	private int identificarZona(int posicion) {
 		
-		return posicion / 10;
+		return posicion / 25;
 	}
 	
 	public ListaSimplementeEnlazada<Entidad>[][] recuperarEntidades() {
@@ -434,6 +433,11 @@ public class Laberinto {
 		
 		
 		return listaZonas;
+		
+	}
+	
+	public void incorporarEntidad(Entidad e) { 
+		zonas[identificarZona(e.getPosicion().getX())][identificarZona(e.getPosicion().getY())].enlistarEntidad(e);
 		
 	}
 }

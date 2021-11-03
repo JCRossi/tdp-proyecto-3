@@ -37,5 +37,14 @@ public class Posicion {
 		return this.ancho;
 	}
 	
+	public void setX(int x) {
+		posx = x;
+	}
+	
+	public void setY(int y) {
+		posy = y;
+	}
+	
+	
 
 }

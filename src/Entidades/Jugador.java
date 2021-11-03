@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.awt.Rectangle;
+
 import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
 import Estructuras.Position;
@@ -13,16 +15,17 @@ public class Jugador extends Personaje {
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto) {
 		
-		pos = new Posicion( posX, posY, 99999999, 11111111);  //999999 = ancho        111111111 = alto
+		pos = new Posicion( posX, posY, 25, 25);  //250 - 350     		
 		
-		
-		
+		entGrafica = new EntidadGrafica(3,pos); 
 		this.direccion = direcc;
 		estados = new EstadoJugador[3];
 		estados[0] = new Normal();
-		estados[1] = new Rapido();
+		estados[1] = new Rapido(); 
 		estados[2] = new Inmune();
 		estadoActual = estados[0];
+		
+		milaberinto.incorporarEntidad(this);
 	}
 
 	@Override
@@ -37,6 +40,8 @@ public class Jugador extends Personaje {
 				while(actualLeida != null && !noSePuedeMover) {
 					noSePuedeMover = colision(actualLeida.element());
 				}
+				if(!noSePuedeMover)
+					actualizarPos();
 			}
 		
 		} catch(EmptyListException exc) {
@@ -85,20 +90,44 @@ public class Jugador extends Personaje {
 	@Override
 	public Posicion getPosicion() {
 		
-		return null;
+		return pos;
 	}
 
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
-		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 	
 	
+	public void actualizarPosGrafica() {
+		entGrafica.actualizarPos(pos);
+	}
 	
 	public void cambiarDireccion(char c) {
 		direccion = c;
 	}
 	
+	
+	private void actualizarPos() {
+		int posx = pos.getX();
+		int posy = pos.getY();
+		int velocidad = estadoActual.getMovimiento();
+		switch(direccion) {
+		case 'l':
+			pos.setX(posx-velocidad);
+		break;
+		case'r':
+			pos.setX(posx+velocidad);
+		break;
+		case 'u':
+			pos.setY(posy-velocidad);
+		break;
+		case 'd':
+			pos.setX(posx+velocidad);
+		break;
+	
+	
+	}
+	}
 
 }

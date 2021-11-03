@@ -11,7 +11,7 @@ public class PacDot extends Consumible {
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		// TODO Auto-generated method stub
+		entGrafica.setIcon(null);
 		return false;
 	}
 

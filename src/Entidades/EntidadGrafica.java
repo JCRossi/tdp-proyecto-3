@@ -17,5 +17,9 @@ public class EntidadGrafica extends JLabel {
 		this.setBounds(pos.getX(),pos.getY(),pos.getAncho(),pos.getAlto());
 	}
 	
+	public void actualizarPos(Posicion pos) {
+		this.setBounds(pos.getX(),pos.getY(),pos.getAncho(),pos.getAlto());
+	}
+	
 	
 }
