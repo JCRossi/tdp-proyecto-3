@@ -14,6 +14,7 @@ public class Jugador extends Personaje {
 	private EstadoJugador estadoActual;
 	private Thread hilo;
 	private HiloJugador hiloMovimiento;
+	private boolean puedeCaminar;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto) {
 		
@@ -26,6 +27,7 @@ public class Jugador extends Personaje {
 		estados[1] = new Rapido(); 
 		estados[2] = new Inmune();
 		estadoActual = estados[0];
+		puedeCaminar = true;
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
 		
@@ -41,21 +43,18 @@ public class Jugador extends Personaje {
 	public void mover() {
 		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento();
 		Position<Entidad> actualLeida = null;
-		//boolean noSePuedeMover = false;
 		try {
 			if(!listaEntidadesColision.isEmpty()) {
 				actualLeida = listaEntidadesColision.first();
+				colision(actualLeida.element());
 				
-				//while(actualLeida != null && !noSePuedeMover) {
-					//noSePuedeMover = colision(actualLeida.element());
-				//}
-				//if(!noSePuedeMover)
-				//actualizarPos();
-				//actualizarPosGrafica();
+			}
+			if(puedeCaminar) {
+				actualizarPos();
+				actualizarPosGrafica();
 			}
 			
-			actualizarPos();
-			actualizarPosGrafica();
+			
 		
 		} catch(EmptyListException exc) {
 			exc.printStackTrace();
@@ -73,6 +72,9 @@ public class Jugador extends Personaje {
 	public void morir() {
 		
 		
+	}
+	public void noPuedeCaminar() {
+		puedeCaminar = false;
 	}
 
 	@Override
@@ -117,6 +119,7 @@ public class Jugador extends Personaje {
 	
 	public void cambiarDireccion(char c) {
 		direccion = c;
+		puedeCaminar = true;
 	}
 	
 	

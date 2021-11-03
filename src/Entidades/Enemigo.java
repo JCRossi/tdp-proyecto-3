@@ -58,4 +58,10 @@ public class Enemigo extends Personaje{
 		return null;
 	}
 
+	@Override
+	public void noPuedeCaminar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

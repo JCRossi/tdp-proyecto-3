@@ -24,5 +24,5 @@ public abstract class Personaje extends Entidad{
 	public abstract boolean colisionasteConEnemigo(Personaje personaje);
 	
 	public abstract Posicion getPosicion();
-
+	public abstract void noPuedeCaminar();
 }
