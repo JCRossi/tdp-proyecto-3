@@ -55,8 +55,12 @@ public class GUI extends JFrame {
 		panel.setLayout(null);
 		panel.setFocusable(true);
 		
+		Logica logica = new Logica(this);
+		logica.avisarActualizacionLaberintoGrafico();
 		KeyListener eventoTeclado = new KeyListener() {
 
+			
+			
             @Override
             public void keyTyped(KeyEvent e) {
             }
@@ -65,27 +69,29 @@ public class GUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 switch(e.getKeyCode()) {
                     case 37:{
-                    	//Juego.cambiarDireccionJugador(l)
+                    	logica.cambiarDireccionJugador('l');
                         break;
                     }
 
                     case 39:{
-                    	//Juego.cambiarDireccionJugador(r)
+                    	logica.cambiarDireccionJugador('r');
                         break;
                     }
 
                     case 40:{
-                    	//Juego.cambiarDireccionJugador(d)
+                    	logica.cambiarDireccionJugador('d');
                         break;
                     }
 
                     case 38:{
-                    	//Juego.cambiarDireccionJugador(u)
+                    	logica.cambiarDireccionJugador('u');
                         break;
                     }
 
                 }
             }
+            
+            
 
             @Override
             public void keyReleased(KeyEvent e) {
@@ -94,8 +100,7 @@ public class GUI extends JFrame {
 
         panel.addKeyListener(eventoTeclado);
 		
-        Logica logica= new Logica(this);
-		logica.avisarActualizacionLaberintoGrafico();
+        
 
 	}
 	

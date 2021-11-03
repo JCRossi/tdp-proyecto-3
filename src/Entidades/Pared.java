@@ -11,7 +11,7 @@ public class Pared extends Entidad{
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		
+		System.out.println("Colisioneste con una pared");	
 		return true;
 	}
 
@@ -24,7 +24,7 @@ public class Pared extends Entidad{
 	@Override
 	public Posicion getPosicion() {
 		// TODO Auto-generated method stub
-		return null;
+		return pos;
 	}
 
 	@Override

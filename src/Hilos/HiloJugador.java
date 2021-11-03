@@ -4,7 +4,7 @@ import Entidades.Jugador;
 
 public class HiloJugador implements Runnable {
 	
-	private static final long intervaloDeMovimientoNivelUno = 250; 
+	private static final long intervaloDeMovimientoNivelUno = 20; 
 
 	private long intervaloDeMovimiento;
 	private boolean continuar;

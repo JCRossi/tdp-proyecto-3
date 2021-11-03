@@ -30,7 +30,7 @@ public class PacDot extends Consumible {
 	@Override
 	public Posicion getPosicion() {
 		// TODO Auto-generated method stub
-		return null;
+		return pos;
 	}
 
 	@Override

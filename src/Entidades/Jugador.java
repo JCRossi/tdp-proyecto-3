@@ -5,18 +5,21 @@ import java.awt.Rectangle;
 import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
 import Estructuras.Position;
+import Hilos.HiloJugador;
 import Laberinto.Laberinto;
 
 public class Jugador extends Personaje {
 	
 	private EstadoJugador[] estados;
 	private EstadoJugador estadoActual;
+	private Thread hilo;
+	private HiloJugador hiloMovimiento;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto) {
 		
-		pos = new Posicion( posX, posY, 18, 19);  //250 - 350     		
+		pos = new Posicion( posX, posY, 22, 18);  //250 - 350     		
 		
-		entGrafica = new EntidadGrafica(5 ,pos); 
+		entGrafica = new EntidadGrafica(8 ,pos); 
 		this.direccion = direcc;
 		estados = new EstadoJugador[3];
 		estados[0] = new Normal();
@@ -25,29 +28,41 @@ public class Jugador extends Personaje {
 		estadoActual = estados[0];
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
+		
+		hiloMovimiento = new HiloJugador(this);
+		hilo = new Thread(this.hiloMovimiento);
+	
+
+		hilo.start();
+
 	}
 
 	@Override
 	public void mover() {
+		System.out.println("Entraste a mover");	
 		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento();
 		Position<Entidad> actualLeida = null;
-		boolean noSePuedeMover = false;
+		//boolean noSePuedeMover = false;
 		try {
 			if(!listaEntidadesColision.isEmpty()) {
 				actualLeida = listaEntidadesColision.first();
 				
-				while(actualLeida != null && !noSePuedeMover) {
-					noSePuedeMover = colision(actualLeida.element());
-				}
-				if(!noSePuedeMover)
-					actualizarPos();
+				//while(actualLeida != null && !noSePuedeMover) {
+					//noSePuedeMover = colision(actualLeida.element());
+				//}
+				//if(!noSePuedeMover)
+				//actualizarPos();
+				//actualizarPosGrafica();
 			}
+			
+			actualizarPos();
+			actualizarPosGrafica();
 		
 		} catch(EmptyListException exc) {
 			exc.printStackTrace();
 		}
 			
-			
+		System.out.println("La posicion es "+pos.getX()+" y "+pos.getY());	
 	}
 
 	@Override
@@ -111,6 +126,7 @@ public class Jugador extends Personaje {
 		int posx = pos.getX();
 		int posy = pos.getY();
 		int velocidad = estadoActual.getMovimiento();
+		System.out.println("La velocidad es "+velocidad);
 		switch(direccion) {
 		case 'l':
 			pos.setX(posx-velocidad);
