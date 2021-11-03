@@ -9,13 +9,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Entidades.Pared;
+import Logica.Logica;
 
 import javax.swing.JLabel;
 import java.awt.Color;
 
 public class GUI extends JFrame {
 
-	private JPanel contentPane, panel;
+	private JPanel contentPane;
+	private static JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -31,6 +33,7 @@ public class GUI extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	/**
@@ -91,17 +94,15 @@ public class GUI extends JFrame {
 
         panel.addKeyListener(eventoTeclado);
 		
-		
-	Pared pared = new Pared(52,50);
-	agregarEntidad(pared.getEntidadGrafica());
-		
-		
+        Logica logica= new Logica(this);
+		logica.avisarActualizacionLaberintoGrafico();
 
 	}
 	
 	
 	public void agregarEntidad(JLabel entidad) {
-		panel.add(entidad);
+			panel.add(entidad);
+		
 	}
 }
 

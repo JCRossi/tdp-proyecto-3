@@ -2,7 +2,9 @@ package Laberinto;
 
 import Entidades.Entidad;
 import Entidades.*;
+import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
+import Logica.Logica;
 
 public class Laberinto {
 	
@@ -34,7 +36,7 @@ public class Laberinto {
 	
 	private void generarNivelUno() {
 		//Frutas
-        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
+        /*zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
         zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
 
         //PowerPellets
@@ -51,8 +53,8 @@ public class Laberinto {
 
         //Bomba
         zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
-        
-		rellenarPacDots();
+        */
+		//rellenarPacDots();
 	}
 	
 	private void generarNivelDos() {
@@ -120,10 +122,10 @@ public class Laberinto {
 		posx = 0;
 		posy = 0;
 				
-		for(int i = 0; i<20 ; i++) {
+		for(int i = 0; i<21 ; i++) {
 			
 			posy = 0;
-			for(int j = 0; j<20 ; j++) {
+			for(int j = 0; j<21 ; j++) {
 				zonas[i][j] = new Zona(posx,posy);
 				
 				posy += 25;
@@ -137,7 +139,7 @@ public class Laberinto {
 	
 	public void generarParedes() {
 		
-		for(int i = 0; i<20;i++) {
+		for(int i = 0; i<21;i++) {
 			zonas[0][i].enlistarEntidad(new Pared(0, i*25));
 			
 			zonas[i][0].enlistarEntidad(new Pared(i*25, 0));
@@ -146,6 +148,7 @@ public class Laberinto {
 			
 			zonas[20][i].enlistarEntidad(new Pared(20*25, i*25));
 		}
+		
 		
 		int x = 1;
 		

@@ -2,6 +2,8 @@ package Logica;
 
 import Laberinto.*;
 import Entidades.*;
+import Estructuras.EmptyListException;
+import Estructuras.ListaSimplementeEnlazada;
 import GUI.GUI;
 
 public class Logica {
@@ -11,13 +13,14 @@ public class Logica {
 	private Nivel nivel;
 	private GUI interfaz;
 	
-	public Logica() {
-		personajePrincipal = new Jugador();
+	public Logica(GUI interfaz) {
+		//personajePrincipal = new Jugador();
 		/*enemigos[0] = new Blinky();
 		 *enemigos[1] = new Inky();
 		 *enemigos[2] = new Pinky();
 		 *enemigos[3] = new Clyde();
 		 */
+		this.interfaz = interfaz;
 		laberinto = new Laberinto();
 		generarNivel(1);
 	}
@@ -40,8 +43,16 @@ public class Logica {
 	}
 	
 	public void avisarActualizacionLaberintoGrafico() {
-		laberinto.recuperarEntidades();
-		//interfaz.actualizarLaberintoGrafico();
+		ListaSimplementeEnlazada<Entidad>[][] entidades = laberinto.recuperarEntidades();
+		for(int i = 0; i < 21; i++)
+			for(int j = 0; j < 21; j++)
+				try {
+					if(entidades[i][j].size()!=0)
+						interfaz.agregarEntidad(entidades[i][j].first().element().getEntidadGrafica());
+				} catch (EmptyListException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	}
 	
 	public void avisarActualizacionJugadorGrafico() {
@@ -60,4 +71,5 @@ public class Logica {
 	public void finalizarJuego() {
 		
 	}
+	
 }

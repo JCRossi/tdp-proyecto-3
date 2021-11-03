@@ -1,10 +1,12 @@
 package Entidades;
 
+
 public class Pared extends Entidad{
 	
-	public Pared(int posX, int posY) {
+	public Pared(int posY, int posX) {
 		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(5, pos);
+
 	}
 
 	@Override
