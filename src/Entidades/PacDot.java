@@ -2,8 +2,8 @@ package Entidades;
 
 public class PacDot extends Consumible {
 
-	public PacDot(int posX, int posY) {
-		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+	public PacDot(int posY, int posX) {
+		pos = new Posicion( posX, posY, 10, 11);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(4, pos);
 		
 		
@@ -35,8 +35,7 @@ public class PacDot extends Consumible {
 
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
-		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 	
 }

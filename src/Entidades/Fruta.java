@@ -2,8 +2,8 @@ package Entidades;
 
 public class Fruta extends Consumible {
 	
-	public Fruta(int posX, int posY) {
-		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+	public Fruta(int posY, int posX) {
+		pos = new Posicion( posX, posY, 15, 22);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(1, pos);
 		
 	}
@@ -35,7 +35,7 @@ public class Fruta extends Consumible {
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
 		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 
 }

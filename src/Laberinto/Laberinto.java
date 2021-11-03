@@ -36,7 +36,7 @@ public class Laberinto {
 	
 	private void generarNivelUno() {
 		//Frutas
-        /*zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
+        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
         zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
 
         //PowerPellets
@@ -53,8 +53,8 @@ public class Laberinto {
 
         //Bomba
         zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
-        */
-		//rellenarPacDots();
+        
+		rellenarPacDots();
 	}
 	
 	private void generarNivelDos() {
@@ -103,7 +103,7 @@ public class Laberinto {
 				//Si no es la pos en la que spawnean los personajes 
 				if( !((i == 10 && j ==9) || (i == 10 && j == 10) || (i == 10 && j == 11) || (i == 9 && j ==10) || (i == 14 && j ==10) )) {
 					
-					if(zonas[i][j] != null) {
+					if(zonas[i][j].getListaEntidades().size() == 0) {
 						zonas[i][j].enlistarEntidad(new PacDot(i*25, j*25));
 						
 					}

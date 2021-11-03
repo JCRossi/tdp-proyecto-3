@@ -2,8 +2,8 @@ package Entidades;
 
 public class zaWarudo extends Pocion {
 	
-	public zaWarudo(int posX, int posY) {
-		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+	public zaWarudo(int posY, int posX) {
+		pos = new Posicion( posX, posY, 23, 23);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(8, pos);
 		
 		
@@ -33,8 +33,7 @@ public class zaWarudo extends Pocion {
 
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
-		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 
 }

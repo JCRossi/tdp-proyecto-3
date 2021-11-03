@@ -2,8 +2,8 @@ package Entidades;
 
 public class PowerPellet extends PowerUp {
 	
-	public PowerPellet(int posX, int posY) {
-		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+	public PowerPellet(int posY, int posX) {
+		pos = new Posicion( posX, posY, 18, 19);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(6, pos);
 		
 	}
@@ -32,8 +32,7 @@ public class PowerPellet extends PowerUp {
 
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
-		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 
 }

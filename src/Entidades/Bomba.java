@@ -2,8 +2,8 @@ package Entidades;
 
 public class Bomba extends Pocion {
 	
-	public Bomba(int posX, int posY) {
-		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+	public Bomba(int posY, int posX) {
+		pos = new Posicion( posX, posY, 20, 19);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(0, pos);
 		
 	}
@@ -32,8 +32,7 @@ public class Bomba extends Pocion {
 
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
-		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 
 }

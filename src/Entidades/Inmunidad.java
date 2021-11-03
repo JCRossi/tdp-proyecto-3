@@ -2,8 +2,8 @@ package Entidades;
 
 public class Inmunidad extends Pocion {
 	
-	public Inmunidad(int posX, int posY) {
-		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+	public Inmunidad(int posY, int posX) {
+		pos = new Posicion( posX, posY, 19, 22);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(3, pos);
 		
 	}
@@ -32,7 +32,6 @@ public class Inmunidad extends Pocion {
 
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
-		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 }

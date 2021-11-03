@@ -2,8 +2,8 @@ package Entidades;
 
 public class x2Velocidad extends Pocion {
 	
-	public x2Velocidad(int posX, int posY) {
-		pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
+	public x2Velocidad(int posY, int posX) {
+		pos = new Posicion( posX, posY, 19, 20);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(7, pos);
 		
 	}
@@ -33,7 +33,7 @@ public class x2Velocidad extends Pocion {
 	@Override
 	public EntidadGrafica getEntidadGrafica() {
 		// TODO Auto-generated method stub
-		return null;
+		return entGrafica;
 	}
 
 }
