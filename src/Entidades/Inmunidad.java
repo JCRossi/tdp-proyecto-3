@@ -4,7 +4,7 @@ public class Inmunidad extends Pocion {
 	
 	public Inmunidad(int posY, int posX) {
 		pos = new Posicion( posX, posY, 19, 22);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(3, pos);
+		entGrafica = new EntidadGrafica(2, pos);
 		
 	}
 	

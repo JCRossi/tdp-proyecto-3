@@ -3,7 +3,7 @@ package Entidades;
 public class Bomba extends Pocion {
 	
 	public Bomba(int posY, int posX) {
-		pos = new Posicion( posX, posY, 20, 19);  //999999 = ancho        111111111 = alto
+		pos = new Posicion( posX, posY, 19, 19);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(0, pos);
 		
 	}

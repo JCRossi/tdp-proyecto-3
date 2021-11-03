@@ -4,7 +4,7 @@ public class zaWarudo extends Pocion {
 	
 	public zaWarudo(int posY, int posX) {
 		pos = new Posicion( posX, posY, 23, 23);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(8, pos);
+		entGrafica = new EntidadGrafica(7, pos);
 		
 		
 	}

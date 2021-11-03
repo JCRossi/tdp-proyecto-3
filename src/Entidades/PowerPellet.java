@@ -4,7 +4,7 @@ public class PowerPellet extends PowerUp {
 	
 	public PowerPellet(int posY, int posX) {
 		pos = new Posicion( posX, posY, 18, 19);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(6, pos);
+		entGrafica = new EntidadGrafica(5, pos);
 		
 	}
 	
