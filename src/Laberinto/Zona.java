@@ -41,7 +41,6 @@ public class Zona {
         Rectangle rectanguloActual;
         for(Entidad e : listaEntidades) {
         	if (e!=null) {
-        		System.out.println("rompe bby pos x: "+ e.getPosicion().getX()+ " pos y:" + e.getPosicion().getY());
         		rectanguloActual = e.getPosicion().getRectangulo();
                 if (R.intersects(rectanguloActual))
                     lista.addLast(e);

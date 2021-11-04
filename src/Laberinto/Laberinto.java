@@ -3,6 +3,7 @@ package Laberinto;
 import Entidades.Entidad;
 
 import java.awt.Rectangle;
+import java.util.LinkedHashSet;
 
 import Entidades.*;
 import Estructuras.EmptyListException;
@@ -358,10 +359,10 @@ public class Laberinto {
 	
 	public ListaSimplementeEnlazada<Entidad> chequearColision(Posicion pos, int velocidad, char direccion){
 		ListaSimplementeEnlazada<Entidad> listaEntidades = new ListaSimplementeEnlazada<Entidad>();
-		ListaSimplementeEnlazada<Zona> listaZonas = new ListaSimplementeEnlazada<Zona>();
+		LinkedHashSet<Zona> listaZonas = new LinkedHashSet<Zona>();
 		//listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
 		
-		listaZonas = calcularZonasOcupadas(pos);
+		listaZonas = calcularZonasOcupadas(pos, direccion,velocidad);
 		
 		for(Zona zon: listaZonas) {
 			zon.checkearColisiones(calcularRectanguloHipotetico(pos,velocidad,direccion), listaEntidades);	
@@ -417,19 +418,32 @@ public class Laberinto {
 	
 	
 	//Esto se podria hacer con listas que no repiten elementos
-	private ListaSimplementeEnlazada<Zona> calcularZonasOcupadas(Posicion pos){
-		ListaSimplementeEnlazada<Zona> listaZonas = new ListaSimplementeEnlazada<Zona>();
-		
+	private LinkedHashSet<Zona> calcularZonasOcupadas(Posicion pos, char direccion, int velocidad){
+		LinkedHashSet<Zona> listaZonas = new LinkedHashSet<Zona>();
 		int posx = pos.getX();
 		int posy = pos.getY();
 		int ancho = pos.getAncho();
 		int alto = pos.getAlto();
 		
+		switch(direccion) {
+		case 'l':
+			posx-= velocidad;
+			break;
+		case 'r':
+			posx+= velocidad+pos.getAncho();
+			break;
+		case 'u':
+			posy-= velocidad;
+			break;
+		case 'd':
+			posy+= velocidad+pos.getAlto();
+		}
 		
-		listaZonas.addLast(zonas[identificarZona(posy)][identificarZona(posx)]);
-		listaZonas.addLast(zonas[identificarZona(posy+ancho)][identificarZona(posx)]);
-		listaZonas.addLast(zonas[identificarZona(posy)][identificarZona(posx+alto)]);
-		listaZonas.addLast(zonas[identificarZona(posy+ancho)][identificarZona(posx+alto)]);
+		
+		listaZonas.add(zonas[identificarZona(posy)][identificarZona(posx)]);
+		listaZonas.add(zonas[identificarZona(posy+alto)][identificarZona(posx)]);
+		listaZonas.add(zonas[identificarZona(posy)][identificarZona(posx+ancho)]);
+		listaZonas.add(zonas[identificarZona(posy+alto)][identificarZona(posx+ancho)]);
 		
 		
 		return listaZonas;

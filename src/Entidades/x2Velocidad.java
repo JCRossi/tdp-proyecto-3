@@ -3,7 +3,7 @@ package Entidades;
 public class x2Velocidad extends Pocion {
 	
 	public x2Velocidad(int posY, int posX) {
-		pos = new Posicion( posX, posY, 19, 20);  //999999 = ancho        111111111 = alto
+		pos = new Posicion( posX+((25-19)/2), posY+((25-20)/2), 19, 20);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(6, pos);
 		
 	}

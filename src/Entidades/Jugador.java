@@ -18,7 +18,7 @@ public class Jugador extends Personaje {
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto) {
 		
-		pos = new Posicion( posX, posY, 22, 18);  //250 - 350     		
+		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18);  //250 - 350     		
 		
 		entGrafica = new EntidadGrafica(8 ,pos); 
 		this.direccion = direcc;
@@ -41,7 +41,9 @@ public class Jugador extends Personaje {
 
 	@Override
 	public void mover() {
+		if(puedeCaminar) {
 		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento();
+		
 		Position<Entidad> actualLeida = null;
 		try {
 			if(!listaEntidadesColision.isEmpty()) {
@@ -53,11 +55,12 @@ public class Jugador extends Personaje {
 				actualizarPos();
 				actualizarPosGrafica();
 			}
-			
+		
 			
 		
 		} catch(EmptyListException exc) {
 			exc.printStackTrace();
+		}
 		}
 			
 	}

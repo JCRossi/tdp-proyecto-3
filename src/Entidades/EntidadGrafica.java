@@ -14,7 +14,7 @@ public class EntidadGrafica extends JLabel {
 	public EntidadGrafica(int index, Posicion pos) {
 		grafico = new ImageIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(EntidadGrafica.class.getResource(imagenes[index]))).getImage().getScaledInstance(pos.getAncho(),pos.getAlto()+1,Image.SCALE_DEFAULT) );
 		this.setIcon(grafico);
-		this.setBounds(pos.getX()+(25-pos.getAncho())/2,pos.getY()+(25-pos.getAlto())/2,pos.getAncho(),pos.getAlto());
+		this.setBounds(pos.getX(),pos.getY(),pos.getAncho(),pos.getAlto());
 		this.setBackground(null);
 	}
 	

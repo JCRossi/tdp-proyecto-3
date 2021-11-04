@@ -34,7 +34,7 @@ public class Posicion {
 	}
 	
 	public int getAlto() {
-		return this.ancho;
+		return this.alto;
 	}
 	
 	public void setX(int x) {

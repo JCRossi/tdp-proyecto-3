@@ -3,7 +3,7 @@ package Entidades;
 public class Inmunidad extends Pocion {
 	
 	public Inmunidad(int posY, int posX) {
-		pos = new Posicion( posX, posY, 19, 22);  //999999 = ancho        111111111 = alto
+		pos = new Posicion( posX+((25-19)/2), posY+((25-22)/2), 19, 22);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(2, pos);
 		
 	}
