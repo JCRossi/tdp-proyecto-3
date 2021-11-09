@@ -7,7 +7,7 @@ public abstract class Personaje extends Entidad{
 	
 	protected char direccion;
 	protected Laberinto miLaberinto;
-		
+	protected boolean puedeCaminar;
 	
 	public abstract void mover();
 	

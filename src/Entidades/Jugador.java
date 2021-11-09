@@ -2,7 +2,9 @@ package Entidades;
 
 import java.awt.Rectangle;
 
+import Estructuras.BoundaryViolationException;
 import Estructuras.EmptyListException;
+import Estructuras.InvalidPositionException;
 import Estructuras.ListaSimplementeEnlazada;
 import Estructuras.Position;
 import Hilos.HiloJugador;
@@ -14,7 +16,6 @@ public class Jugador extends Personaje {
 	private EstadoJugador estadoActual;
 	private Thread hilo;
 	private HiloJugador hiloMovimiento;
-	private boolean puedeCaminar;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto) {
 		
@@ -49,7 +50,10 @@ public class Jugador extends Personaje {
 			if(!listaEntidadesColision.isEmpty()) {
 				actualLeida = listaEntidadesColision.first();
 				colision(actualLeida.element());
-				
+				while (actualLeida != listaEntidadesColision.last()) {
+					actualLeida = listaEntidadesColision.next(actualLeida);
+					colision(actualLeida.element());
+				}	
 			}
 			if(puedeCaminar) {
 				actualizarPos();
@@ -58,7 +62,7 @@ public class Jugador extends Personaje {
 		
 			
 		
-		} catch(EmptyListException exc) {
+		} catch(EmptyListException | InvalidPositionException | BoundaryViolationException exc) {
 			exc.printStackTrace();
 		}
 		}
@@ -106,7 +110,6 @@ public class Jugador extends Personaje {
 
 	@Override
 	public Posicion getPosicion() {
-		
 		return pos;
 	}
 
