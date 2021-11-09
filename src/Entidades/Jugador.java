@@ -84,13 +84,6 @@ public class Jugador extends Personaje {
 		puedeCaminar = false;
 	}
 
-	@Override
-	public char getEstado() {
-		
-		return 0;
-	}
-
-	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
 
 		return false;
@@ -98,7 +91,6 @@ public class Jugador extends Personaje {
 
 	@Override
 	public ListaSimplementeEnlazada<Entidad> chequearMovimiento() {
-		
 		return miLaberinto.chequearColision(pos, estadoActual.getMovimiento(), direccion);
 	}
 
@@ -108,17 +100,6 @@ public class Jugador extends Personaje {
 		return false;
 	}
 
-	@Override
-	public Posicion getPosicion() {
-		return pos;
-	}
-
-	@Override
-	public EntidadGrafica getEntidadGrafica() {
-		return entGrafica;
-	}
-	
-	
 	public void actualizarPosGrafica() {
 		entGrafica.actualizarPos(pos);
 	}
@@ -149,6 +130,11 @@ public class Jugador extends Personaje {
 	
 	
 	}
+	}
+
+	@Override
+	public char getEstado() {
+		return estadoActual.estadoActual();
 	}
 
 }

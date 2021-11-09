@@ -11,7 +11,7 @@ public class Pared extends Entidad{
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		System.out.println("Colisioneste con una pared");
+		System.out.println("Colisionaste con una pared: Jugador");
 		personaje.noPuedeCaminar();
 
 		return true;
@@ -19,18 +19,10 @@ public class Pared extends Entidad{
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
-		
-		return false;
+		System.out.println("Colisioneste con una pared: Enemigo");
+		personaje.noPuedeCaminar();
+
+		return true;
 	}
 
-	@Override
-	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
-		return pos;
-	}
-
-	@Override
-	public EntidadGrafica getEntidadGrafica() {
-		return entGrafica;
-	}
 }

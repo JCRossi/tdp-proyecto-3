@@ -25,15 +25,4 @@ public class zaWarudo extends Pocion {
 		
 	}
 
-	@Override
-	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
-		return pos;
-	}
-
-	@Override
-	public EntidadGrafica getEntidadGrafica() {
-		return entGrafica;
-	}
-
 }

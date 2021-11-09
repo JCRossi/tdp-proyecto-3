@@ -9,33 +9,79 @@ import Estructuras.Position;
 public abstract class Enemigo extends Personaje{
 
 	protected EstadoEnemigo estadoActual;
+	protected Jugador jugador;
+	
 	
 	@Override
 	public void mover() {
-		if(puedeCaminar) {
-			ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento();
+
+			if(pos.getX()%25<3 && pos.getY()%25<3) {
+				actualizarDireccion();
+			} else {
+				ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion);
+				procesarColisiones(listaEntidadesColision);
+			}
 			
-			Position<Entidad> actualLeida = null;
-			try {
-				if(!listaEntidadesColision.isEmpty()) {
-					actualLeida = listaEntidadesColision.first();
+			
+			actualizarPos();
+			actualizarPosGrafica();
+		
+	}
+
+	private void procesarColisiones(ListaSimplementeEnlazada<Entidad> listaEntidadesColision) {
+		Position<Entidad> actualLeida = null;
+		try {
+			if(!listaEntidadesColision.isEmpty()) {
+				actualLeida = listaEntidadesColision.first();
+				colision(actualLeida.element());
+				while (actualLeida != listaEntidadesColision.last()) {
+					actualLeida = listaEntidadesColision.next(actualLeida);
 					colision(actualLeida.element());
-					while (actualLeida != listaEntidadesColision.last()) {
-						actualLeida = listaEntidadesColision.next(actualLeida);
-						colision(actualLeida.element());
-					}	
-				}
-				if(puedeCaminar) {
-					actualizarPos();
-					actualizarPosGrafica();
-				}
-			
-				
-			
-			} catch(EmptyListException | InvalidPositionException | BoundaryViolationException exc) {
-				exc.printStackTrace();
+				}	
 			}
-			}
+		
+		} catch(EmptyListException | InvalidPositionException | BoundaryViolationException exc) {
+			exc.printStackTrace();
+		}
+	}
+
+	private void actualizarDireccion() {
+		char[] prioridadDireccion = estadoActual.calcularProximaPosicion(jugador.getPosicion().getX(),jugador.getPosicion().getY(), pos);
+		puedeCaminar = false;
+		boolean esVuelta = true;
+		int i = 0;
+		while (puedeCaminar && !esVuelta) {
+			puedeCaminar = true;
+			procesarColisiones(chequearMovimiento(prioridadDireccion[i]));
+			esVuelta = checkearVuelta(prioridadDireccion[i]);
+			i++;
+		}
+		if (prioridadDireccion[i-1] != direccion) {
+			cambiarDireccion(prioridadDireccion[i-1]);
+		} 
+	}
+
+	private boolean checkearVuelta(char direc) {
+		boolean esVuelta = true;
+		switch(direccion) {
+		case 'l':
+			if (direc != 'r')
+				esVuelta = false; 
+			break;
+		case'r':
+			if (direc != 'l')
+				esVuelta = false;  
+			break;
+		case 'u':
+			if (direc != 'd')
+				esVuelta = false; 
+			break;
+		case 'd':
+			if (direc != 'u')
+				esVuelta = false; 
+			break;
+		}
+		return esVuelta;
 	}
 
 	@Override
@@ -62,25 +108,14 @@ public abstract class Enemigo extends Personaje{
 	}
 
 	@Override
-	public ListaSimplementeEnlazada chequearMovimiento() {
-		// TODO Auto-generated method stub
-		return null;
+	public ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc) {
+		return miLaberinto.chequearColision(pos, estadoActual.getMovimiento(), direc);
 	}
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public Posicion getPosicion() {
-		return pos;
-	}
-
-	@Override
-	public EntidadGrafica getEntidadGrafica() {
-		return entGrafica;
 	}
 
 	@Override

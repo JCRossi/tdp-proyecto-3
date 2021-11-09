@@ -22,7 +22,7 @@ public abstract class Personaje extends Entidad{
 	public abstract ListaSimplementeEnlazada chequearMovimiento();
 	
 	public abstract boolean colisionasteConEnemigo(Personaje personaje);
+
+	protected abstract void noPuedeCaminar();
 	
-	public abstract Posicion getPosicion();
-	public abstract void noPuedeCaminar();
 }

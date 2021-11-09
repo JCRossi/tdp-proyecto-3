@@ -8,8 +8,12 @@ public abstract class Entidad {
 	
 	public abstract boolean colisionasteConEnemigo(Personaje personaje);
 	
-	public abstract Posicion getPosicion();
+	public Posicion getPosicion() {
+		return pos;
+	}
 	
-	public abstract EntidadGrafica getEntidadGrafica();
+	public EntidadGrafica getEntidadGrafica() {
+		return entGrafica;
+	}
 
 }

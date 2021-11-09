@@ -26,16 +26,4 @@ public class Fruta extends Consumible {
 		
 	}
 
-	@Override
-	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
-		return pos;
-	}
-
-	@Override
-	public EntidadGrafica getEntidadGrafica() {
-		// TODO Auto-generated method stub
-		return entGrafica;
-	}
-
 }

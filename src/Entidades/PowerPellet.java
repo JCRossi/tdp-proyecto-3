@@ -24,15 +24,4 @@ public class PowerPellet extends PowerUp {
 		
 	}
 
-	@Override
-	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
-		return pos;
-	}
-
-	@Override
-	public EntidadGrafica getEntidadGrafica() {
-		return entGrafica;
-	}
-
 }
