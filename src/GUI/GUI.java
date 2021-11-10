@@ -19,27 +19,12 @@ public class GUI extends JFrame {
 	private JPanel contentPane;
 	private static JPanel panel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public GUI(Logica logica) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 656, 564);
 		contentPane = new JPanel();
@@ -55,7 +40,7 @@ public class GUI extends JFrame {
 		panel.setLayout(null);
 		panel.setFocusable(true);
 		
-		Logica logica = new Logica(this);
+		logica.iniciarLogica(this);
 		logica.avisarActualizacionLaberintoGrafico();
 		
 		

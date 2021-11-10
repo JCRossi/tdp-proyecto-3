@@ -5,6 +5,7 @@ import Entidades.*;
 import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
 import GUI.GUI;
+import GUI.Tematica;
 import Hilos.HiloEnemigo;
 import Hilos.HiloJugador;
 
@@ -16,14 +17,24 @@ public class Logica {
 	private GUI interfaz;
 	private Thread hilo;
 	private HiloEnemigo hiloEnemigos;
+	private Tematica tematica;
 	
-	public Logica(GUI interfaz) {
+	public Logica() { //Lo que hacia el constructor ahora lo hace iniciarLogica() pq necesito crear una logica antes de crear la gui
 		//personajePrincipal = new Jugador();
 		/*enemigos[0] = new Blinky();
 		 *enemigos[1] = new Inky();
 		 *enemigos[2] = new Pinky();
 		 *enemigos[3] = new Clyde();
 		 */
+		
+		
+	}
+	
+	public void setTematica(Tematica t) {
+		this.tematica = t;
+	}
+	
+	public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
 		laberinto = new Laberinto();
 		generarNivel(3);
