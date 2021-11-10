@@ -19,10 +19,10 @@ public abstract class Personaje extends Entidad{
 	
 	public abstract boolean colisionasteConJugador(Personaje personaje);
 	
-	public abstract ListaSimplementeEnlazada chequearMovimiento();
-	
 	public abstract boolean colisionasteConEnemigo(Personaje personaje);
 
 	protected abstract void noPuedeCaminar();
+
+	public abstract ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc, int movimiento);
 	
 }

@@ -43,7 +43,7 @@ public class Jugador extends Personaje {
 	@Override
 	public void mover() {
 		if(puedeCaminar) {
-		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento();
+		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
 		
 		Position<Entidad> actualLeida = null;
 		try {
@@ -90,8 +90,8 @@ public class Jugador extends Personaje {
 	}
 
 	@Override
-	public ListaSimplementeEnlazada<Entidad> chequearMovimiento() {
-		return miLaberinto.chequearColision(pos, estadoActual.getMovimiento(), direccion);
+	public ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc, int mov) {
+		return miLaberinto.chequearColision(pos, mov, direc);
 	}
 
 	@Override

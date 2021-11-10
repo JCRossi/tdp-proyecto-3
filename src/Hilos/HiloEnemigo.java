@@ -1,7 +1,7 @@
 package Hilos;
 
 import Entidades.Enemigo;
-import Entidades.Jugador;
+import Estructuras.ListaSimplementeEnlazada;
 
 public class HiloEnemigo implements Runnable {
 	
@@ -9,12 +9,12 @@ public class HiloEnemigo implements Runnable {
 
 	private long intervaloDeMovimiento;
 	private boolean continuar;
-	private Jugador miJugador;
+	private ListaSimplementeEnlazada<Enemigo> enemigos;
 	
-	public HiloEnemigo(Jugador miJugador) {
-		this.miJugador = miJugador;
+	public HiloEnemigo() {
 		this.continuar = true;
 		intervaloDeMovimiento = intervaloDeMovimientoNivelUno;
+		enemigos = new ListaSimplementeEnlazada<Enemigo>();
 	}
 	
 	@Override
@@ -26,20 +26,21 @@ public class HiloEnemigo implements Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			avisarMovimientoJugador();
+			avisarMovimientoEnemigos();
 			
 		}
 		
 	}
 
 	
-	private void avisarMovimientoJugador() {
-		miJugador.mover();
+	private void avisarMovimientoEnemigos() {
+		for (Enemigo e: enemigos) {
+			e.mover();
+		}
 	}
 
 	public void set(Enemigo enemigo) {
-		// TODO Auto-generated method stub
-		
+		enemigos.addLast(enemigo);
 	}
 	
 }

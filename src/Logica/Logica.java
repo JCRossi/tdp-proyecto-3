@@ -5,13 +5,17 @@ import Entidades.*;
 import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
 import GUI.GUI;
+import Hilos.HiloEnemigo;
+import Hilos.HiloJugador;
 
 public class Logica {
 	private Laberinto laberinto;
 	private Jugador personajePrincipal;
-	private Enemigo enemigos[];
+	private Enemigo[] enemigos;
 	private Nivel nivel;
 	private GUI interfaz;
+	private Thread hilo;
+	private HiloEnemigo hiloEnemigos;
 	
 	public Logica(GUI interfaz) {
 		//personajePrincipal = new Jugador();
@@ -24,6 +28,11 @@ public class Logica {
 		laberinto = new Laberinto();
 		generarNivel(3);
 		personajePrincipal = new Jugador(250, 350,'r',laberinto);
+		hiloEnemigos = new HiloEnemigo();
+		hilo = new Thread(this.hiloEnemigos);
+		enemigos = new Enemigo[4];
+		enemigos[0] = new Blinky(250, 225, 'u',laberinto, hiloEnemigos, personajePrincipal);
+		hilo.start();
 	}
 	
 	public void generarNivel(int numero) {
@@ -51,7 +60,6 @@ public class Logica {
 					if(entidades[i][j].size()!=0)
 						interfaz.agregarEntidad(entidades[i][j].first().element().getEntidadGrafica());
 				} catch (EmptyListException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	}

@@ -10,22 +10,25 @@ public abstract class Enemigo extends Personaje{
 
 	protected EstadoEnemigo estadoActual;
 	protected Jugador jugador;
+	protected int[] ultimaZona;
 	
 	
 	@Override
 	public void mover() {
-
-			if(pos.getX()%25<3 && pos.getY()%25<3) {
+			int posX = pos.getX();
+			int posY = pos.getY();
+			if(posX%25>0 && posX%25<3 && posY%25>2 && posY%25<5 && (ultimaZona[0]!=posX/25 || ultimaZona[1]!=posY/25)) {
 				actualizarDireccion();
+				ultimaZona[0] = posX/25;
+				ultimaZona[1] = posY/25;
 			} else {
-				ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion);
+				ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
 				procesarColisiones(listaEntidadesColision);
 			}
 			
 			
 			actualizarPos();
 			actualizarPosGrafica();
-		
 	}
 
 	private void procesarColisiones(ListaSimplementeEnlazada<Entidad> listaEntidadesColision) {
@@ -50,15 +53,35 @@ public abstract class Enemigo extends Personaje{
 		puedeCaminar = false;
 		boolean esVuelta = true;
 		int i = 0;
-		while (puedeCaminar && !esVuelta) {
+		while (!puedeCaminar || esVuelta) {
 			puedeCaminar = true;
-			procesarColisiones(chequearMovimiento(prioridadDireccion[i]));
+			esVuelta = false;
+			procesarColisiones(chequearMovimiento(prioridadDireccion[i], calcularMovimiento(prioridadDireccion[i])));
 			esVuelta = checkearVuelta(prioridadDireccion[i]);
 			i++;
 		}
 		if (prioridadDireccion[i-1] != direccion) {
 			cambiarDireccion(prioridadDireccion[i-1]);
 		} 
+	}
+
+	private int calcularMovimiento(char c) {
+		int mov = 0;
+		switch(c) {
+		case 'l':
+			mov = (pos.getX()%10); 
+			break;
+		case'r':
+			mov = 3-(pos.getX()%10); 
+			break;
+		case 'u':
+			mov = (pos.getY()%10); 
+			break;
+		case 'd':
+			mov = 7-(pos.getY()%10); 
+			break;
+		}
+		return mov+10; // le agregue un +10 pq falla en las colisiones con las paredes, no comprendo porque ya que en el jugador funciona
 	}
 
 	private boolean checkearVuelta(char direc) {
@@ -86,8 +109,7 @@ public abstract class Enemigo extends Personaje{
 
 	@Override
 	public boolean colision(Entidad entidad) {
-		// TODO Auto-generated method stub
-		return false;
+		return entidad.colisionasteConEnemigo(this);
 	}
 
 	@Override
@@ -103,13 +125,12 @@ public abstract class Enemigo extends Personaje{
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		// TODO Auto-generated method stub
+		System.out.println("colision con jugador");
 		return false;
 	}
 
-	@Override
-	public ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc) {
-		return miLaberinto.chequearColision(pos, estadoActual.getMovimiento(), direc);
+	public ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc, int mov) {
+		return miLaberinto.chequearColision(pos, mov, direc);
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class Pared extends Entidad{
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
-		System.out.println("Colisioneste con una pared: Enemigo");
+		System.out.println("Colisionaste con una pared: Enemigo");
 		personaje.noPuedeCaminar();
 
 		return true;

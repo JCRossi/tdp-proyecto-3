@@ -360,12 +360,13 @@ public class Laberinto {
 	public ListaSimplementeEnlazada<Entidad> chequearColision(Posicion pos, int velocidad, char direccion){
 		ListaSimplementeEnlazada<Entidad> listaEntidades = new ListaSimplementeEnlazada<Entidad>();
 		LinkedHashSet<Zona> listaZonas = new LinkedHashSet<Zona>();
+		Rectangle rectanguloActual = calcularRectanguloHipotetico(pos,velocidad,direccion);
 		//listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
 		
 		listaZonas = calcularZonasOcupadas(pos, direccion,velocidad);
 		
 		for(Zona zon: listaZonas) {
-			zon.checkearColisiones(calcularRectanguloHipotetico(pos,velocidad,direccion), listaEntidades);	
+			zon.checkearColisiones(rectanguloActual, listaEntidades);	
 		}
 		
 			
@@ -430,13 +431,13 @@ public class Laberinto {
 			posx-= velocidad;
 			break;
 		case 'r':
-			posx+= velocidad+pos.getAncho();
+			posx+= velocidad;
 			break;
 		case 'u':
 			posy-= velocidad;
 			break;
 		case 'd':
-			posy+= velocidad+pos.getAlto();
+			posy+= velocidad;
 		}
 		
 		

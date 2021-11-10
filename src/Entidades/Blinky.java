@@ -6,12 +6,13 @@ import Laberinto.Laberinto;
 public class Blinky extends Enemigo{
 	
 		private EstadoEnemigo[] estados;
-		private Thread hilo;
 
-		public Blinky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo) {
+		public Blinky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal) {
 		
-		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18);		
-		
+		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18);	
+		ultimaZona = new int[2];
+		ultimaZona[0] = posX/25;
+		ultimaZona[1] = posY/25;
 		entGrafica = new EntidadGrafica(8 ,pos); 
 		this.direccion = direcc;
 		estados = new EstadoEnemigo[4];
@@ -23,11 +24,9 @@ public class Blinky extends Enemigo{
 		puedeCaminar = true;
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
-		
+		jugador = personajePrincipal;
 		hiloEnemigo.set(this);
 	
-
-		hilo.start();
 
 	}
 }
