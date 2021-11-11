@@ -451,6 +451,109 @@ public class Laberinto {
 		
 	}
 	
+	public void desenlistarYEnlistarPersonaje(Posicion pos, char direccion, int velocidad, Entidad e) {
+		int posx = pos.getX();
+		int posy = pos.getY();
+		int ancho = pos.getAncho();
+		int alto = pos.getAlto();
+		
+		
+		switch(direccion) {
+		case 'l':
+			
+			//ENLISTAMIENTOS
+			if(identificarZona(posx) != identificarZona(posx-velocidad) ) {
+				zonas[identificarZona(posy)][identificarZona(posx-velocidad)].enlistarEntidad(e);
+				
+				if(identificarZona(posy) != identificarZona(posy+alto) )
+					zonas[identificarZona(posy+alto)][identificarZona(posx-velocidad)].enlistarEntidad(e);
+					
+			}
+			
+			
+			
+			//DESENLISTAMIENTOS
+			
+			if(identificarZona(posx+ancho) != identificarZona(posx-velocidad+ancho) ) {
+				zonas[identificarZona(posy)][identificarZona(posx+ancho)].desenlistarEntidad(e);
+				
+				if(identificarZona(posy) != identificarZona(posy+alto) )
+					zonas[identificarZona(posy+alto)][identificarZona(posx+ancho)].desenlistarEntidad(e);
+					
+			}
+			
+			
+			
+			
+			break;
+		case 'r':
+			//ENLISTAMIENTOS
+			if(identificarZona(posx+ancho) != identificarZona(posx+velocidad+ancho) ) {
+				zonas[identificarZona(posy)][identificarZona(posx+velocidad+ancho)].enlistarEntidad(e);
+				
+				if(identificarZona(posy) != identificarZona(posy+alto) )
+					zonas[identificarZona(posy+alto)][identificarZona(posx+velocidad+ancho)].enlistarEntidad(e);
+					
+			}
+			
+			//DESENLISTAMIENTOS
+			
+			if(identificarZona(posx) != identificarZona(posx+velocidad) ) {
+				zonas[identificarZona(posy)][identificarZona(posx)].desenlistarEntidad(e);
+				
+				if(identificarZona(posy) != identificarZona(posy+alto) )
+					zonas[identificarZona(posy+alto)][identificarZona(posx)].desenlistarEntidad(e);
+					
+			}
+			
+			break;
+		case 'u':
+			//ENLISTAMIENTOS
+			if(identificarZona(posy) != identificarZona(posy-velocidad) ) {
+				zonas[identificarZona(posy-velocidad)][identificarZona(posx)].enlistarEntidad(e);
+				
+				if(identificarZona(posx) != identificarZona(posx+ancho) )
+					zonas[identificarZona(posy-velocidad)][identificarZona(posx+ancho)].enlistarEntidad(e);
+					
+			}
+			
+			
+			//DESENLISTAMIENTOS
+			if(identificarZona(posy+alto) != identificarZona(posy-velocidad+alto) ) {
+				zonas[identificarZona(posy+alto)][identificarZona(posx)].desenlistarEntidad(e);
+				
+				if(identificarZona(posx) != identificarZona(posx+ancho) )
+					zonas[identificarZona(posy+alto)][identificarZona(posx+ancho)].desenlistarEntidad(e);
+					
+			}
+			
+			
+			break;
+		case 'd':
+			
+			//ENLISTAMIENTOS
+			if(identificarZona(posy+alto) != identificarZona(posy+velocidad) ) {
+				zonas[identificarZona(posy+alto+velocidad)][identificarZona(posx)].enlistarEntidad(e);
+				
+				if(identificarZona(posx) != identificarZona(posx+ancho) )
+					zonas[identificarZona(posy+alto+velocidad)][identificarZona(posx+ancho)].enlistarEntidad(e);
+					
+			}
+			
+			
+			//DESENLISTAMIENTOS
+			if(identificarZona(posy) != identificarZona(posy+velocidad) ) {
+				zonas[identificarZona(posy)][identificarZona(posx)].desenlistarEntidad(e);
+				
+				if(identificarZona(posx) != identificarZona(posx+ancho) )
+					zonas[identificarZona(posy)][identificarZona(posx+ancho)].desenlistarEntidad(e);
+					
+			}
+			
+		}
+		
+	}
+	
 	public void incorporarEntidad(Entidad e) { 
 		zonas[identificarZona(e.getPosicion().getY())][identificarZona(e.getPosicion().getX())].enlistarEntidad(e);
 		

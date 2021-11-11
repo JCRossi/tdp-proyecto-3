@@ -107,6 +107,21 @@ public class Jugador extends Personaje {
 	public void cambiarDireccion(char c) {
 		direccion = c;
 		puedeCaminar = true;
+		switch(direccion) {
+		case 'l':
+			entGrafica.actualizarImagen(11, pos);
+		break;
+		case'r':
+			entGrafica.actualizarImagen(10, pos);
+		break;
+		case 'u':
+			entGrafica.actualizarImagen(9, pos);
+		break;
+		case 'd':
+			entGrafica.actualizarImagen(8, pos);
+		break;
+		
+		}
 	}
 	
 	

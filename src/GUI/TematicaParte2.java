@@ -28,38 +28,38 @@ public class TematicaParte2 extends Tematica {
 	}
 
 	@Override
-	public String getImagenPared() {
-		return "/images/pared25px.png";
+	public String[] getImagenPared() {
+		return new String[] {"/images/pared25px.png"};
 	}
 
 	@Override
-	public String getImagenPacDot() {
-		return "/images/pacdot25px.gif";
+	public String[] getImagenPacDot() {
+		return new String[] {"/images/pacdot25px.gif"};
 	}
 
 	@Override
-	public String getImagenPowerPellet() {
-		return  "/images/powerpellet25px.png";
+	public String[] getImagenPowerPellet() {
+		return  new String[] {"/images/powerpellet25px.png"};
 	}
 
 	@Override
-	public String getImagenZaWarudo() {
-		return "/images/zaWarudo25px.png";
+	public String[] getImagenZaWarudo() {
+		return new String[] {"/images/zaWarudo25px.png"};
 	}
 
 	@Override
-	public String getImagenx2Velocidad() {
-		return "/images/x2speed25px.png";
+	public String[] getImagenx2Velocidad() {
+		return new String[] {"/images/x2speed25px.png"};
 	}
 
 	@Override
-	public String getImagenInmunidad() {
-		return "/images/inmune25px.gif";
+	public String[] getImagenInmunidad() {
+		return new String[] {"/images/inmune25px.gif"};
 	}
 
 	@Override
-	public String getImagenFruta() {
-		return "/images/fruit25px.png";
+	public String[] getImagenFruta() {
+		return new String[] {"/images/fruit25px.png"};
 	}
 
 	@Override
