@@ -18,6 +18,7 @@ public class Jugador extends Personaje {
 	private Thread hilo;
 	private HiloJugador hiloMovimiento;
 	private int tiempoRestante;
+	private boolean powerUp;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual) {
 		
@@ -39,6 +40,7 @@ public class Jugador extends Personaje {
 		hiloMovimiento = new HiloJugador(this);
 		hilo = new Thread(this.hiloMovimiento);
 	
+		powerUp = false;
 
 		hilo.start();
 
@@ -46,7 +48,13 @@ public class Jugador extends Personaje {
 
 	@Override
 	public void mover() {
-		//juego.chequearEstadoJugador();
+		if(tiempoRestante == 0 && powerUp) {
+			juego.chequearEstadoJugador();
+			powerUp = false;
+		}
+		if (tiempoRestante != 0)	
+			tiempoRestante -= 1;
+		System.out.println(tiempoRestante);
 		
 		if(puedeCaminar) {
 		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
@@ -164,6 +172,8 @@ public class Jugador extends Personaje {
 			tiempoRestante = tiempo;
 			estadoActual = estados[estado];
 		}
+		
+		powerUp = true;
 		
 		//Falta cambiar la EntidadGrafica correspondiente al estado
 	}

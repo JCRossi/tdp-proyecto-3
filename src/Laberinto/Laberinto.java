@@ -558,4 +558,8 @@ public class Laberinto {
 		zonas[identificarZona(e.getPosicion().getY())][identificarZona(e.getPosicion().getX())].enlistarEntidad(e);
 		
 	}
+	
+	public void desenlistarEntidad(Entidad e, int posX, int posY) {
+		zonas[posY][posX].desenlistarEntidad(e);
+	}
 }

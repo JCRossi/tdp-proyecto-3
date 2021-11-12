@@ -15,7 +15,7 @@ public class PowerPellet extends PowerUp {
 	public boolean colisionasteConJugador(Personaje personaje) {
 		serComido();
 		entGrafica.setIcon(null);
-		//Falta desenlistar de laberinto
+		juego.desenlistarEntidad(pos.getX()/25, pos.getY()/25, this);
 		return false;
 	}
 

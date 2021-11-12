@@ -42,9 +42,11 @@ public class Logica {
 		personajePrincipal = new Jugador(250, 350,'r',laberinto, this);
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
-		enemigos = new Enemigo[4];
+		enemigos = new Enemigo[1];
 		enemigos[0] = new Blinky(250, 225, 'u',laberinto, hiloEnemigos, personajePrincipal);
+		puntajePartida = new Puntaje();
 		hilo.start();
+		
 	}
 	
 	public void generarNivel(int numero) {
@@ -131,6 +133,10 @@ public class Logica {
 	
 	public void finalizarJuego() {
 		
+	}
+
+	public void desenlistarEntidad(int posX, int posY, Entidad entidad) {
+		laberinto.desenlistarEntidad(entidad, posX, posY);
 	}
 	
 }

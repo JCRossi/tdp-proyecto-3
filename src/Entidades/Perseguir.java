@@ -43,8 +43,8 @@ public class Perseguir implements EstadoEnemigo {
 				prioridades[1] = 'u';
 				prioridades[2] = 'd';
 			} else {
-				prioridades[1] = 'u';
-				prioridades[2] = 'd';
+				prioridades[2] = 'u';
+				prioridades[1] = 'd';
 			}
 			if (movHorizontal > 0) {
 				prioridades[0] = 'l';
