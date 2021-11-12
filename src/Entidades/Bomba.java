@@ -10,18 +10,19 @@ public class Bomba extends Pocion {
 	
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		// TODO Auto-generated method stub
+		serComido();
+		entGrafica.setIcon(null);
+		//Falta desenlistar de laberinto
 		return false;
 	}
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	public void serComido() {
-		
+		juego.cambiarEstadoPersonajes('B', 15);
 	}
 
 }

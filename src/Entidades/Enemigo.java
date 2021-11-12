@@ -177,4 +177,5 @@ public abstract class Enemigo extends Personaje{
 	}
 	}
 
+	public abstract void cambiarEstado(int estado);
 }

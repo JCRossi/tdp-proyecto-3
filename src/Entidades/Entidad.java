@@ -1,6 +1,9 @@
 package Entidades;
 
+import Logica.Logica;
+
 public abstract class Entidad {
+	protected Logica juego;
 	protected EntidadGrafica entGrafica;
 	protected Posicion pos;
 	

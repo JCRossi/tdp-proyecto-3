@@ -1,27 +1,30 @@
 package Entidades;
 
+import Logica.Logica;
+
 public class Inmunidad extends Pocion {
 	
-	public Inmunidad(int posY, int posX) {
+	public Inmunidad(int posY, int posX, Logica juegoActual) {
 		pos = new Posicion( posX+((25-19)/2), posY+((25-22)/2), 19, 22);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(2, pos);
-		
+		juego = juegoActual;
 	}
 	
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		// TODO Auto-generated method stub
+		serComido();
+		entGrafica.setIcon(null);
+		//Falta desenlistar de laberinto
 		return false;
 	}
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	public void serComido() {
-		
+		juego.cambiarEstadoPersonajes('I', 10);
 	}
 
 }

@@ -10,6 +10,7 @@ import Hilos.HiloEnemigo;
 import Hilos.HiloJugador;
 
 public class Logica {
+	private Puntaje puntajePartida;
 	private Laberinto laberinto;
 	private Jugador personajePrincipal;
 	private Enemigo[] enemigos;
@@ -38,7 +39,7 @@ public class Logica {
 		this.interfaz = interfaz;
 		laberinto = new Laberinto();
 		generarNivel(3);
-		personajePrincipal = new Jugador(250, 350,'r',laberinto);
+		personajePrincipal = new Jugador(250, 350,'r',laberinto, this);
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
 		enemigos = new Enemigo[4];
@@ -51,6 +52,26 @@ public class Logica {
 		laberinto.generarConsumiblesLaberinto(numero);
 	}
 	
+	public void cambiarEstadoPersonajes(char efecto, int duracion) {
+		switch(efecto) {
+			case 'P':
+				personajePrincipal.cambiarEstado(0, duracion);
+				
+				for(int i = 0; i < enemigos.length; i++)
+					enemigos[i].cambiarEstado(1);
+				break;
+			case '2':
+				personajePrincipal.cambiarEstado(1, duracion);
+				break;
+			case 'I':
+				personajePrincipal.cambiarEstado(2, duracion);
+				break;
+			case 'B':
+				personajePrincipal.cambiarEstado(3, duracion);
+				break;
+		}
+	}
+	
 	public void chequearEstadoJugador() {
 		
 	}
@@ -60,7 +81,8 @@ public class Logica {
 	}
 	
 	public void actualizarPuntaje(int puntos) {
-		
+		puntajePartida.sumarPuntaje(puntajePartida.obtenerPuntaje() + puntos);
+		avisarActualizacionPuntajeGrafico(puntajePartida.obtenerPuntaje());
 	}
 	
 	public void avisarActualizacionLaberintoGrafico() {
@@ -80,6 +102,10 @@ public class Logica {
 	}
 	
 	public void avisarActualizacionEnemigosGraficos() {
+		
+	}
+	
+	public void avisarActualizacionPuntajeGrafico(int puntos) {
 		
 	}
 	

@@ -2,6 +2,7 @@ package Entidades;
 
 import Hilos.HiloEnemigo;
 import Laberinto.Laberinto;
+import Logica.Logica;
 
 public class Blinky extends Enemigo{
 	
@@ -25,8 +26,13 @@ public class Blinky extends Enemigo{
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
 		jugador = personajePrincipal;
+		
 		hiloEnemigo.set(this);
-	
-
+	}
+		
+	public void cambiarEstado(int estado) {
+		if(estadoActual != estados[2])
+			estadoActual = estados[estado];
+		//Falta cambiar la EntidadGrafica correspondiente al estado
 	}
 }
