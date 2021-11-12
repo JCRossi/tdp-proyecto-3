@@ -38,7 +38,7 @@ public class Logica {
 	public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
 		laberinto = new Laberinto(this);
-		generarNivel(3);
+		generarNivel(1);
 		personajePrincipal = new Jugador(250, 350,'r',laberinto, this);
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
@@ -137,6 +137,10 @@ public class Logica {
 
 	public void desenlistarEntidad(int posX, int posY, Entidad entidad) {
 		laberinto.desenlistarEntidad(entidad, posX, posY);
+	}
+
+	public void quitarEntidadGrafica(EntidadGrafica entGrafica) {
+		interfaz.quitarEntidad(entGrafica);	
 	}
 	
 }

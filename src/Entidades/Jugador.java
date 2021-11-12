@@ -54,7 +54,6 @@ public class Jugador extends Personaje {
 		}
 		if (tiempoRestante != 0)	
 			tiempoRestante -= 1;
-		System.out.println(tiempoRestante);
 		
 		if(puedeCaminar) {
 		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
@@ -166,12 +165,9 @@ public class Jugador extends Personaje {
 	
 	public void cambiarEstado(int estado, int tiempo) {
 		//Se comio un power-pellet
-		if(estado == 0)
-			tiempoRestante = tiempo; //Le dejo el estado en el que se encuentra o cambio? (Si estadoActual es "Rapido" se le aplica power-pellet encima)
-		else {
-			tiempoRestante = tiempo;
-			estadoActual = estados[estado];
-		}
+
+		tiempoRestante = tiempo;
+		estadoActual = estados[estado];
 		
 		powerUp = true;
 		

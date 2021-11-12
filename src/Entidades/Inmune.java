@@ -4,7 +4,7 @@ public class Inmune implements EstadoJugador {
 	private int movimiento;
 	
 	public Inmune(int velocidad) {
-		
+		movimiento = velocidad;
 	}
 	
 	public char estadoActual() {

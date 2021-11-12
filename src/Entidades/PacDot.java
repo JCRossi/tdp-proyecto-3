@@ -13,9 +13,10 @@ public class PacDot extends Consumible {
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		serComido();
 		entGrafica.setIcon(null);
-		//Falta desenlistar del laberinto
+		serComido();
+		juego.quitarEntidadGrafica(entGrafica);
+		juego.desenlistarEntidad(pos.getX()/25, pos.getY()/25, this);
 		return false;
 	}
 

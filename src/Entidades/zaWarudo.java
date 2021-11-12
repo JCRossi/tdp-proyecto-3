@@ -11,9 +11,10 @@ public class zaWarudo extends Pocion {
 	
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		serComido();
 		entGrafica.setIcon(null);
-		//Falta desenlistar de laberinto
+		serComido();
+		juego.quitarEntidadGrafica(entGrafica);
+		juego.desenlistarEntidad(pos.getX()/25, pos.getY()/25, this);
 		return false;
 	}
 
