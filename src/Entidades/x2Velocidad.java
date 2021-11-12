@@ -25,7 +25,7 @@ public class x2Velocidad extends Pocion {
 	}
 	
 	public void serComido() {
-		juego.cambiarEstadoPersonajes('2', 10);
+		juego.cambiarEstados('2', 10);
 	}
 
 }

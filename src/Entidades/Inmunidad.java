@@ -24,7 +24,7 @@ public class Inmunidad extends Pocion {
 	}
 	
 	public void serComido() {
-		juego.cambiarEstadoPersonajes('I', 10);
+		juego.cambiarEstados('I', 10);
 	}
 
 }

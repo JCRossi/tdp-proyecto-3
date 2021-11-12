@@ -1,11 +1,14 @@
 package Entidades;
 
+import Logica.Logica;
+
 public class Bomba extends Pocion {
 	
-	public Bomba(int posY, int posX) {
+	public Bomba(int posY, int posX, Logica juegoActual) {
+		puntaje = 0;
 		pos = new Posicion( posX+((25-19)/2), posY+((25-19)/2), 19, 19);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(0, pos);
-		
+		juego = juegoActual;
 	}
 	
 	@Override
@@ -22,7 +25,7 @@ public class Bomba extends Pocion {
 	}
 	
 	public void serComido() {
-		juego.cambiarEstadoPersonajes('B', 15);
+		juego.cambiarEstados('B', 15);
 	}
 
 }

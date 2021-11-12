@@ -14,7 +14,7 @@ public class Laberinto {
 	
 	protected Zona[][] zonas;
 	
-	public Laberinto() {
+	public Laberinto(Logica juego) {
 		
 		this.zonas = new Zona[21][21];
 		
@@ -22,83 +22,83 @@ public class Laberinto {
 		generarParedes();
 	}
 	
-	public void generarConsumiblesLaberinto(int nivel) {
+	public void generarConsumiblesLaberinto(int nivel, Logica juego) {
 		switch(nivel) {
 		case 1 :
-			generarNivelUno();
+			generarNivelUno(juego);
 			break;
 			
 		case 2:
-			generarNivelDos();
+			generarNivelDos(juego);
 			break;
 			
 		case 3:
-			generarNivelTres();
+			generarNivelTres(juego);
 			break;
 		}
 	}
 	
-	private void generarNivelUno() {
+	private void generarNivelUno(Logica juego) {
 		//Frutas
-        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
-        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
+        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25, juego));
+        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25, juego));
 
         //PowerPellets
-        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25));
-        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25));
-        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25));
-        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25));
+        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25, juego));
+        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25, juego));
+        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25, juego));
+        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25, juego));
 
         //x2Velocidad
-        zonas[12][19].enlistarEntidad(new x2Velocidad(12*25, 19*25));
+        zonas[12][19].enlistarEntidad(new x2Velocidad(12*25, 19*25, juego));
 
         //Inmunidad
-        zonas[8][10].enlistarEntidad(new Inmunidad(8*25, 10*25));
+        zonas[8][10].enlistarEntidad(new Inmunidad(8*25, 10*25, juego));
 
         //Bomba
-        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
+        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25, juego));
         
-		rellenarPacDots();
+		rellenarPacDots(juego);
 	}
 	
-	private void generarNivelDos() {
+	private void generarNivelDos(Logica juego) {
 		//Frutas
-        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
-        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
+        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25, juego));
+        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25, juego));
 
         //PowerPellets
-        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25));
-        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25));
-        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25));
-        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25));
+        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25, juego));
+        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25, juego));
+        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25, juego));
+        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25, juego));
 
         //x2Velocidad
-        zonas[12][19].enlistarEntidad(new x2Velocidad(12*25, 19*25));
+        zonas[12][19].enlistarEntidad(new x2Velocidad(12*25, 19*25, juego));
 
         //Bomba
-        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
+        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25, juego));
         
-		rellenarPacDots();
+		rellenarPacDots(juego);
 	}
 	
-	private void generarNivelTres() {
+	private void generarNivelTres(Logica juego) {
 		//Frutas
-        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25));
-        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25));
+        zonas[1][10].enlistarEntidad(new Fruta(1*25, 10*25, juego));
+        zonas[12][10].enlistarEntidad(new Fruta(12*25, 10*25, juego));
 
         //PowerPellets
-        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25));
-        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25));
-        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25));
-        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25));
+        zonas[3][5].enlistarEntidad(new PowerPellet(3*25, 5*25, juego));
+        zonas[5][19].enlistarEntidad(new PowerPellet(5*25, 19*25, juego));
+        zonas[15][3].enlistarEntidad(new PowerPellet(15*25, 3*25, juego));
+        zonas[18][17].enlistarEntidad(new PowerPellet(18*25, 17*25, juego));
 
         //Bomba
-        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25));
+        zonas[9][1].enlistarEntidad(new Bomba(9*25, 1*25, juego));
         
-		rellenarPacDots();
+		rellenarPacDots(juego);
 	}
 	
-	private void rellenarPacDots() {
+	private void rellenarPacDots(Logica juego) {
 		
 		for(int i = 0; i<21;i++) {
 			
@@ -108,7 +108,7 @@ public class Laberinto {
 				if( !((i == 10 && j ==9) || (i == 10 && j == 10) || (i == 10 && j == 11) || (i == 9 && j ==10) || (i == 14 && j ==10) )) {
 					
 					if(zonas[i][j].getListaEntidades().size() == 0) {
-						zonas[i][j].enlistarEntidad(new PacDot(i*25, j*25));
+						zonas[i][j].enlistarEntidad(new PacDot(i*25, j*25, juego));
 						
 					}
 					

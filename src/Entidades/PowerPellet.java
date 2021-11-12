@@ -27,7 +27,7 @@ public class PowerPellet extends PowerUp {
 	
 	public void serComido() {
 		juego.actualizarPuntaje(puntaje);
-		juego.cambiarEstadoPersonajes('P', 13);
+		juego.cambiarEstados('P', 13);
 	}
 
 }

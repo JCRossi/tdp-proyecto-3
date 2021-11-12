@@ -46,7 +46,7 @@ public class Jugador extends Personaje {
 
 	@Override
 	public void mover() {
-		juego.chequearEstadoJugador();
+		//juego.chequearEstadoJugador();
 		
 		if(puedeCaminar) {
 		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
@@ -168,5 +168,7 @@ public class Jugador extends Personaje {
 		//Falta cambiar la EntidadGrafica correspondiente al estado
 	}
 	
-	
+	public int tiempoRestanteEfecto() {
+		return tiempoRestante;
+	}
 }

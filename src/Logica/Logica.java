@@ -37,7 +37,7 @@ public class Logica {
 	
 	public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
-		laberinto = new Laberinto();
+		laberinto = new Laberinto(this);
 		generarNivel(3);
 		personajePrincipal = new Jugador(250, 350,'r',laberinto, this);
 		hiloEnemigos = new HiloEnemigo();
@@ -49,10 +49,10 @@ public class Logica {
 	
 	public void generarNivel(int numero) {
 		nivel = new Nivel(numero);
-		laberinto.generarConsumiblesLaberinto(numero);
+		laberinto.generarConsumiblesLaberinto(numero, this);
 	}
 	
-	public void cambiarEstadoPersonajes(char efecto, int duracion) {
+	public void cambiarEstados(char efecto, int duracion) {
 		switch(efecto) {
 			case 'P':
 				personajePrincipal.cambiarEstado(0, duracion);
@@ -69,11 +69,26 @@ public class Logica {
 			case 'B':
 				personajePrincipal.cambiarEstado(3, duracion);
 				break;
+			case 'N':
+				personajePrincipal.cambiarEstado(0, duracion);
+				
+				for(int i = 0; i < enemigos.length; i++)
+					enemigos[i].cambiarEstado(0);
+				break;
 		}
 	}
 	
 	public void chequearEstadoJugador() {
+		boolean noPersiguiendoOMuerto = true;
 		
+		for(int i = 0; i < enemigos.length && noPersiguiendoOMuerto; i++) {
+			if(enemigos[i].getEstado() != 'p' || enemigos[i].getEstado() != 'm') {
+				noPersiguiendoOMuerto = true;
+			}
+		}
+			
+		if(noPersiguiendoOMuerto == true)
+			cambiarEstados('N', 0);
 	}
 	
 	public void cambiarDireccionJugador(char c) {
