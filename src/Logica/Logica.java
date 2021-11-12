@@ -38,20 +38,22 @@ public class Logica {
 	public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
 		laberinto = new Laberinto(this);
-		generarNivel(1);
+		
 		personajePrincipal = new Jugador(250, 350,'r',laberinto, this);
+
+		
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
 		enemigos = new Enemigo[1];
 		enemigos[0] = new Blinky(250, 225, 'u',laberinto, hiloEnemigos, personajePrincipal);
 		puntajePartida = new Puntaje();
 		hilo.start();
-		
+		generarNivel(1);
 	}
 	
 	public void generarNivel(int numero) {
 		nivel = new Nivel(numero);
-		laberinto.generarConsumiblesLaberinto(numero, this);
+		laberinto.agregarObjetosLaberinto(nivel.GenerarLaberinto(numero, this));
 	}
 	
 	public void cambiarEstados(char efecto, int duracion) {

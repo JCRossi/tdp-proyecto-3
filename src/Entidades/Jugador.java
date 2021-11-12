@@ -73,7 +73,7 @@ public class Jugador extends Personaje {
 				actualizarPosGrafica();
 			}
 		
-			
+			miLaberinto.desenlistarYEnlistarPersonaje(pos, direccion, estadoActual.getMovimiento(), this);
 		
 		} catch(EmptyListException | InvalidPositionException | BoundaryViolationException exc) {
 			exc.printStackTrace();
