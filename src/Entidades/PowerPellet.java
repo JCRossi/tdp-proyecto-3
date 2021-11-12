@@ -13,7 +13,6 @@ public class PowerPellet extends PowerUp {
 	
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		entGrafica.setIcon(null);
 		serComido();
 		juego.desenlistarEntidad(pos.getX()/25, pos.getY()/25, this);
 		juego.quitarEntidadGrafica(entGrafica);

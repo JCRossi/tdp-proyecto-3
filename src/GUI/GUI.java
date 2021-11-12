@@ -99,6 +99,8 @@ public class GUI extends JFrame {
 	
 	public void quitarEntidad(JLabel entidad) {
 		panel.remove(entidad);
+		panel.validate();
+		panel.repaint();
 	
 }
 }
