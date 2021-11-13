@@ -9,7 +9,7 @@ public class Inicio implements EstadoEnemigo {
 
 	@Override
 	public int getMovimiento() {
-		return 4;
+		return 3;
 	}
 
 	@Override
