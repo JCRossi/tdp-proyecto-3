@@ -19,17 +19,16 @@ public class HiloEnemigo implements Runnable {
 	
 	@Override
 	public void run() {
-		while(this.continuar) {
-			try {
-				Thread.sleep(this.intervaloDeMovimiento);
+		try {
+			Thread.sleep(3000);
+			while(this.continuar) {
 				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				Thread.sleep(this.intervaloDeMovimiento);	
+				avisarMovimientoEnemigos();	
 			}
-			avisarMovimientoEnemigos();
-			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		
 	}
 
 	

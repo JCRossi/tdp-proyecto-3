@@ -263,6 +263,30 @@ public class Laberinto {
 
                     zonas[i][j].enlistarEntidad(entidades[i][j]);
                 }
-            }
-        }
+         }
+	}
+	
+	
+	public ListaSimplementeEnlazada<Personaje> chequeoColisionMasivoRIPSeresVivos(Posicion pos,Personaje[] seres) {
+		ListaSimplementeEnlazada<Personaje> listaPersonajes = new ListaSimplementeEnlazada<Personaje>();
+		Rectangle rectanguloExplosion = new Rectangle(pos.getX(),pos.getY(),pos.getAncho(),pos.getAlto());
+		Rectangle rectanguloEntidad;
+		
+		for(Personaje e: seres) {
+			if (e!=null) {
+        		rectanguloEntidad = e.getPosicion().getRectangulo();
+                if (rectanguloExplosion.intersects(rectanguloEntidad))
+                    listaPersonajes.addLast(e);
+        	}
+		}
+		
+		return listaPersonajes;
+		
+	}
+	
+	
+	
+	
+	
+	
 }

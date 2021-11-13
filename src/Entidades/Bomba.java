@@ -9,6 +9,7 @@ public class Bomba extends Pocion {
 		pos = new Posicion( posX+((25-19)/2), posY+((25-19)/2), 19, 19);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(0, pos);
 		juego = juegoActual;
+		duracion = 5000;
 	}
 	
 	@Override
@@ -24,8 +25,39 @@ public class Bomba extends Pocion {
 		return false;
 	}
 	
+	public void explotar() {
+		pos.setAlto(200);
+		pos.setAncho(200);
+		pos.setX(pos.getX()-(pos.getAncho()/2));
+		pos.setY(pos.getY()-(pos.getAlto()/2));
+		this.entGrafica.actualizarExplosion(12, pos);
+		
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		juego.estallido(pos);
+		juego.quitarEntidadGrafica(this.getEntidadGrafica());
+	}
+	
 	public void serComido() {
-		juego.cambiarEstados('B', 15);
+		juego.aumentarBombas();
+		juego.quitarEntidadGrafica(this.getEntidadGrafica());
+		juego.desenlistarEntidad(pos.getX()/25, pos.getY()/25, this);
+		
+	}
+
+	@Override
+	public long getDuracion() {
+		return duracion;
+	}
+
+	@Override
+	public char getEfecto() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

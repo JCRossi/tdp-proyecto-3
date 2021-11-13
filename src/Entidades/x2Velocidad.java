@@ -1,5 +1,6 @@
 package Entidades;
 
+import Hilos.HiloPowerUp;
 import Logica.Logica;
 
 public class x2Velocidad extends Pocion {
@@ -8,6 +9,7 @@ public class x2Velocidad extends Pocion {
 		pos = new Posicion( posX+((25-19)/2), posY+((25-20)/2), 19, 20);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(6, pos);
 		juego = juegoActual;
+		duracion = 5000;
 	}
 	
 	@Override
@@ -25,7 +27,19 @@ public class x2Velocidad extends Pocion {
 	}
 	
 	public void serComido() {
-		juego.cambiarEstados('2', 10);
+		HiloPowerUp hiloPowUp = new HiloPowerUp(this,juego);
+		Thread hilo = new Thread(hiloPowUp);
+		hilo.start();
+	}
+	
+	@Override
+	public long getDuracion() {
+		return duracion;
+	}
+
+	@Override
+	public char getEfecto() {
+		return '2';
 	}
 
 }

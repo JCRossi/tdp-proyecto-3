@@ -45,6 +45,14 @@ public class Posicion {
 		posy = y;
 	}
 	
+	public void setAncho(int an) {
+		this.ancho = an;
+	}
+	
+	public void setAlto(int al) {
+		this.alto = al;
+	}
+	
 	
 
 }

@@ -4,7 +4,7 @@ import Entidades.Jugador;
 
 public class HiloJugador implements Runnable {
 	
-	private static final long intervaloDeMovimientoNivelUno = 40; 
+	private static final long intervaloDeMovimientoNivelUno = 20; 
 
 	private long intervaloDeMovimiento;
 	private boolean continuar;
@@ -18,18 +18,21 @@ public class HiloJugador implements Runnable {
 	
 	@Override
 	public void run() {
-		while(this.continuar) {
-			try {
-				Thread.sleep(this.intervaloDeMovimiento);
-				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			avisarMovimientoJugador();
+		try {
+			Thread.sleep(2000);
 			
+			while(this.continuar) {
+				Thread.sleep(this.intervaloDeMovimiento);
+				avisarMovimientoJugador();
+			}
+				
+				
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		
+			
 	}
+		
 
 	
 	private void avisarMovimientoJugador() {

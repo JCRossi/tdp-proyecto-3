@@ -17,7 +17,7 @@ public class Jugador extends Personaje {
 	private EstadoJugador estadoActual;
 	private Thread hilo;
 	private HiloJugador hiloMovimiento;
-	private int tiempoRestante;
+	private int cantBombas;
 	private boolean powerUp;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual) {
@@ -34,7 +34,6 @@ public class Jugador extends Personaje {
 		puedeCaminar = true;
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
-		tiempoRestante = 0;
 		juego = juegoActual;
 		
 		hiloMovimiento = new HiloJugador(this);
@@ -48,15 +47,10 @@ public class Jugador extends Personaje {
 
 	@Override
 	public void mover() {
-		if(tiempoRestante == 0 && powerUp) {
-			juego.chequearEstadoJugador();
-			powerUp = false;
-		}
-		if (tiempoRestante != 0)	
-			tiempoRestante -= 1;
+		
 		
 		if(puedeCaminar) {
-		ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
+			ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
 		
 		Position<Entidad> actualLeida = null;
 		try {
@@ -88,9 +82,9 @@ public class Jugador extends Personaje {
 		return entidad.colisionasteConJugador(this);
 	}
 
-	@Override
-	public void morir() {
-		
+	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
+		System.out.println("MURIO EL PJ");
+		juego.quitarEntidadGrafica(this.getEntidadGrafica());
 		
 	}
 	public void noPuedeCaminar() {
@@ -163,10 +157,9 @@ public class Jugador extends Personaje {
 		return estadoActual.estadoActual();
 	}
 	
-	public void cambiarEstado(int estado, int tiempo) {
+	public void cambiarEstado(int estado) {
 		//Se comio un power-pellet
 
-		tiempoRestante = tiempo;
 		estadoActual = estados[estado];
 		
 		powerUp = true;
@@ -174,7 +167,16 @@ public class Jugador extends Personaje {
 		//Falta cambiar la EntidadGrafica correspondiente al estado
 	}
 	
-	public int tiempoRestanteEfecto() {
-		return tiempoRestante;
+	public boolean tieneBomba() {
+		return(cantBombas >0);
 	}
+	
+	public void aumentarBomba() {
+		cantBombas++;
+	}
+	
+	public void disminuirBomba() {
+		cantBombas--;
+	}
+	
 }

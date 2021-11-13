@@ -113,8 +113,9 @@ public abstract class Enemigo extends Personaje{
 	}
 
 	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
+	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
+		System.out.println("MURIO UN ENEMIGO");
+		juego.quitarEntidadGrafica(this.getEntidadGrafica());
 		
 	}
 

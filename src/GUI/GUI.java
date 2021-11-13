@@ -74,6 +74,10 @@ public class GUI extends JFrame {
                     	logica.cambiarDireccionJugador('u');
                         break;
                     }
+                    case 32:{
+                    	logica.plantarBomba();
+                        break;
+                    }
 
                 }
             }
@@ -93,7 +97,7 @@ public class GUI extends JFrame {
 	
 	
 	public void agregarEntidad(JLabel entidad) {
-			panel.add(entidad);
+			panel.add(entidad); 
 		
 	}
 	

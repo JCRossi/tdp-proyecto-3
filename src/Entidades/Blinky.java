@@ -8,7 +8,7 @@ public class Blinky extends Enemigo{
 	
 		private EstadoEnemigo[] estados;
 
-		public Blinky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal) {
+		public Blinky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal,Logica miJuego) {
 		
 		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18);	
 		ultimaZona = new int[2];
@@ -26,6 +26,7 @@ public class Blinky extends Enemigo{
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
 		jugador = personajePrincipal;
+		this.juego = miJuego;
 		
 		hiloEnemigo.set(this);
 	}
@@ -35,4 +36,5 @@ public class Blinky extends Enemigo{
 			estadoActual = estados[estado];
 		//Falta cambiar la EntidadGrafica correspondiente al estado
 	}
+	
 }

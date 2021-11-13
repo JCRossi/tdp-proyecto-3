@@ -6,6 +6,7 @@ import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
 import GUI.GUI;
 import GUI.Tematica;
+import Hilos.HiloBomba;
 import Hilos.HiloEnemigo;
 import Hilos.HiloJugador;
 
@@ -45,10 +46,11 @@ public class Logica {
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
 		enemigos = new Enemigo[1];
-		enemigos[0] = new Blinky(250, 225, 'u',laberinto, hiloEnemigos, personajePrincipal);
+		enemigos[0] = new Blinky(250, 225, 'u',laberinto, hiloEnemigos, personajePrincipal,this);
 		puntajePartida = new Puntaje();
-		hilo.start();
+		
 		generarNivel(1);
+		hilo.start();
 	}
 	
 	public void generarNivel(int numero) {
@@ -56,25 +58,25 @@ public class Logica {
 		laberinto.agregarObjetosLaberinto(nivel.GenerarLaberinto(numero, this));
 	}
 	
-	public void cambiarEstados(char efecto, int duracion) {
+	public void cambiarEstados(char efecto) {
 		switch(efecto) {
 			case 'P':
-				personajePrincipal.cambiarEstado(0, duracion);
+				personajePrincipal.cambiarEstado(0);
 				
 				for(int i = 0; i < enemigos.length; i++)
 					enemigos[i].cambiarEstado(1);
 				break;
 			case '2':
-				personajePrincipal.cambiarEstado(1, duracion);
+				personajePrincipal.cambiarEstado(1);
 				break;
 			case 'I':
-				personajePrincipal.cambiarEstado(2, duracion);
+				personajePrincipal.cambiarEstado(2);
 				break;
 			case 'B':
-				personajePrincipal.cambiarEstado(3, duracion);
+				personajePrincipal.cambiarEstado(3);
 				break;
 			case 'N':
-				personajePrincipal.cambiarEstado(0, duracion);
+				personajePrincipal.cambiarEstado(0);
 				
 				for(int i = 0; i < enemigos.length; i++)
 					enemigos[i].cambiarEstado(0);
@@ -92,7 +94,7 @@ public class Logica {
 		}
 			
 		if(noPersiguiendoOMuerto == true)
-			cambiarEstados('N', 0);
+			cambiarEstados('N');
 	}
 	
 	public void cambiarDireccionJugador(char c) {
@@ -127,6 +129,47 @@ public class Logica {
 	public void avisarActualizacionPuntajeGrafico(int puntos) {
 		
 	}
+	public void aumentarBombas() {
+		this.personajePrincipal.aumentarBomba();
+	}
+	
+	public void plantarBomba(){
+		if(personajePrincipal.tieneBomba()){
+			Posicion pos = personajePrincipal.getPosicion();
+			Bomba bomba = new Bomba(pos.getY(),pos.getX(),this);
+			interfaz.agregarEntidad(bomba.getEntidadGrafica());
+			
+			System.out.println("Plantaste la bomba");
+			HiloBomba hbomba = new HiloBomba(bomba);
+			Thread hilo = new Thread(hbomba);
+			hilo.start();
+			personajePrincipal.disminuirBomba();
+		}
+
+
+	}
+	
+	public void estallido(Posicion pos) {
+		Personaje[] personajes = new Personaje[5];
+		ListaSimplementeEnlazada<Personaje> listaEntidades;
+		System.out.println("EXPLOTO LA BOMBA");
+		
+		personajes[0] = this.personajePrincipal;
+		
+		for(int i=1; i<=enemigos.length;i++) {
+			personajes[i] = enemigos[i-1];
+		}
+		
+		listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
+		
+		for(Personaje ent: listaEntidades) {
+			if(ent !=null) {
+				System.out.println("SE MURIO ALGUIEN");
+				ent.morir();
+			}
+		}
+		
+	}
 	
 	//Chequear si se esta en el ultimo nivel o no tambien chequear si pacman perdio todas las vidas cuando muere
 	public void chequerFinalizacionJuego() {
@@ -139,6 +182,10 @@ public class Logica {
 
 	public void desenlistarEntidad(int posX, int posY, Entidad entidad) {
 		laberinto.desenlistarEntidad(entidad, posX, posY);
+	}
+	
+	public void agregarEntidadGrafica(EntidadGrafica entGraf) {
+		interfaz.agregarEntidad(entGraf);
 	}
 
 	public void quitarEntidadGrafica(EntidadGrafica entGrafica) {

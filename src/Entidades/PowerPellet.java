@@ -1,5 +1,6 @@
 package Entidades;
 
+import Hilos.HiloPowerUp;
 import Logica.Logica;
 
 public class PowerPellet extends PowerUp {
@@ -9,6 +10,7 @@ public class PowerPellet extends PowerUp {
 		pos = new Posicion( posX+((25-18)/2), posY+((25-19)/2), 18, 19);  //999999 = ancho        111111111 = alto
 		entGrafica = new EntidadGrafica(5, pos);
 		juego = juegoActual;
+		duracion = 5000;
 	}
 	
 	@Override
@@ -27,7 +29,20 @@ public class PowerPellet extends PowerUp {
 	
 	public void serComido() {
 		juego.actualizarPuntaje(puntaje);
-		juego.cambiarEstados('P', 13);
+		HiloPowerUp hiloPowUp = new HiloPowerUp(this,juego);
+		Thread hilo = new Thread(hiloPowUp);
+		hilo.start();
+	}
+
+	@Override
+	public long getDuracion() {
+		
+		return duracion;
+	}
+
+	@Override
+	public char getEfecto() {
+		return 'P';
 	}
 
 }
