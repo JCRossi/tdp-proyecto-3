@@ -11,13 +11,19 @@ public abstract class Enemigo extends Personaje{
 	protected EstadoEnemigo estadoActual;
 	protected Jugador jugador;
 	protected int[] ultimaZona;
+	protected int posicionInicialX;
+	protected int posicionInicialY;
 	
 	
 	@Override
 	public void mover() {
 			int posX = pos.getX();
 			int posY = pos.getY();
-			if(posX%25>0 && posX%25<3 && posY%25>2 && posY%25<5 && (ultimaZona[0]!=posX/25 || ultimaZona[1]!=posY/25)) {
+
+			if(posX/25 == posicionInicialX/25  && posY/25  == posicionInicialY/25  && estadoActual.estadoActual()=='i') {
+				cambiarEstado(0);
+			}
+			if(posX%25>0 && posX%25<=3 && posY%25>2 && posY%25<=5 && (ultimaZona[0]!=posX/25 || ultimaZona[1]!=posY/25)) {
 				actualizarDireccion();
 				ultimaZona[0] = posX/25;
 				ultimaZona[1] = posY/25;
@@ -49,7 +55,24 @@ public abstract class Enemigo extends Personaje{
 	}
 
 	private void actualizarDireccion() {
-		char[] prioridadDireccion = estadoActual.calcularProximaPosicion(jugador.getPosicion().getX(),jugador.getPosicion().getY(), pos);
+		int posObjetivoX = 0;
+		int posObjetivoY = 0;
+		switch(estadoActual.estadoActual()) {
+		case 'h':
+		case 'p':
+			posObjetivoX = jugador.getPosicion().getX();
+			posObjetivoY = jugador.getPosicion().getY();
+			break;
+		case 'm':
+			posObjetivoX = 250;
+			posObjetivoY = 250; 
+			break;
+		case 'i':
+			posObjetivoX = posicionInicialX;
+			posObjetivoY = posicionInicialY;
+			break;
+		}
+		char[] prioridadDireccion = estadoActual.calcularProximaPosicion(posObjetivoX,posObjetivoY, pos);
 		puedeCaminar = false;
 		boolean esVuelta = true;
 		int i = 0;
@@ -141,8 +164,10 @@ public abstract class Enemigo extends Personaje{
 	}
 
 	@Override
-	public void noPuedeCaminar() {
-		puedeCaminar = false;
+	public void noPuedeCaminar(char c) {
+		char estadoAhora = estadoActual.estadoActual();
+		if ((c == 'd' && (estadoAhora!='i' && estadoAhora !='m' )) || c=='w')
+			puedeCaminar = false;
 		
 	}
 	

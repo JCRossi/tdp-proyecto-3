@@ -27,4 +27,16 @@ public class zaWarudo extends Pocion {
 		
 	}
 
+	@Override
+	public long getDuracion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public char getEfecto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

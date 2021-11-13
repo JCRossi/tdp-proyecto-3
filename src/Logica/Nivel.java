@@ -11,6 +11,7 @@ import Entidades.Inmunidad;
 import Entidades.PacDot;
 import Entidades.Pared;
 import Entidades.PowerPellet;
+import Entidades.Puerta;
 import Entidades.x2Velocidad;
 
 public class Nivel {
@@ -103,6 +104,9 @@ public class Nivel {
 							break;
 						case ' ':
 							entidadesEstaticas[i][j] = new PacDot(i*25, j*25, logica);
+							break;
+						case 'D':
+							entidadesEstaticas[i][j] = new Puerta(i*25, j*25);
 							break;
 							}				
 						}

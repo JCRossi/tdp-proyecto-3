@@ -21,7 +21,7 @@ public abstract class Personaje extends Entidad{
 	
 	public abstract boolean colisionasteConEnemigo(Personaje personaje);
 
-	protected abstract void noPuedeCaminar();
+	protected abstract void noPuedeCaminar(char c);
 
 	public abstract ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc, int movimiento);
 	

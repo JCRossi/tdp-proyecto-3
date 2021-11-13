@@ -46,7 +46,7 @@ public class Logica {
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
 		enemigos = new Enemigo[1];
-		enemigos[0] = new Blinky(250, 225, 'u',laberinto, hiloEnemigos, personajePrincipal,this);
+		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this);
 		puntajePartida = new Puntaje();
 		
 		generarNivel(1);

@@ -8,13 +8,11 @@ public class Perseguir implements EstadoEnemigo {
 
 	@Override
 	public int getMovimiento() {
-		// TODO Auto-generated method stub
 		return 2;
 	}
 
 	@Override
 	public char estadoActual() {
-		// TODO Auto-generated method stub
 		return 'p';
 	}
 

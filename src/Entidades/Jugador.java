@@ -87,7 +87,7 @@ public class Jugador extends Personaje {
 		juego.quitarEntidadGrafica(this.getEntidadGrafica());
 		
 	}
-	public void noPuedeCaminar() {
+	public void noPuedeCaminar(char c) {
 		puedeCaminar = false;
 	}
 

@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import Entidades.Pared;
@@ -102,10 +103,15 @@ public class GUI extends JFrame {
 	}
 	
 	public void quitarEntidad(JLabel entidad) {
-		panel.remove(entidad);
-		panel.validate();
-		panel.repaint();
+		 SwingUtilities.invokeLater(new Runnable(){
+		      @Override
+		      public void run() {
+		    	  panel.remove(entidad);
+		  		panel.validate();
+		  		panel.repaint();
+		      }
+		    });
+	}
 	
-}
 }
 

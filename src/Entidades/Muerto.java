@@ -4,8 +4,7 @@ public class Muerto implements EstadoEnemigo {
 
 	@Override
 	public int getMovimiento() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 4;
 	}
 
 	@Override
@@ -15,9 +14,11 @@ public class Muerto implements EstadoEnemigo {
 	}
 
 	@Override
-	public char calcularProximaPosicion(int posX, int posY) {
+	public char[] calcularProximaPosicion(int posX, int posY, Posicion pos) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
+
+
 
 }

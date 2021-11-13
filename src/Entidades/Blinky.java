@@ -21,14 +21,15 @@ public class Blinky extends Enemigo{
 		estados[1] = new Huir(); 
 		estados[2] = new Muerto();
 		estados[3] = new Inicio();
-		estadoActual = estados[0];
+		estadoActual = estados[3];
 		puedeCaminar = true;
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
 		jugador = personajePrincipal;
 		this.juego = miJuego;
-		
 		hiloEnemigo.set(this);
+		posicionInicialY = 375; 
+		posicionInicialX = 450; 
 	}
 		
 	public void cambiarEstado(int estado) {
@@ -36,5 +37,6 @@ public class Blinky extends Enemigo{
 			estadoActual = estados[estado];
 		//Falta cambiar la EntidadGrafica correspondiente al estado
 	}
+
 	
 }
