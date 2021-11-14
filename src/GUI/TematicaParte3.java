@@ -9,7 +9,7 @@ public class TematicaParte3 extends Tematica {
 
 	@Override
 	public String[] getImagenesFantasma1() {
-		return  new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Blinky/normal/dioStand_arriba.gif","/images/Blinky/normal/dioStand_derecha.gif","/images/Blinky/normal/dioStand_abajo.gif","/images/Blinky/normal/dioStand_izquierda.gif","/images/Blinky/vulnerable/dio_arriba.gif","/images/Blinky/vulnerable/dio_derecha.gif","/images/Blinky/vulnerable/dio_abajo.gif","/images/Blinky/vulnerable/dio_izquierda.gif"};
+		return  new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Blinky/normal/dioStand_arriba.png","/images/Blinky/normal/dioStand_derecha.png","/images/Blinky/normal/dioStand_abajo.png","/images/Blinky/normal/dioStand_izquierda.png","/images/Blinky/vulnerable/dio_arriba.png","/images/Blinky/vulnerable/dio_derecha.png","/images/Blinky/vulnerable/dio_abajo.png","/images/Blinky/vulnerable/dio_izquierda.png"};
 	}
 
 	@Override

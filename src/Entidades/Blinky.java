@@ -10,7 +10,7 @@ public class Blinky extends Enemigo{
 
 		public Blinky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal,Logica miJuego,String[] img) {
 		
-		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18);	
+		pos = new Posicion( posX+1, posY+1, 23, 23);	
 		ultimaZona = new int[2];
 		ultimaZona[0] = posX/25;
 		ultimaZona[1] = posY/25;

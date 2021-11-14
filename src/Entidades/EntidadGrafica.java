@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public class EntidadGrafica extends JLabel {
 	
 	private ImageIcon grafico;
-	private String[] imagenes = new String[] {"/images/bomb25px.gif", "/images/fruit25px.png", "/images/inmune25px.gif", "/images/pacdot25px.png", "/images/pared25px.png", "/images/powerpellet25px.png","/images/x2speed25px.png", "/images/zaWarudo25px.png","/images/pacman/normal/jotaro_abajo.gif","/images/pacman/normal/jotaro_arriba.gif","/images/pacman/normal/jotaro_derecha.gif","/images/pacman/normal/jotaro_izquierda.gif","/images/explosion.png", "/images/PuertaProv.png"};
+	private String[] imagenes = new String[] {"/images/bomb25px.gif", "/images/fruit25px.png", "/images/inmune25px.gif", "/images/pacdot25px.gif", "/images/pared25px.png", "/images/powerpellet25px.png","/images/x2speed25px.png", "/images/zaWarudo25px.png","/images/pacman/normal/jotaro_abajo.gif","/images/pacman/normal/jotaro_arriba.gif","/images/pacman/normal/jotaro_derecha.gif","/images/pacman/normal/jotaro_izquierda.gif","/images/explosion.png", "/images/PuertaProv.png"};
 	
 	public EntidadGrafica(int index, Posicion pos,String[] img) {
 		imagenes = img;

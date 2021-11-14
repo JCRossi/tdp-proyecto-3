@@ -23,7 +23,7 @@ public abstract class Enemigo extends Personaje{
 			if(posX/25 == posicionInicialX/25  && posY/25  == posicionInicialY/25  && estadoActual.estadoActual()=='i') {
 				cambiarEstado(0);
 			}
-			if(posX%25>0 && posX%25<=3 && posY%25>2 && posY%25<=5 && (ultimaZona[0]!=posX/25 || ultimaZona[1]!=posY/25)) {
+			if(posX%25>=0 && posX%25<=2 && posY%25>=0 && posY%25<=2 && (ultimaZona[0]!=posX/25 || ultimaZona[1]!=posY/25)) {
 				actualizarDireccion();
 				ultimaZona[0] = posX/25;
 				ultimaZona[1] = posY/25;
