@@ -35,6 +35,7 @@ public abstract class Enemigo extends Personaje{
 			
 			actualizarPos();
 			actualizarPosGrafica();
+			entGrafica.actualizarImagen(estadoActual.getIndiceArreglo(direccion), pos); //////////
 	}
 
 	private void procesarColisiones(ListaSimplementeEnlazada<Entidad> listaEntidadesColision) {

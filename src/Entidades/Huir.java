@@ -53,4 +53,26 @@ public class Huir implements EstadoEnemigo {
 		return prioridades;
 	}
 
+	@Override
+	public int getIndiceArreglo(char direccion) {
+		int retorno = 0;
+		
+		switch(direccion) {
+		case 'l':
+			retorno = 8;
+		break;
+		case'r':
+			retorno = 6;
+		break;
+		case 'u':
+			retorno = 5;
+		break;
+		case 'd':
+			retorno = 7;
+		break;
+		
+		}
+		return retorno;
+	}
+
 }

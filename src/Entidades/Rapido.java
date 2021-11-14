@@ -15,4 +15,26 @@ public class Rapido implements EstadoJugador {
 		return movimiento;
 	}
 
+	@Override
+	public int getIndiceArreglo(char c) {
+		int retorno = 0;
+		
+		switch(c) {
+		case 'l':
+			retorno = 12;
+		break;
+		case'r':
+			retorno = 10;
+		break;
+		case 'u':
+			retorno = 9;
+		break;
+		case 'd':
+			retorno = 11;
+		break;
+		
+		}
+		return retorno;
+	}
+
 }

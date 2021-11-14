@@ -8,6 +8,11 @@ public interface EstadoEnemigo {
 
 	char[] calcularProximaPosicion(int posX, int posY, Posicion pos);
 	
+	public int getIndiceArreglo(char direccion);
+
+	
+
+	
 
 
 }

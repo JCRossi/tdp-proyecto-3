@@ -20,11 +20,11 @@ public class Jugador extends Personaje {
 	private int cantBombas;
 	private boolean powerUp;
 	
-	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual) {
+	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual,String[] imagenes) {
 		
 		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18);  //250 - 350     		
 		
-		entGrafica = new EntidadGrafica(8 ,pos); 
+		entGrafica = new EntidadGrafica(2 ,pos,imagenes); 
 		this.direccion = direcc;
 		estados = new EstadoJugador[3];
 		estados[0] = new Normal();
@@ -83,8 +83,11 @@ public class Jugador extends Personaje {
 	}
 
 	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
-		System.out.println("MURIO EL PJ");
-		juego.quitarEntidadGrafica(this.getEntidadGrafica());
+		if(this.estadoActual.estadoActual() != 'i') {
+			System.out.println("MURIO EL PJ");
+			juego.quitarEntidadGrafica(this.getEntidadGrafica());
+		}
+		
 		
 	}
 	public void noPuedeCaminar(char c) {
@@ -114,21 +117,29 @@ public class Jugador extends Personaje {
 	public void cambiarDireccion(char c) {
 		direccion = c;
 		puedeCaminar = true;
-		switch(direccion) {
-		case 'l':
-			entGrafica.actualizarImagen(11, pos);
-		break;
-		case'r':
-			entGrafica.actualizarImagen(10, pos);
-		break;
-		case 'u':
-			entGrafica.actualizarImagen(9, pos);
-		break;
-		case 'd':
-			entGrafica.actualizarImagen(8, pos);
-		break;
 		
+		if(this.estadoActual.estadoActual()=='n' && this.tieneBomba()) { //NO TENEMOS ESTADO TIENEBOMBA
+			switch(direccion) {
+			case 'l':
+				entGrafica.actualizarImagen(8, pos);
+			break;
+			case'r':
+				entGrafica.actualizarImagen(6, pos);
+			break;
+			case 'u':
+				entGrafica.actualizarImagen(5, pos);
+			break;
+			case 'd':
+				entGrafica.actualizarImagen(7, pos);
+			break;
+			
+			}
+			
+		}else {
+			entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(direccion), pos);
+			
 		}
+		
 	}
 	
 	private void actualizarPos() {
@@ -164,7 +175,7 @@ public class Jugador extends Personaje {
 		
 		powerUp = true;
 		
-		//Falta cambiar la EntidadGrafica correspondiente al estado
+		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
 	}
 	
 	public boolean tieneBomba() {

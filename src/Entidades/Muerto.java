@@ -19,6 +19,11 @@ public class Muerto implements EstadoEnemigo {
 		return null;
 	}
 
+	@Override
+	public int getIndiceArreglo(char direccion) {
+		return 0;
+	}
+
 
 
 }

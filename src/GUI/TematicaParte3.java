@@ -4,12 +4,12 @@ public class TematicaParte3 extends Tematica {
 
 	@Override
 	public String[] getImagenesPacman() {
-		return new String[] {"/images/jotaro_muerto.gif","/images/jotaro_arriba.gif","/images/jotaro_derecha.gif","/images/jotaro_abajo.gif","/images/jotaro_izquierda.gif"};
+		return new String[] {"/images/pacman/muerto/jotaro_muerto.gif","/images/pacman/normal/jotaro_arriba.gif","/images/pacman/normal/jotaro_derecha.gif","/images/pacman/normal/jotaro_abajo.gif","/images/pacman/normal/jotaro_izquierda.gif","/images/pacman/bomba/jotaro_arriba_bomba.gif","/images/pacman/bomba/jotaro_derecha_bomba.gif","/images/pacman/bomba/jotaro_abajo_bomba.gif","/images/pacman/bomba/jotaro_izquierda_bomba.gif","/images/pacman/x2velocidad/jotaro_arriba_x2.gif","/images/pacman/x2velocidad/jotaro_derecha_x2.gif","/images/pacman/x2velocidad/jotaro_abajo_x2.gif","/images/pacman/x2velocidad/jotaro_izquierda_x2.gif","/images/pacman/inmunidad/starplatinum_arriba.gif","/images/pacman/inmunidad/starplatinum_derecha.gif","/images/pacman/inmunidad/starplatinum_abajo.gif","/images/pacman/inmunidad/starplatinum_izquierda.gif"};
 	}
 
 	@Override
 	public String[] getImagenesFantasma1() {
-		return  new String[] {"/images/enemigo_muerto.gif","/images/dio_arriba.gif","/images/dio_derecha.gif","/images/dio_abajo.gif","/images/dio_izquierda.gif","/images/dio_arriba_huyendo.gif","/images/dio_derecha_huyendo.gif","/images/dio_abajo_huyendo.gif","/images/dio_izquierda_huyendo.gif"};
+		return  new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Blinky/normal/dioStand_arriba.gif","/images/Blinky/normal/dioStand_derecha.gif","/images/Blinky/normal/dioStand_abajo.gif","/images/Blinky/normal/dioStand_izquierda.gif","/images/Blinky/vulnerable/dio_arriba.gif","/images/Blinky/vulnerable/dio_derecha.gif","/images/Blinky/vulnerable/dio_abajo.gif","/images/Blinky/vulnerable/dio_izquierda.gif"};
 	}
 
 	@Override

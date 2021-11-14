@@ -57,6 +57,28 @@ public class Inicio implements EstadoEnemigo {
 		return prioridades;
 	}
 
+	@Override
+	public int getIndiceArreglo(char direccion) {
+		int retorno = 0;
+		
+		switch(direccion) {
+		case 'l':
+			retorno = 4;
+		break;
+		case'r':
+			retorno = 2;
+		break;
+		case 'u':
+			retorno = 1;
+		break;
+		case 'd':
+			retorno = 3;
+		break;
+		
+		}
+		return retorno;
+	}
+
 
 
 }

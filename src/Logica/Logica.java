@@ -40,16 +40,16 @@ public class Logica {
 		this.interfaz = interfaz;
 		laberinto = new Laberinto(this);
 		
-		personajePrincipal = new Jugador(250, 350,'r',laberinto, this);
+		personajePrincipal = new Jugador(250, 350,'r',laberinto, this,tematica.getImagenesPacman());
 
 		
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
 		enemigos = new Enemigo[1];
-		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this);
+		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
 		puntajePartida = new Puntaje();
 		
-		generarNivel(1);
+		generarNivel(1);	
 		hilo.start();
 	}
 	
