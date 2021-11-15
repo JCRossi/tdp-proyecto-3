@@ -108,16 +108,17 @@ public class Nivel {
 						case 'D':
 							entidadesEstaticas[i][j] = new Puerta(i*25, j*25);
 							break;
-							}				
-						}
-					}
+					}				
+				}
+			}
 			archiv.close();
 	
-			}catch(Exception e){
-				e.printStackTrace();
-				}
-		return entidadesEstaticas;
+		}catch(Exception e){
+			e.printStackTrace();
 		}
+		
+		return entidadesEstaticas;
+	}
 
 
 	private Entidad[][] generarNivelDos(Logica logica) {

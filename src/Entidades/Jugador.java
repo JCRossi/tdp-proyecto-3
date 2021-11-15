@@ -19,6 +19,7 @@ public class Jugador extends Personaje {
 	private HiloJugador hiloMovimiento;
 	private int cantBombas;
 	private boolean powerUp;
+	private int vidas;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual,String[] imagenes) {
 		
@@ -35,6 +36,7 @@ public class Jugador extends Personaje {
 		miLaberinto = milaberinto;
 		miLaberinto.incorporarEntidad(this);
 		juego = juegoActual;
+		vidas = 2;
 		
 		hiloMovimiento = new HiloJugador(this);
 		hilo = new Thread(this.hiloMovimiento);
@@ -82,20 +84,32 @@ public class Jugador extends Personaje {
 		return entidad.colisionasteConJugador(this);
 	}
 
+	//Son correctos los llamados a la Logica?
 	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
-		if(this.estadoActual.estadoActual() != 'i') {
-			System.out.println("MURIO EL PJ");
-			juego.quitarEntidadGrafica(this.getEntidadGrafica());
+		boolean condicion = false;
+		
+		System.out.println("MURIO EL PJ");
+		vidas--;
+		condicion = juego.chequerFinalizacionJuego(vidas);
+		
+		if(condicion) {
+			pos.setX(250);
+			pos.setY(350);
+			//Actualizar pos grafica
+			//Setear a los enemigos en la casa
+		}
+		else {
+			juego.finalizarJuego();
 		}
 		
-		
+		//juego.quitarEntidadGrafica(this.getEntidadGrafica());
 	}
+	
 	public void noPuedeCaminar(char c) {
 		puedeCaminar = false;
 	}
 
 	public boolean colisionasteConJugador(Personaje personaje) {
-
 		return false;
 	}
 
@@ -106,6 +120,15 @@ public class Jugador extends Personaje {
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
+		if(this.getEstado() == 'n' || this.getEstado() == 'r') {
+			if(personaje.getEstado() == 'p') {
+				this.morir();
+				//Resetear nivel pero sin los objetos consumidos
+			}
+		}
+		
+		if(personaje.getEstado() == 'h')
+			personaje.morir();
 		
 		return false;
 	}
@@ -169,8 +192,6 @@ public class Jugador extends Personaje {
 	}
 	
 	public void cambiarEstado(int estado) {
-		//Se comio un power-pellet
-
 		estadoActual = estados[estado];
 		
 		powerUp = true;
@@ -190,4 +211,7 @@ public class Jugador extends Personaje {
 		cantBombas--;
 	}
 	
+	public int getVidas() {
+		return vidas;
+	}
 }

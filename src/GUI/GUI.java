@@ -14,11 +14,15 @@ import Logica.Logica;
 
 import javax.swing.JLabel;
 import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
 	private static JPanel panel;
+	private JLabel lblPuntajeNumero;
+	private JLabel lblVidasNumero;
 
 	
 
@@ -40,6 +44,34 @@ public class GUI extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		panel.setFocusable(true);
+		
+		JLabel lblPuntaje = new JLabel("Puntaje:");
+		lblPuntaje.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPuntaje.setForeground(Color.WHITE);
+		lblPuntaje.setBounds(535, 29, 79, 14);
+		contentPane.add(lblPuntaje);
+		
+		lblPuntajeNumero = new JLabel("0");
+		lblPuntajeNumero.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPuntajeNumero.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblPuntajeNumero.setForeground(Color.WHITE);
+		lblPuntajeNumero.setBounds(568, 54, 46, 14);
+		contentPane.add(lblPuntajeNumero);
+		
+		JLabel lblVidas = new JLabel("Vidas:");
+		lblVidas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVidas.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblVidas.setForeground(Color.WHITE);
+		lblVidas.setBounds(535, 106, 79, 14);
+		contentPane.add(lblVidas);
+		
+		lblVidasNumero = new JLabel("0");
+		lblVidasNumero.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblVidasNumero.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblVidasNumero.setForeground(Color.WHITE);
+		lblVidasNumero.setBounds(568, 135, 46, 14);
+		contentPane.add(lblVidasNumero);
 		
 		logica.iniciarLogica(this);
 		logica.avisarActualizacionLaberintoGrafico();
@@ -113,5 +145,12 @@ public class GUI extends JFrame {
 		    });
 	}
 	
+	public void actualizarPuntajeGrafico(int puntos) {
+		lblPuntajeNumero.setText("" + puntos);
+	}
+	
+	public void actualizarVidaGrafica(int cantVidas) {
+		lblVidasNumero.setText("" + cantVidas);
+	}
 }
 

@@ -9,8 +9,7 @@ public class Muerto implements EstadoEnemigo {
 
 	@Override
 	public char estadoActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 'm';
 	}
 
 	@Override

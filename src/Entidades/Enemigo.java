@@ -139,18 +139,26 @@ public abstract class Enemigo extends Personaje{
 	@Override
 	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
 		System.out.println("MURIO UN ENEMIGO");
-		juego.quitarEntidadGrafica(this.getEntidadGrafica());
-		
+		this.cambiarEstado(2);
+		//juego.quitarEntidadGrafica(this.getEntidadGrafica());
 	}
 
 	@Override
 	public char getEstado() {
-		return 'c';
+		return estadoActual.estadoActual();
 	}
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		System.out.println("colision con jugador");
+		if(this.getEstado() == 'p' && personaje.getEstado() == 'n') {
+			personaje.morir();
+			//Resetear nivel pero sin los objetos ya consumidos
+		}
+		
+		if(this.getEstado() == 'h') {
+			this.morir();
+		}
+		
 		return false;
 	}
 
@@ -160,7 +168,6 @@ public abstract class Enemigo extends Personaje{
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

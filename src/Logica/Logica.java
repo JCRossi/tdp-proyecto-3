@@ -48,8 +48,8 @@ public class Logica {
 		enemigos = new Enemigo[1];
 		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
 		puntajePartida = new Puntaje();
-		
-		generarNivel(1);	
+		avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
+		generarNivel(1);
 		hilo.start();
 	}
 	
@@ -127,8 +127,13 @@ public class Logica {
 	}
 	
 	public void avisarActualizacionPuntajeGrafico(int puntos) {
-		
+		interfaz.actualizarPuntajeGrafico(puntos);
 	}
+	
+	public void avisarActualizacionVidaGrafica(int cantVidas) {
+		interfaz.actualizarVidaGrafica(cantVidas);
+	}
+	
 	public void aumentarBombas() {
 		this.personajePrincipal.aumentarBomba();
 	}
@@ -172,12 +177,19 @@ public class Logica {
 	}
 	
 	//Chequear si se esta en el ultimo nivel o no tambien chequear si pacman perdio todas las vidas cuando muere
-	public void chequerFinalizacionJuego() {
+	public boolean chequerFinalizacionJuego(int vidasJugador) {
+		boolean continuaJuego = true;
 		
+		if(vidasJugador == 0)
+			continuaJuego = false;
+		else
+			avisarActualizacionVidaGrafica(vidasJugador);
+		
+		return continuaJuego;
 	}
 	
 	public void finalizarJuego() {
-		
+		//Avisar finalizacion juego
 	}
 
 	public void desenlistarEntidad(int posX, int posY, Entidad entidad) {
