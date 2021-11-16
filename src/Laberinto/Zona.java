@@ -2,6 +2,7 @@ package Laberinto;
 
 import java.awt.Rectangle;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import Entidades.Entidad;
 import Estructuras.BoundaryViolationException;
@@ -14,14 +15,15 @@ public class Zona {
 	
 	protected int posX;
 	protected int posY;
-	protected ListaSimplementeEnlazada<Entidad> listaEntidades;
+	//protected ListaSimplementeEnlazada<Entidad> listaEntidades;
+	protected LinkedHashSet<Entidad> listaEntidades ;
 	
 	public Zona(int posx, int posy) {
 		this.posX = posx;
 		this.posY = posy;
 			
-		this.listaEntidades = new ListaSimplementeEnlazada<Entidad>();
-		
+		//this.listaEntidades = new ListaSimplementeEnlazada<Entidad>();
+		this.listaEntidades = new LinkedHashSet<Entidad>();
 		
 	}
 	
@@ -29,11 +31,15 @@ public class Zona {
 	
 	
 	public ListaSimplementeEnlazada<Entidad> getListaEntidades(){
-		return listaEntidades;
+		ListaSimplementeEnlazada<Entidad> listaEntRetorno = new ListaSimplementeEnlazada<Entidad>();
+		for(Entidad e : listaEntidades) {
+			listaEntRetorno.addLast(e);
+		}
+		return listaEntRetorno;
 	}
 	
 	public void enlistarEntidad(Entidad EntidadAEnlistar) {
-		listaEntidades.addLast(EntidadAEnlistar);
+		listaEntidades.add(EntidadAEnlistar);
 	}
 	
 	//REEMPLAZAR ListaSimplementeEnlazada POR HASHSET<ENTIDAD>
@@ -49,7 +55,7 @@ public class Zona {
         }
 	}
 	
-	
+	/*
 	public void desenlistarEntidad (Entidad e) {
         Position<Entidad> posicionActual = null;
         try {
@@ -77,7 +83,11 @@ public class Zona {
         }
         }
     }
+	*/
 	
+	public void desenlistarEntidad(Entidad e) {
+		listaEntidades.remove(e);
+	}
 	
 	
 	

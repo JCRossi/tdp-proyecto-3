@@ -20,6 +20,7 @@ public class Jugador extends Personaje {
 	private int cantBombas;
 	private boolean powerUp;
 	private int vidas;
+	private char direccionProhibida;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual,String[] imagenes) {
 		
@@ -50,7 +51,7 @@ public class Jugador extends Personaje {
 	public void mover() {
 		
 		
-		if(puedeCaminar) {
+		if(puedeCaminar && (this.direccion != this.direccionProhibida)) {
 			ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
 		
 		Position<Entidad> actualLeida = null;
@@ -69,7 +70,7 @@ public class Jugador extends Personaje {
 			}
 		
 			miLaberinto.desenlistarYEnlistarPersonaje(pos, direccion, estadoActual.getMovimiento(), this);
-		
+			this.direccionProhibida = 'ñ';//Uso ñ para que luego de moverme se "resetee" la direccion prohibida
 		} catch(EmptyListException | InvalidPositionException | BoundaryViolationException exc) {
 			exc.printStackTrace();
 		}
@@ -106,6 +107,9 @@ public class Jugador extends Personaje {
 	
 	public void noPuedeCaminar(char c) {
 		puedeCaminar = false;
+		if(c == 'w') {
+			this.direccionProhibida = this.direccion;
+		}
 	}
 
 	public boolean colisionasteConJugador(Personaje personaje) {
