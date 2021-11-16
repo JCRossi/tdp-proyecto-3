@@ -5,14 +5,19 @@ import java.io.File;
 import java.io.FileReader;
 
 import Entidades.Bomba;
+import Entidades.Enemigo;
 import Entidades.Entidad;
 import Entidades.Fruta;
 import Entidades.Inmunidad;
+import Entidades.Jugador;
 import Entidades.PacDot;
 import Entidades.Pared;
 import Entidades.PowerPellet;
 import Entidades.Puerta;
 import Entidades.x2Velocidad;
+import Hilos.HiloEnemigo;
+import Laberinto.Laberinto;
+import Laberinto.Zona;
 
 public class Nivel {
 	private int numeroNivel;
@@ -23,14 +28,17 @@ public class Nivel {
 			case 1:
 				movimientoEnemigos = 1000;
 				movimientoJugador = 1250;
+				numeroNivel = 1;
 				break;
 			case 2:
 				movimientoEnemigos = 750;
 				movimientoJugador = 1250;
+				numeroNivel = 2;
 				break;
 			case 3:
 				movimientoEnemigos = 750;
 				movimientoJugador = 1250;
+				numeroNivel = 3;
 				break;
 		}
 	}
@@ -49,66 +57,83 @@ public class Nivel {
 		return movimientoEnemigos;
 	}
 
-	public Entidad[][] GenerarLaberinto(int nivel, Logica logica) {
-		Entidad[][] entidadesEstaticas = new Entidad[21][21];
-		switch(nivel) {
+	public Zona[][] GenerarLaberinto(Logica logica, Enemigo[] enemigos, Jugador personajePrincipal) {
+		Zona[][] entidadesEstaticas = new Zona[21][21];
+		switch(numeroNivel) {
 		case 1 :
-			entidadesEstaticas = generarNivelUno(logica);
+			entidadesEstaticas = generarNivel(logica, "Laberinto_11.txt", enemigos, personajePrincipal);
 			break;
 			
 		case 2:
-			entidadesEstaticas = generarNivelDos(logica);
+			entidadesEstaticas = generarNivel(logica, "Laberinto_22.txt", enemigos, personajePrincipal);
 			break;
 			
 		case 3:
-			entidadesEstaticas = generarNivelTres(logica);
+			entidadesEstaticas = generarNivel(logica, "Laberinto_33.txt", enemigos, personajePrincipal);
 			break;
 		}
 		return entidadesEstaticas;		
 	}
 
-	private Entidad[][] generarNivelUno(Logica logica) {
-		Entidad[][] entidadesEstaticas = new Entidad[21][21];
+	private Zona[][] generarNivel(Logica logica, String direccion, Enemigo[] enemigos, Jugador personajePrincipal) {
+		Zona[][] entidadesEstaticas = new Zona[21][21];
 		try{
-			File arch = new File("Laberinto_11.txt");
+			File arch = new File(direccion);
 			
 			BufferedReader archiv = new BufferedReader(new FileReader(arch));
 		
 			String linea;
+			Entidad entidad = null;
 			for(int i = 0; i < 21; i++) {
 				linea = archiv.readLine();
 				for(int j = 0; j < linea.length(); j++) {
 					char caracter = linea.charAt(j);
+					entidadesEstaticas[i][j]= new Zona(i*25,j*25);
 	
 					switch(caracter) {
 						case 'P':
-							entidadesEstaticas[i][j] = new Pared(i*25, j*25);
-							break;
-						case 'M':
-							entidadesEstaticas[i][j] = new PacDot(i*25, j*25, logica);
-							break;
-						case 'W':
-							entidadesEstaticas[i][j] = new PowerPellet(i*25, j*25, logica);
-							break;
-						case 'F':
-							entidadesEstaticas[i][j] = new Fruta(i*25, j*25, logica);
-							break;
-						case 'I':
-							entidadesEstaticas[i][j] = new Inmunidad(i*25, j*25, logica);
-							break;
-						case 'B':
-							entidadesEstaticas[i][j] = new Bomba(i*25, j*25, logica);
-							break;
-						case 'V':
-							entidadesEstaticas[i][j] = new x2Velocidad(i*25, j*25, logica);
+							entidad = new Pared(i*25, j*25);
 							break;
 						case ' ':
-							entidadesEstaticas[i][j] = new PacDot(i*25, j*25, logica);
+						case 'M':
+							entidad = new PacDot(i*25, j*25, logica);
+							break;
+						case 'W':
+							entidad = new PowerPellet(i*25, j*25, logica);
+							break;
+						case 'F':
+							entidad = new Fruta(i*25, j*25, logica);
+							break;
+						case 'I':
+							entidad = new Inmunidad(i*25, j*25, logica);
+							break;
+						case 'B':
+							entidad = new Bomba(i*25, j*25, logica);
+							break;
+						case 'V':
+							entidad = new x2Velocidad(i*25, j*25, logica);
 							break;
 						case 'D':
-							entidadesEstaticas[i][j] = new Puerta(i*25, j*25);
+							entidad = new Puerta(i*25, j*25);
 							break;
-					}				
+						case '1':
+							entidad = enemigos[0];
+							break;
+						case '2':
+							entidad = enemigos[1];
+							break;
+						case '3':
+							entidad = enemigos[2];
+							break;
+						case '4':
+							entidad = enemigos[3];
+							break;
+						case 'J':
+							entidad = personajePrincipal;
+							break;
+					}	
+					entidadesEstaticas[i][j].enlistarEntidad(entidad);
+					logica.enlistarEntidadGrafica(entidad);
 				}
 			}
 			archiv.close();

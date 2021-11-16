@@ -24,7 +24,6 @@ public class Blinky extends Enemigo{
 		estadoActual = estados[3];
 		puedeCaminar = true;
 		miLaberinto = milaberinto;
-		miLaberinto.incorporarEntidad(this);
 		jugador = personajePrincipal;
 		this.juego = miJuego;
 		hiloEnemigo.set(this);

@@ -74,7 +74,6 @@ public class GUI extends JFrame {
 		contentPane.add(lblVidasNumero);
 		
 		logica.iniciarLogica(this);
-		logica.avisarActualizacionLaberintoGrafico();
 		
 		
 		KeyListener eventoTeclado = new KeyListener() {

@@ -17,35 +17,6 @@ public class Laberinto {
 	
 	protected Zona[][] zonas;
 	
-	public Laberinto(Logica juego) {
-		
-		this.zonas = new Zona[21][21];
-		
-		generarMatrizZonas();
-	}
-	
-	
-	private void generarMatrizZonas() {
-		int posx;
-		int posy;
-		
-		posx = 0;
-		posy = 0;
-				
-		for(int i = 0; i<21 ; i++) {
-			
-			posy = 0;
-			for(int j = 0; j<21 ; j++) {
-				zonas[i][j] = new Zona(posx,posy);
-				
-				posy += 25;
-			}
-			
-			posx += 25;
-		}
-		
-	}
-	
 	public void chequearObjetoPosicion(int[] posicion) {
 		
 	}
@@ -71,15 +42,6 @@ public class Laberinto {
 		return posicion / 25;
 	}
 	
-	public ListaSimplementeEnlazada<Entidad>[][] recuperarEntidades() {
-		ListaSimplementeEnlazada<Entidad>[][] entidades =  new ListaSimplementeEnlazada [21][21];
-		
-		for(int i = 0; i < 21; i++)
-			for(int j = 0; j < 21; j++)
-				entidades[i][j] = zonas[i][j].getListaEntidades();
-		
-		return entidades;
-	}
 	
 	
 	private Rectangle calcularRectanguloHipotetico(Posicion pos, int velocidad, char direccion) {
@@ -256,14 +218,8 @@ public class Laberinto {
 		zonas[posY][posX].desenlistarEntidad(e);
 	}
 	
-	public void agregarObjetosLaberinto(Entidad[][] entidades) {
-
-        for(int i = 0; i<21 ; i++) {
-                for(int j = 0; j<21 ; j++) {
-
-                    zonas[i][j].enlistarEntidad(entidades[i][j]);
-                }
-         }
+	public void establecerNivel(Zona[][] zonas2) {
+		zonas = zonas2;
 	}
 	
 	

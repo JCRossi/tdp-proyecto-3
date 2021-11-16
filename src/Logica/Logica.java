@@ -1,6 +1,9 @@
 package Logica;
 
 import Laberinto.*;
+
+import javax.swing.JLabel;
+
 import Entidades.*;
 import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
@@ -38,7 +41,7 @@ public class Logica {
 	
 	public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
-		laberinto = new Laberinto(this);
+		laberinto = new Laberinto();
 		
 		personajePrincipal = new Jugador(250, 350,'r',laberinto, this,tematica.getImagenesPacman());
 
@@ -55,7 +58,11 @@ public class Logica {
 	
 	public void generarNivel(int numero) {
 		nivel = new Nivel(numero);
-		laberinto.agregarObjetosLaberinto(nivel.GenerarLaberinto(numero, this));
+		laberinto.establecerNivel(nivel.GenerarLaberinto(this, enemigos, personajePrincipal));
+	}
+	
+	public void establecerPersonajePrincipal(Jugador personajeP) {
+		personajePrincipal = personajeP;
 	}
 	
 	public void cambiarEstados(char efecto) {
@@ -106,16 +113,8 @@ public class Logica {
 		avisarActualizacionPuntajeGrafico(puntajePartida.obtenerPuntaje());
 	}
 	
-	public void avisarActualizacionLaberintoGrafico() {
-		ListaSimplementeEnlazada<Entidad>[][] entidades = laberinto.recuperarEntidades();
-		for(int i = 0; i < 21; i++)
-			for(int j = 0; j < 21; j++)
-				try {
-					if(entidades[i][j].size()!=0)
-						interfaz.agregarEntidad(entidades[i][j].first().element().getEntidadGrafica());
-				} catch (EmptyListException e) {
-					e.printStackTrace();
-				}
+	public void enlistarEntidadGrafica(Entidad entidad) {
+		interfaz.agregarEntidad(entidad.getEntidadGrafica());
 	}
 	
 	public void avisarActualizacionJugadorGrafico() {

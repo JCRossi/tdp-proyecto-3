@@ -34,7 +34,6 @@ public class Jugador extends Personaje {
 		estadoActual = estados[0];
 		puedeCaminar = true;
 		miLaberinto = milaberinto;
-		miLaberinto.incorporarEntidad(this);
 		juego = juegoActual;
 		vidas = 2;
 		
