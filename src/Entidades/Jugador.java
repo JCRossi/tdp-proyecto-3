@@ -96,7 +96,7 @@ public class Jugador extends Personaje {
 		if(condicion) {
 			pos.setX(250);
 			pos.setY(350);
-			//Actualizar pos grafica
+			this.actualizarPosGrafica();
 			//Setear a los enemigos en la casa
 		}
 		else {
@@ -124,8 +124,10 @@ public class Jugador extends Personaje {
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
-		if(this.getEstado() == 'n' || this.getEstado() == 'r') {
-			if(personaje.getEstado() == 'p') {
+		char estadoEnemigo = personaje.getEstado();
+		char estadoJugador = estadoActual.estadoActual();
+		if(estadoJugador == 'n' || estadoJugador == 'r') {
+			if(estadoEnemigo == 'p' || estadoEnemigo == 'i') {
 				this.morir();
 				//Resetear nivel pero sin los objetos consumidos
 			}

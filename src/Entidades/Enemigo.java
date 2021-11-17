@@ -20,8 +20,13 @@ public abstract class Enemigo extends Personaje{
 			int posX = pos.getX();
 			int posY = pos.getY();
 			int timer = 0;
+			char estado = estadoActual.estadoActual();
+			System.out.println(estado + " pos x: " + posX + " pos y:" + posY);
+			if(posX/25 == 10  && posY/25  == 10  && estado=='m') {
+				cambiarEstado(3);
+			}
 			
-			if(posX/25 == posicionInicialX/25  && posY/25  == posicionInicialY/25  && estadoActual.estadoActual()=='i') {
+			if(posX/25 == posicionInicialX/25  && posY/25  == posicionInicialY/25  && estado=='i') {
 				cambiarEstado(0);
 			}
 			
@@ -152,7 +157,8 @@ public abstract class Enemigo extends Personaje{
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		if(this.getEstado() == 'p' && personaje.getEstado() == 'n') {
+		char estado = estadoActual.estadoActual();
+		if((estado == 'p' || estado == 'i') && personaje.getEstado() == 'n' ) {
 			personaje.morir();
 			//Resetear nivel pero sin los objetos ya consumidos
 		}
