@@ -2,6 +2,8 @@ package GUI;
 
 public abstract class Tematica {
 	
+	public abstract String pathDeMusica();
+	
 	public abstract String[] getImagenesPacman();
 	public abstract String[] getImagenesFantasma1();
 	public abstract String[] getImagenesFantasma2();

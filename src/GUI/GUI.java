@@ -1,21 +1,24 @@
 package GUI;
 
-import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import Entidades.Pared;
 import Logica.Logica;
+import Musica.PlayMusic;
 
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame {
 
@@ -29,7 +32,7 @@ public class GUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI(Logica logica) {
+	public GUI(Logica logica,String pathMusical) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 656, 564);
 		contentPane = new JPanel();
@@ -72,6 +75,19 @@ public class GUI extends JFrame {
 		lblVidasNumero.setForeground(Color.WHITE);
 		lblVidasNumero.setBounds(568, 135, 46, 14);
 		contentPane.add(lblVidasNumero);
+		
+		File archivo = new File(pathMusical);
+		PlayMusic p = new PlayMusic(archivo);
+		
+		JButton btnNewButton = new JButton("BOTON MUSICA");
+		btnNewButton.setFocusable(false);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p.activarYDesactivar();
+			}
+		});
+		btnNewButton.setBounds(561, 475, 46, 39);
+		contentPane.add(btnNewButton);
 		
 		logica.iniciarLogica(this);
 		

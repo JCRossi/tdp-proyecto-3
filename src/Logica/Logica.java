@@ -24,15 +24,12 @@ public class Logica {
 	private HiloEnemigo hiloEnemigos;
 	private Tematica tematica;
 	
-	public Logica() { //Lo que hacia el constructor ahora lo hace iniciarLogica() pq necesito crear una logica antes de crear la gui
-		//personajePrincipal = new Jugador();
-		/*enemigos[0] = new Blinky();
-		 *enemigos[1] = new Inky();
-		 *enemigos[2] = new Pinky();
-		 *enemigos[3] = new Clyde();
-		 */
-		
-		
+	public Logica() { 
+		laberinto = new Laberinto();
+		hiloEnemigos = new HiloEnemigo();
+		hilo = new Thread(this.hiloEnemigos);
+		enemigos = new Enemigo[1];
+		puntajePartida = new Puntaje();
 	}
 	
 	public void setTematica(Tematica t) {
@@ -63,17 +60,12 @@ public class Logica {
 	
 	public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
-		laberinto = new Laberinto();
 		
 		personajePrincipal = new Jugador(250, 350,'r',laberinto, this,tematica.getImagenesPacman());
-
-		
-		hiloEnemigos = new HiloEnemigo();
-		hilo = new Thread(this.hiloEnemigos);
-		enemigos = new Enemigo[1];
-		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
-		puntajePartida = new Puntaje();
 		avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
+		
+		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
+		
 		nivel = new Nivel(1);
 		generarNivel(nivel.getNumeroNivel());
 		hilo.start();

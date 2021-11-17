@@ -66,5 +66,10 @@ public class TematicaParte2 extends Tematica {
 	public String[] getImagenBomba() {
 		return new String[] {"/images/bomb25px.gif","/images/explosion.gif"};
 	}
+	
+	@Override
+	public String pathDeMusica() {
+		return "src/Musica/parte2.wav";
+	}
 
 }

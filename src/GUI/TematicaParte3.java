@@ -1,5 +1,7 @@
 package GUI;
 
+
+
 public class TematicaParte3 extends Tematica {
 
 	@Override
@@ -65,6 +67,11 @@ public class TematicaParte3 extends Tematica {
 	@Override
 	public String[] getImagenBomba() {
 		return new String[] {"/images/bomb25px.gif","/images/explosion.gif"};
+	}
+
+	@Override
+	public String pathDeMusica() {
+		return "src/Musica/Tetris.wav";
 	}
 	
 	

@@ -33,8 +33,9 @@ public class SeleccionTematica extends JFrame {
 		JButton btnNewButton = new JButton("Parte 2");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				juego.setTematica(new TematicaParte2()); 
-				GUI frame = new GUI(juego);
+				Tematica tem = new TematicaParte2();
+				juego.setTematica(tem); 
+				GUI frame = new GUI(juego,tem.pathDeMusica());
 				frame.setVisible(true);
 				
 			}
@@ -45,8 +46,9 @@ public class SeleccionTematica extends JFrame {
 		JButton btnNewButton_1 = new JButton("Parte 3");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				juego.setTematica(new TematicaParte3()); 
-				GUI frame = new GUI(juego);
+				Tematica tem = new TematicaParte3();
+				juego.setTematica(tem); 
+				GUI frame = new GUI(juego,tem.pathDeMusica());
 				frame.setVisible(true);
 			}
 		});
