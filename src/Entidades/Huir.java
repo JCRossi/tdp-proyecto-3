@@ -2,6 +2,11 @@ package Entidades;
 
 public class Huir implements EstadoEnemigo {
 
+	Posicion posJugador;
+	
+	public Huir(Posicion pos) {
+		posJugador = pos;
+	}
 	@Override
 	public int getMovimiento() {
 		// TODO Auto-generated method stub
@@ -15,9 +20,9 @@ public class Huir implements EstadoEnemigo {
 	}
 
 	@Override
-	public char[] calcularProximaPosicion(int posX, int posY, Posicion pos) {
-		int movVertical = pos.getY() - posY;
-		int movHorizontal = pos.getX() - posX;
+	public char[] calcularProximaPosicion(Posicion pos) {
+		int movVertical = pos.getY() - posJugador.getY();
+		int movHorizontal = pos.getX() - posJugador.getX();
 		char[] prioridades = new char[4];
 		if(Math.abs(movVertical) >= Math.abs(movHorizontal)) {
 			if (movVertical > 0) {

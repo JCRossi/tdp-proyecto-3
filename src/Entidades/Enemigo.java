@@ -9,7 +9,6 @@ import Estructuras.Position;
 public abstract class Enemigo extends Personaje{
 
 	protected EstadoEnemigo estadoActual;
-	protected Jugador jugador;
 	protected int[] ultimaZona;
 	protected int posicionInicialX;
 	protected int posicionInicialY;
@@ -65,22 +64,7 @@ public abstract class Enemigo extends Personaje{
 	private void actualizarDireccion() {
 		int posObjetivoX = 0;
 		int posObjetivoY = 0;
-		switch(estadoActual.estadoActual()) {
-		case 'h':
-		case 'p':
-			posObjetivoX = jugador.getPosicion().getX();
-			posObjetivoY = jugador.getPosicion().getY();
-			break;
-		case 'm':
-			posObjetivoX = 250;
-			posObjetivoY = 250; 
-			break;
-		case 'i':
-			posObjetivoX = posicionInicialX;
-			posObjetivoY = posicionInicialY;
-			break;
-		}
-		char[] prioridadDireccion = estadoActual.calcularProximaPosicion(posObjetivoX,posObjetivoY, pos);
+		char[] prioridadDireccion = estadoActual.calcularProximaPosicion(pos);
 		puedeCaminar = false;
 		boolean esVuelta = true;
 		int i = 0;

@@ -16,12 +16,12 @@ public class TematicaParte3 extends Tematica {
 
 	@Override
 	public String[] getImagenesFantasma2() {
-		return new String[] {"/images/enemigo_muerto.gif","/images/enya_arriba.gif","/images/enya_derecha.gif","/images/enya_abajo.gif","/images/enya_izquierda.gif","/images/enya_arriba_huyendo.gif","/images/enya_derecha_huyendo.gif","/images/enya_abajo_huyendo.gif","/images/enya_izquierda_huyendo.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Pinky/normal/enya_arriba.png","/images/Pinky/normal/enya_derecha.png","/images/Pinky/normal/enya_abajo.png","/images/Pinky/normal/enya_izquierda.png","/images/Pinky/vulnerable/enya_arriba_huyendo.png","/images/Pinky/vulnerable/enya_derecha_huyendo.png","/images/Pinky/vulnerable/enya_abajo_huyendo.png","/images/Pinky/vulnerable/enya_izquierda_huyendo.png"};
 	}
 
 	@Override
 	public String[] getImagenesFantasma3() {
-		return new String[] {"/images/enemigo_muerto.gif","/images/hol_arriba.gif","/images/hol_derecha.gif","/images/hol_abajo.gif","/images/hol_izquierda.gif","/images/hol_arriba_huyendo.gif","/images/hol_derecha_huyendo.gif","/images/hol_abajo_huyendo.gif","/images/hol_izquierda_huyendo.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/hol_arriba.gif","/images/hol_derecha.gif","/images/hol_abajo.gif","/images/hol_izquierda.gif","/images/hol_arriba_huyendo.gif","/images/hol_derecha_huyendo.gif","/images/hol_abajo_huyendo.gif","/images/hol_izquierda_huyendo.gif"};
 	}
 
 	@Override

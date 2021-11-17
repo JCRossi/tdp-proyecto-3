@@ -6,7 +6,7 @@ public interface EstadoEnemigo {
 	
 	int getMovimiento();
 
-	char[] calcularProximaPosicion(int posX, int posY, Posicion pos);
+	char[] calcularProximaPosicion(Posicion pos);
 	
 	public int getIndiceArreglo(char direccion);
 

@@ -28,7 +28,7 @@ public class Logica {
 		laberinto = new Laberinto();
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
-		enemigos = new Enemigo[1];
+		enemigos = new Enemigo[2];
 		puntajePartida = new Puntaje();
 	}
 	
@@ -65,7 +65,7 @@ public class Logica {
 		avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
 		
 		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
-		
+		enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
 		nivel = new Nivel(1);
 		generarNivel(nivel.getNumeroNivel());
 		hilo.start();

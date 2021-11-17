@@ -220,4 +220,8 @@ public class Jugador extends Personaje {
 	public int getVidas() {
 		return vidas;
 	}
+
+	public char getDireccion() {
+		return direccion;
+	}
 }

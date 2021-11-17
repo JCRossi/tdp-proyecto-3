@@ -1,7 +1,13 @@
 package Entidades;
 
 public class Inicio implements EstadoEnemigo {
-
+	private int posicionX;
+	private int posicionY;
+	
+	public Inicio(int x, int y) {
+		posicionX = x;
+		posicionY = y;
+	}
 	@Override
 	public char estadoActual() {
 		return 'i';
@@ -13,15 +19,15 @@ public class Inicio implements EstadoEnemigo {
 	}
 
 	@Override
-	public char[] calcularProximaPosicion(int posX, int posY, Posicion pos) {
+	public char[] calcularProximaPosicion(Posicion pos) {
 		int movVertical = pos.getY();
 		int movHorizontal = pos.getX();
 		char[] prioridades = new char[4];
 		if (movVertical/10 == 25 && movHorizontal/10 == 25) {
 			prioridades[0] = 'u';
 		} else {
-			movVertical -= posY;
-			movHorizontal -= posX;
+			movVertical -= posicionY;
+			movHorizontal -= posicionX;
 			if(Math.abs(movVertical) >= Math.abs(movHorizontal)) {
 				if (movVertical > 0) {
 					prioridades[0] = 'u';
