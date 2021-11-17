@@ -39,7 +39,7 @@ public class Logica {
 		this.tematica = t;
 	}
 	
-	public void iniciarLogica(GUI interfaz) {
+	/*public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
 		laberinto = new Laberinto();
 		
@@ -58,6 +58,29 @@ public class Logica {
 	
 	public void generarNivel(int numero) {
 		nivel = new Nivel(numero);
+		laberinto.establecerNivel(nivel.GenerarLaberinto(this, enemigos, personajePrincipal));
+	}*/
+	
+	public void iniciarLogica(GUI interfaz) {
+		this.interfaz = interfaz;
+		laberinto = new Laberinto();
+		
+		personajePrincipal = new Jugador(250, 350,'r',laberinto, this,tematica.getImagenesPacman());
+
+		
+		hiloEnemigos = new HiloEnemigo();
+		hilo = new Thread(this.hiloEnemigos);
+		enemigos = new Enemigo[1];
+		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
+		puntajePartida = new Puntaje();
+		avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
+		nivel = new Nivel(1);
+		generarNivel(nivel.getNumeroNivel());
+		hilo.start();
+	}
+	
+	public void generarNivel(int numero) {
+		nivel.establecerVelocidadesNivel(numero);
 		laberinto.establecerNivel(nivel.GenerarLaberinto(this, enemigos, personajePrincipal));
 	}
 	
@@ -176,13 +199,33 @@ public class Logica {
 	}
 	
 	//Chequear si se esta en el ultimo nivel o no tambien chequear si pacman perdio todas las vidas cuando muere
-	public boolean chequerFinalizacionJuego(int vidasJugador) {
+	/*public boolean chequearFinalizacionJuego(int vidasJugador) {
 		boolean continuaJuego = true;
 		
 		if(vidasJugador == 0)
 			continuaJuego = false;
 		else
 			avisarActualizacionVidaGrafica(vidasJugador);
+		
+		return continuaJuego;
+	}*/
+	
+	public boolean chequearFinalizacionJuego(int condicionDeLlamado) {
+		boolean continuaJuego = true;
+		boolean cambiarNivel = false;
+		
+		switch(condicionDeLlamado) {
+			case 1:
+				if(personajePrincipal.getVidas() == 0)
+					continuaJuego = false;
+				else
+					avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
+				break;
+			case 2:
+				if(nivel.obtenerCantidadPacDots() == 0)
+					generarNivel(nivel.getNumeroNivel());
+				break;
+		}
 		
 		return continuaJuego;
 	}
@@ -203,4 +246,8 @@ public class Logica {
 		interfaz.quitarEntidad(entGrafica);	
 	}
 	
+	public void seComioPacDot() {
+		nivel.decrementarCantidadPacDots();
+		chequearFinalizacionJuego(2);
+	}
 }

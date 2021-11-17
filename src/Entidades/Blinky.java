@@ -34,7 +34,7 @@ public class Blinky extends Enemigo{
 	public void cambiarEstado(int estado) {
 		if(estadoActual != estados[2])
 			estadoActual = estados[estado];
-		//Falta cambiar la EntidadGrafica correspondiente al estado
+		
 		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
 	}
 	

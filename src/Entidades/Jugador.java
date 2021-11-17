@@ -90,7 +90,8 @@ public class Jugador extends Personaje {
 		
 		System.out.println("MURIO EL PJ");
 		vidas--;
-		condicion = juego.chequerFinalizacionJuego(vidas);
+		//condicion = juego.chequearFinalizacionJuego(vidas);
+		condicion = juego.chequearFinalizacionJuego(1);
 		
 		if(condicion) {
 			pos.setX(250);

@@ -23,7 +23,37 @@ public class Nivel {
 	private int numeroNivel;
 	private long movimientoEnemigos;
 	private long movimientoJugador;
+	private int cantPacDots;
+	
+	/*public Nivel(int numNivel) {
+		switch(numNivel) {
+			case 1:
+				movimientoEnemigos = 1000;
+				movimientoJugador = 1250;
+				numeroNivel = 1;
+				break;
+			case 2:
+				movimientoEnemigos = 750;
+				movimientoJugador = 1250;
+				numeroNivel = 2;
+				break;
+			case 3:
+				movimientoEnemigos = 750;
+				movimientoJugador = 1250;
+				numeroNivel = 3;
+				break;
+		}
+		
+		cantPacDots = 0;
+	}*/
+	
+	
 	public Nivel(int numNivel) {
+		numeroNivel = numNivel;
+		cantPacDots = 0;
+	}
+	
+	public void establecerVelocidadesNivel(int numNivel) {
 		switch(numNivel) {
 			case 1:
 				movimientoEnemigos = 1000;
@@ -42,8 +72,6 @@ public class Nivel {
 				break;
 		}
 	}
-	
-	
 	
 	public int getNumeroNivel() {
 		return numeroNivel;
@@ -77,13 +105,15 @@ public class Nivel {
 
 	private Zona[][] generarNivel(Logica logica, String direccion, Enemigo[] enemigos, Jugador personajePrincipal) {
 		Zona[][] entidadesEstaticas = new Zona[21][21];
+		boolean enlistar = true;
+		Entidad entidad = null;
+		
 		try{
 			File arch = new File(direccion);
 			
 			BufferedReader archiv = new BufferedReader(new FileReader(arch));
 		
 			String linea;
-			Entidad entidad = null;
 			for(int i = 0; i < 21; i++) {
 				linea = archiv.readLine();
 				for(int j = 0; j < linea.length(); j++) {
@@ -93,47 +123,66 @@ public class Nivel {
 					switch(caracter) {
 						case 'P':
 							entidad = new Pared(i*25, j*25);
+							enlistar = true;
 							break;
 						case ' ':
+							enlistar = false;
+							break;
 						case 'M':
 							entidad = new PacDot(i*25, j*25, logica);
+							cantPacDots++;
+							enlistar = true;
 							break;
 						case 'W':
 							entidad = new PowerPellet(i*25, j*25, logica);
+							enlistar = true;
 							break;
 						case 'F':
 							entidad = new Fruta(i*25, j*25, logica);
+							enlistar = true;
 							break;
 						case 'I':
 							entidad = new Inmunidad(i*25, j*25, logica);
+							enlistar = true;
 							break;
 						case 'B':
 							entidad = new Bomba(i*25, j*25, logica);
+							enlistar = true;
 							break;
 						case 'V':
 							entidad = new x2Velocidad(i*25, j*25, logica);
+							enlistar = true;
 							break;
 						case 'D':
 							entidad = new Puerta(i*25, j*25);
+							enlistar = true;
 							break;
 						case '1':
 							entidad = enemigos[0];
+							enlistar = true;
 							break;
 						case '2':
 							entidad = enemigos[1];
+							enlistar = true;
 							break;
 						case '3':
 							entidad = enemigos[2];
+							enlistar = true;
 							break;
 						case '4':
 							entidad = enemigos[3];
+							enlistar = true;
 							break;
 						case 'J':
 							entidad = personajePrincipal;
+							enlistar = true;
 							break;
 					}	
-					entidadesEstaticas[i][j].enlistarEntidad(entidad);
-					logica.enlistarEntidadGrafica(entidad);
+					
+					if(enlistar) {
+						entidadesEstaticas[i][j].enlistarEntidad(entidad);
+						logica.enlistarEntidadGrafica(entidad);
+					}
 				}
 			}
 			archiv.close();
@@ -159,6 +208,11 @@ public class Nivel {
 	}
 
 
-
-
+	public void decrementarCantidadPacDots() {
+		cantPacDots--;
+	}
+	
+	public int obtenerCantidadPacDots() {
+		return cantPacDots;
+	}
 }

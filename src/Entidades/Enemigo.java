@@ -19,10 +19,12 @@ public abstract class Enemigo extends Personaje{
 	public void mover() {
 			int posX = pos.getX();
 			int posY = pos.getY();
-
+			int timer = 0;
+			
 			if(posX/25 == posicionInicialX/25  && posY/25  == posicionInicialY/25  && estadoActual.estadoActual()=='i') {
 				cambiarEstado(0);
 			}
+			
 			if(posX%25>=0 && posX%25<=2 && posY%25>=0 && posY%25<=2 && (ultimaZona[0]!=posX/25 || ultimaZona[1]!=posY/25)) {
 				actualizarDireccion();
 				ultimaZona[0] = posX/25;
@@ -137,7 +139,7 @@ public abstract class Enemigo extends Personaje{
 	}
 
 	@Override
-	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
+	public void morir() {
 		System.out.println("MURIO UN ENEMIGO");
 		this.cambiarEstado(2);
 		//juego.quitarEntidadGrafica(this.getEntidadGrafica());

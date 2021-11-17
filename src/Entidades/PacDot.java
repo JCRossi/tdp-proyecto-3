@@ -28,6 +28,7 @@ public class PacDot extends Consumible {
 	@Override
 	public void serComido() {
 		juego.actualizarPuntaje(puntaje);
+		//juego.seComioPacDot();
 	}
 
 }
