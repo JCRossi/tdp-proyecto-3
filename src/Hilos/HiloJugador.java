@@ -33,7 +33,9 @@ public class HiloJugador implements Runnable {
 			
 	}
 		
-
+	public void frenar() {
+		continuar = false;
+	}
 	
 	private void avisarMovimientoJugador() {
 		miJugador.mover();

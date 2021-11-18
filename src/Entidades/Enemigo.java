@@ -138,9 +138,8 @@ public abstract class Enemigo extends Personaje{
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
 		char estado = estadoActual.estadoActual();
-		if((estado == 'p' || estado == 'i') && personaje.getEstado() == 'n' ) {
+		if((estado == 'p' || estado == 'i') && (personaje.getEstado() == 'n' || personaje.getEstado() == 'r')) {
 			personaje.morir();
-			//Resetear nivel pero sin los objetos ya consumidos
 		}
 		
 		if(this.getEstado() == 'h') {

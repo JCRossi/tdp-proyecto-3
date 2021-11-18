@@ -204,26 +204,36 @@ public class Logica {
 	
 	public boolean chequearFinalizacionJuego(int condicionDeLlamado) {
 		boolean continuaJuego = true;
-		boolean cambiarNivel = false;
 		
 		switch(condicionDeLlamado) {
 			case 1:
 				if(personajePrincipal.getVidas() == 0)
 					continuaJuego = false;
-				else
-					avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
+				
+				avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
 				break;
 			case 2:
 				if(nivel.obtenerCantidadPacDots() == 0)
-					generarNivel(nivel.getNumeroNivel());
+					if(nivel.getNumeroNivel() < 3)
+						generarNivel(nivel.getNumeroNivel() + 1);
+					else
+						finalizarJuego(2);
 				break;
 		}
 		
 		return continuaJuego;
 	}
 	
-	public void finalizarJuego() {
-		//Avisar finalizacion juego
+	public void finalizarJuego(int condicionDeFinalizacion) {
+		switch(condicionDeFinalizacion) {
+			case 1:
+				hiloEnemigos.frenar();
+				personajePrincipal.obtenerHilo().frenar();
+				break;
+			case 2:
+				//Gano
+				break;
+		}
 	}
 
 	public void desenlistarEntidad(int posX, int posY, Entidad entidad) {
@@ -242,8 +252,6 @@ public class Logica {
 		nivel.decrementarCantidadPacDots();
 		chequearFinalizacionJuego(2);
 	}
-	
-	
 	
 	public void reseteoEnNivel() {
 		

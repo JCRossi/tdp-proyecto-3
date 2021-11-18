@@ -93,7 +93,7 @@ public class Jugador extends Personaje {
 			//Setear a los enemigos en la casa
 		}
 		else {
-			juego.finalizarJuego();
+			juego.finalizarJuego(1);
 		}
 		
 		//juego.quitarEntidadGrafica(this.getEntidadGrafica());
@@ -122,7 +122,6 @@ public class Jugador extends Personaje {
 		if(estadoJugador == 'n' || estadoJugador == 'r') {
 			if(estadoEnemigo == 'p' || estadoEnemigo == 'i') {
 				this.morir();
-				//Resetear nivel pero sin los objetos consumidos
 			}
 		}
 		
@@ -222,5 +221,9 @@ public class Jugador extends Personaje {
 	
 	public void setPuedeCaminar(boolean b) {
 		puedeCaminar = b;
+	}
+	
+	public HiloJugador obtenerHilo() {
+		return hiloMovimiento;
 	}
 }

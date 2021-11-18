@@ -37,7 +37,7 @@ public class SeleccionTematica extends JFrame {
 				juego.setTematica(tem); 
 				GUI frame = new GUI(juego,tem.pathDeMusica());
 				frame.setVisible(true);
-				
+				setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(44, 119, 89, 23);
@@ -50,6 +50,7 @@ public class SeleccionTematica extends JFrame {
 				juego.setTematica(tem); 
 				GUI frame = new GUI(juego,tem.pathDeMusica());
 				frame.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnNewButton_1.setBounds(356, 119, 89, 23);
