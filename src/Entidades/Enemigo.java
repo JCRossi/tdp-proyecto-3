@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.LinkedHashSet;
+
 import Estructuras.BoundaryViolationException;
 import Estructuras.EmptyListException;
 import Estructuras.InvalidPositionException;
@@ -12,13 +14,14 @@ public abstract class Enemigo extends Personaje{
 	protected int[] ultimaZona;
 	protected int posicionInicialX;
 	protected int posicionInicialY;
+	protected boolean debeFrenar;
 	
 	
 	@Override
-	public void mover() {
+	public synchronized void mover() {
+		if(!debeFrenar) {
 			int posX = pos.getX();
 			int posY = pos.getY();
-			int timer = 0;
 			char estado = estadoActual.estadoActual();
 			System.out.println(estado + " pos x: " + posX + " pos y:" + posY);
 			if(posX/25 == 10  && posY/25  == 10  && estado=='m') {
@@ -34,7 +37,7 @@ public abstract class Enemigo extends Personaje{
 				ultimaZona[0] = posX/25;
 				ultimaZona[1] = posY/25;
 			} else {
-				ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
+				LinkedHashSet<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
 				procesarColisiones(listaEntidadesColision);
 			}
 			
@@ -43,21 +46,14 @@ public abstract class Enemigo extends Personaje{
 			actualizarPosGrafica();
 			entGrafica.actualizarImagen(estadoActual.getIndiceArreglo(direccion), pos); //////////
 	}
+	}
 
-	private void procesarColisiones(ListaSimplementeEnlazada<Entidad> listaEntidadesColision) {
-		Position<Entidad> actualLeida = null;
-		try {
-			if(!listaEntidadesColision.isEmpty()) {
-				actualLeida = listaEntidadesColision.first();
-				colision(actualLeida.element());
-				while (actualLeida != listaEntidadesColision.last()) {
-					actualLeida = listaEntidadesColision.next(actualLeida);
-					colision(actualLeida.element());
-				}	
+	private void procesarColisiones(LinkedHashSet<Entidad> listaEntidadesColision) {
+		if(!listaEntidadesColision.isEmpty()) {
+			for(Entidad e : listaEntidadesColision) {
+				colision(e);
 			}
-		
-		} catch(EmptyListException | InvalidPositionException | BoundaryViolationException exc) {
-			exc.printStackTrace();
+			
 		}
 	}
 
@@ -154,7 +150,7 @@ public abstract class Enemigo extends Personaje{
 		return false;
 	}
 
-	public ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc, int mov) {
+	public LinkedHashSet<Entidad> chequearMovimiento(char direc, int mov) {
 		return miLaberinto.chequearColision(pos, mov, direc);
 	}
 
@@ -202,6 +198,17 @@ public abstract class Enemigo extends Personaje{
 	
 	}
 	}
+	
+	
+	public abstract void reseteo(int posX, int posY, char direc);
 
 	public abstract void cambiarEstado(int estado);
+	
+	public boolean getDebeFrenar() {
+		return debeFrenar;
+	}
+	
+	public void setDebeFrenar(boolean b) {
+		debeFrenar = b;
+	}
 }

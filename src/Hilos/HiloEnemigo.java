@@ -10,9 +10,11 @@ public class HiloEnemigo implements Runnable {
 	private long intervaloDeMovimiento;
 	private boolean continuar;
 	private ListaSimplementeEnlazada<Enemigo> enemigos;
+	private boolean existe;
 	
 	public HiloEnemigo() {
 		this.continuar = true;
+		existe = true;
 		intervaloDeMovimiento = intervaloDeMovimientoNivelUno;
 		enemigos = new ListaSimplementeEnlazada<Enemigo>();
 	}
@@ -20,15 +22,38 @@ public class HiloEnemigo implements Runnable {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(3000);
-			while(this.continuar) {
-				
-				Thread.sleep(this.intervaloDeMovimiento);	
-				avisarMovimientoEnemigos();	
+			while(getExiste()) {
+				if(this.getContinuar()) {
+					Thread.sleep(3000);
+					while(this.getContinuar()) {
+						
+						Thread.sleep(this.intervaloDeMovimiento);	
+						avisarMovimientoEnemigos();
+					}	
+				}
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void frenar() {
+		continuar = false;
+	}
+	
+	public void continuar() {
+		continuar = true;
+	}
+	
+	public void eliminar() {
+		existe = false;
+	}
+	
+	public boolean getContinuar() {
+		return continuar;
+	}
+	public boolean getExiste(){
+		return existe;
 	}
 
 	

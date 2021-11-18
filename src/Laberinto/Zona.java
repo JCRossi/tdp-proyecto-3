@@ -43,13 +43,13 @@ public class Zona {
 	}
 	
 	//REEMPLAZAR ListaSimplementeEnlazada POR HASHSET<ENTIDAD>
-	public void checkearColisiones (Rectangle R, ListaSimplementeEnlazada<Entidad> lista){
+	public void checkearColisiones (Rectangle R, LinkedHashSet<Entidad> lista){
         Rectangle rectanguloActual;
         for(Entidad e : listaEntidades) {
         	if (e!=null) {
         		rectanguloActual = e.getPosicion().getRectangulo();
                 if (R.intersects(rectanguloActual))
-                    lista.addLast(e);
+                    lista.add(e);
         	}
         		
         }

@@ -1,6 +1,7 @@
 package Entidades;
 
 import java.awt.Rectangle;
+import java.util.LinkedHashSet;
 
 import Estructuras.BoundaryViolationException;
 import Estructuras.EmptyListException;
@@ -18,7 +19,6 @@ public class Jugador extends Personaje {
 	private Thread hilo;
 	private HiloJugador hiloMovimiento;
 	private int cantBombas;
-	private boolean powerUp;
 	private int vidas;
 	private char direccionProhibida;
 	
@@ -36,13 +36,11 @@ public class Jugador extends Personaje {
 		puedeCaminar = true;
 		miLaberinto = milaberinto;
 		juego = juegoActual;
-		vidas = 2;
+		vidas = 3;
 		
 		hiloMovimiento = new HiloJugador(this);
 		hilo = new Thread(this.hiloMovimiento);
 	
-		powerUp = false;
-
 		hilo.start();
 
 	}
@@ -52,28 +50,22 @@ public class Jugador extends Personaje {
 		
 		
 		if(puedeCaminar && (this.direccion != this.direccionProhibida)) {
-			ListaSimplementeEnlazada<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
+			LinkedHashSet<Entidad> listaEntidadesColision = chequearMovimiento(direccion, estadoActual.getMovimiento());
 		
-		Position<Entidad> actualLeida = null;
-		try {
-			if(!listaEntidadesColision.isEmpty()) {
-				actualLeida = listaEntidadesColision.first();
-				colision(actualLeida.element());
-				while (actualLeida != listaEntidadesColision.last()) {
-					actualLeida = listaEntidadesColision.next(actualLeida);
-					colision(actualLeida.element());
-				}	
+		if(!listaEntidadesColision.isEmpty()) {
+			
+			for(Entidad e: listaEntidadesColision) {
+				colision(e);
 			}
-			if(puedeCaminar) {
-				actualizarPos();
-				actualizarPosGrafica();
-			}
-		
-			miLaberinto.desenlistarYEnlistarPersonaje(pos, direccion, estadoActual.getMovimiento(), this);
-			this.direccionProhibida = 'ñ';//Uso ñ para que luego de moverme se "resetee" la direccion prohibida
-		} catch(EmptyListException | InvalidPositionException | BoundaryViolationException exc) {
-			exc.printStackTrace();
+			
 		}
+		if(puedeCaminar) {
+			actualizarPos();
+			actualizarPosGrafica();
+		}
+
+		miLaberinto.desenlistarYEnlistarPersonaje(pos, direccion, estadoActual.getMovimiento(), this);
+		this.direccionProhibida = 'ñ';//Uso ñ para que luego de moverme se "resetee" la direccion prohibida
 		}
 			
 	}
@@ -87,6 +79,8 @@ public class Jugador extends Personaje {
 	//Son correctos los llamados a la Logica?
 	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
 		boolean condicion = false;
+		//puedeCaminar = false;
+		//estadoActual = estados[2]; //Cambio al estado Inmune momentaneamente para evitar que otro enemigo lo dañe
 		
 		System.out.println("MURIO EL PJ");
 		vidas--;
@@ -94,9 +88,8 @@ public class Jugador extends Personaje {
 		condicion = juego.chequearFinalizacionJuego(1);
 		
 		if(condicion) {
-			pos.setX(250);
-			pos.setY(350);
-			this.actualizarPosGrafica();
+			
+			juego.reseteoEnNivel();
 			//Setear a los enemigos en la casa
 		}
 		else {
@@ -118,7 +111,7 @@ public class Jugador extends Personaje {
 	}
 
 	@Override
-	public ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc, int mov) {
+	public LinkedHashSet<Entidad> chequearMovimiento(char direc, int mov) {
 		return miLaberinto.chequearColision(pos, mov, direc);
 	}
 
@@ -200,8 +193,6 @@ public class Jugador extends Personaje {
 	public void cambiarEstado(int estado) {
 		estadoActual = estados[estado];
 		
-		powerUp = true;
-		
 		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
 	}
 	
@@ -223,5 +214,13 @@ public class Jugador extends Personaje {
 
 	public char getDireccion() {
 		return direccion;
+	}
+	
+	public void setDireccion(char dir) {
+		direccion = dir;
+	}
+	
+	public void setPuedeCaminar(boolean b) {
+		puedeCaminar = b;
 	}
 }

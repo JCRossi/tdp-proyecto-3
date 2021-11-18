@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.LinkedHashSet;
+
 import Estructuras.ListaSimplementeEnlazada;
 import Laberinto.Laberinto;
 
@@ -23,6 +25,6 @@ public abstract class Personaje extends Entidad{
 
 	protected abstract void noPuedeCaminar(char c);
 
-	public abstract ListaSimplementeEnlazada<Entidad> chequearMovimiento(char direc, int movimiento);
+	public abstract LinkedHashSet<Entidad> chequearMovimiento(char direc, int movimiento);
 	
 }

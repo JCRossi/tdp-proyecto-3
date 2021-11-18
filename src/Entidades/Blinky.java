@@ -47,7 +47,18 @@ public class Blinky extends Enemigo{
 		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
 	}
 	
-	
+	public void reseteo(int posX, int posY, char direc) {
+		puedeCaminar = false;
+		this.direccion = direc;
+		pos.setX(posX+1);
+		pos.setY(posY+1);
+		ultimaZona[0] = posX/25;
+		ultimaZona[1] = posY/25;
+		estados[3] = new Inicio(posicionInicialX , posicionInicialY);
+		estadoActual = estados[3];
+		entGrafica.actualizarPos(pos);
+		puedeCaminar = true;
+	}
 
 	
 }

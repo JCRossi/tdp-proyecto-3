@@ -242,4 +242,48 @@ public class Logica {
 		nivel.decrementarCantidadPacDots();
 		chequearFinalizacionJuego(2);
 	}
+	
+	
+	
+	public void reseteoEnNivel() {
+		
+		//enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
+		//enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
+		this.hiloEnemigos.frenar();
+		
+		for(Enemigo enemig : enemigos) {
+			enemig.setDebeFrenar(true);
+		}
+		
+	
+		
+		Posicion posJugador = personajePrincipal.getPosicion();
+		this.personajePrincipal.setPuedeCaminar(false);
+		
+		this.personajePrincipal.getEntidadGrafica().actualizarImagen(0, posJugador);
+		
+		try {
+			Thread.sleep(700);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		posJugador.setX(250);
+		posJugador.setY(350);
+		personajePrincipal.setDireccion('r');
+		this.personajePrincipal.getEntidadGrafica().actualizarImagen(2, posJugador);
+		this.personajePrincipal.actualizarPosGrafica();
+		
+		enemigos[0].reseteo(225, 250, 'r');
+		enemigos[1].reseteo(275,250,'l');
+		
+		for(Enemigo enemig : enemigos) {
+			enemig.setDebeFrenar(false);
+		}
+		
+		this.hiloEnemigos.continuar();
+		
+	}
 }

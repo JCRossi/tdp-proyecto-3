@@ -21,8 +21,8 @@ public class Laberinto {
 		
 	}
 	
-	public ListaSimplementeEnlazada<Entidad> chequearColision(Posicion pos, int velocidad, char direccion){
-		ListaSimplementeEnlazada<Entidad> listaEntidades = new ListaSimplementeEnlazada<Entidad>();
+	public LinkedHashSet<Entidad> chequearColision(Posicion pos, int velocidad, char direccion){
+		LinkedHashSet<Entidad> listaEntidades = new LinkedHashSet<Entidad>();
 		LinkedHashSet<Zona> listaZonas = new LinkedHashSet<Zona>();
 		Rectangle rectanguloActual = calcularRectanguloHipotetico(pos,velocidad,direccion);
 		//listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
