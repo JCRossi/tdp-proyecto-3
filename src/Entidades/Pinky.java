@@ -50,7 +50,6 @@ public class Pinky extends Enemigo{
 
 	@Override
 	public void reseteo(int posX, int posY, char direc) {
-		puedeCaminar = false;
 		this.direccion = direc;
 		pos.setX(posX+1);
 		pos.setY(posY+1);
@@ -58,7 +57,6 @@ public class Pinky extends Enemigo{
 		ultimaZona[1] = posY/25;
 		cambiarEstado(3);
 		entGrafica.actualizarPos(pos);
-		puedeCaminar = true;
 		
 	}
 	

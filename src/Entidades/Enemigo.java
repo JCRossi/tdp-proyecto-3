@@ -2,26 +2,19 @@ package Entidades;
 
 import java.util.LinkedHashSet;
 
-import Estructuras.BoundaryViolationException;
-import Estructuras.EmptyListException;
-import Estructuras.InvalidPositionException;
-import Estructuras.ListaSimplementeEnlazada;
-import Estructuras.Position;
-
 public abstract class Enemigo extends Personaje{
 
 	protected EstadoEnemigo estadoActual;
 	protected int[] ultimaZona;
 	protected int posicionInicialX;
 	protected int posicionInicialY;
-	protected boolean debeFrenar;
 	protected boolean acabaDeSerTeletransportado;
 	
 	
 	@Override
 	public synchronized void mover() {
 		acabaDeSerTeletransportado = false;
-		if(!debeFrenar && puedeCaminar) {
+		if( puedeCaminar) { 
 			int posX = pos.getX();
 			int posY = pos.getY();
 			char estado = estadoActual.estadoActual();
@@ -43,7 +36,7 @@ public abstract class Enemigo extends Personaje{
 				procesarColisiones(listaEntidadesColision);
 			}
 			
-			if(!debeFrenar && puedeCaminar)
+			if(puedeCaminar) 
 				actualizarPos();
 			actualizarPosGrafica();
 			entGrafica.actualizarImagen(estadoActual.getIndiceArreglo(direccion), pos); //////////
@@ -210,14 +203,6 @@ public abstract class Enemigo extends Personaje{
 	
 	public void setPuedeCaminar(boolean b) {
 		puedeCaminar = b;
-	}
-	
-	public boolean getDebeFrenar() {
-		return debeFrenar;
-	}
-	
-	public void setDebeFrenar(boolean b) {
-		debeFrenar = b;
 	}
 	
 	public void setDireccion(char c) {

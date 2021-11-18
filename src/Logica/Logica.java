@@ -23,6 +23,7 @@ public class Logica {
 	private Thread hilo;
 	private HiloEnemigo hiloEnemigos;
 	private Tematica tematica;
+	private boolean enTransicion;
 	
 	public Logica() { 
 		laberinto = new Laberinto();
@@ -30,6 +31,7 @@ public class Logica {
 		hilo = new Thread(this.hiloEnemigos);
 		enemigos = new Enemigo[2];
 		puntajePartida = new Puntaje();
+		enTransicion = false;
 	}
 	
 	public void setTematica(Tematica t) {
@@ -120,7 +122,8 @@ public class Logica {
 	}
 	
 	public void cambiarDireccionJugador(char c) {
-		personajePrincipal.cambiarDireccion(c);
+		if(!this.enTransicion)
+			personajePrincipal.cambiarDireccion(c);
 	}
 	
 	public void actualizarPuntaje(int puntos) {
@@ -254,14 +257,14 @@ public class Logica {
 	}
 	
 	public void reseteoEnNivel() {
-		
+		this.enTransicion = true;
 		//enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
 		//enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
 		this.hiloEnemigos.frenar();
 		
 		for(Enemigo enemig : enemigos) {
-			enemig.setDebeFrenar(true);
 			enemig.setPuedeCaminar(false);
+			this.laberinto.desenlistarEntidad(enemig, laberinto.identificarZona( enemig.getPosicion().getX()),  laberinto.identificarZona(enemig.getPosicion().getY()));
 		}
 		
 	
@@ -270,11 +273,11 @@ public class Logica {
 		this.personajePrincipal.setPuedeCaminar(false);
 		
 		this.personajePrincipal.getEntidadGrafica().actualizarImagen(0, posJugador);
+		this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
 		
 		try {
 			Thread.sleep(700);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -284,15 +287,20 @@ public class Logica {
 		personajePrincipal.setDireccion('r');
 		this.personajePrincipal.getEntidadGrafica().actualizarImagen(2, posJugador);
 		this.personajePrincipal.actualizarPosGrafica();
+		
+		
+		this.laberinto.incorporarEntidad(personajePrincipal);
+		
 		enemigos[0].reseteo(225, 250, 'r');
 		enemigos[1].reseteo(275,250,'l');
 		
 		for(Enemigo enemig : enemigos) {
-			enemig.setDebeFrenar(false);
 			enemig.setPuedeCaminar(true);
 			enemig.setAcabaDeSerTeletransportado(true);
+			this.laberinto.incorporarEntidad(enemig);
 		}
 		
+		this.enTransicion = false;
 		this.hiloEnemigos.continuar();
 		
 	}
