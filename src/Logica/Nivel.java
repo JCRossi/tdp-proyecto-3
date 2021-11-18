@@ -194,20 +194,6 @@ public class Nivel {
 		return entidadesEstaticas;
 	}
 
-
-	private Entidad[][] generarNivelDos(Logica logica) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-	
-	private Entidad[][] generarNivelTres(Logica logica) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public void decrementarCantidadPacDots() {
 		cantPacDots--;
 	}

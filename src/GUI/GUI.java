@@ -80,6 +80,7 @@ public class GUI extends JFrame {
 		PlayMusic p = new PlayMusic(archivo);
 		
 		JButton btnNewButton = new JButton("BOTON MUSICA");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnNewButton.setFocusable(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
