@@ -217,8 +217,15 @@ public class Logica {
 				break;
 			case 2:
 				if(nivel.obtenerCantidadPacDots() == 0)
-					if(nivel.getNumeroNivel() < 3)
+					if(nivel.getNumeroNivel() < 3) {
+						quitarEntidadGrafica(personajePrincipal.getEntidadGrafica());
+						for(int i = 0; i < enemigos.length; i++) {
+							quitarEntidadGrafica(enemigos[i].getEntidadGrafica());
+						}
+						resetearMapa();						
 						generarNivel(nivel.getNumeroNivel() + 1);
+						reseteoEnNivel();
+					}
 					else
 						finalizarJuego(2);
 				break;
@@ -257,51 +264,63 @@ public class Logica {
 	}
 	
 	public void reseteoEnNivel() {
-		this.enTransicion = true;
-		//enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
-		//enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
-		this.hiloEnemigos.frenar();
+        this.enTransicion = true;
+        //enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
+        //enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
+        this.hiloEnemigos.frenar();
+
+        for(Enemigo enemig : enemigos) {
+            enemig.setPuedeCaminar(false);
+            this.laberinto.desenlistarEntidad(enemig, laberinto.identificarZona( enemig.getPosicion().getX()),  laberinto.identificarZona(enemig.getPosicion().getY()));
+        }
+
+
+
+        Posicion posJugador = personajePrincipal.getPosicion();
+        this.personajePrincipal.setPuedeCaminar(false);
+
+        this.personajePrincipal.getEntidadGrafica().actualizarImagen(0, posJugador);
+        this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
+
+        try {
+            Thread.sleep(700);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        posJugador.setX(250);
+        posJugador.setY(350);
+        personajePrincipal.setDireccion('r');
+        this.personajePrincipal.getEntidadGrafica().actualizarImagen(2, posJugador);
+        this.personajePrincipal.actualizarPosGrafica();
+
+
+        this.laberinto.incorporarEntidad(personajePrincipal);
+
+        enemigos[0].reseteo(225, 250, 'r');
+        enemigos[1].reseteo(275,250,'l');
+
+        for(Enemigo enemig : enemigos) {
+            enemig.setPuedeCaminar(true);
+            enemig.setAcabaDeSerTeletransportado(true);
+            this.laberinto.incorporarEntidad(enemig);
+        }
+
+        this.enTransicion = false;
+        this.hiloEnemigos.continuar();
+
 		
-		for(Enemigo enemig : enemigos) {
-			enemig.setPuedeCaminar(false);
-			this.laberinto.desenlistarEntidad(enemig, laberinto.identificarZona( enemig.getPosicion().getX()),  laberinto.identificarZona(enemig.getPosicion().getY()));
-		}
-		
+	}
 	
-		
-		Posicion posJugador = personajePrincipal.getPosicion();
-		this.personajePrincipal.setPuedeCaminar(false);
-		
-		this.personajePrincipal.getEntidadGrafica().actualizarImagen(0, posJugador);
-		this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
-		
-		try {
-			Thread.sleep(700);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	public void resetearMapa(){
+		Entidad entidadRecuperada = null;
+		for(int i = 0; i < 21; i++) {
+			for(int j = 0; j < 21; j++) {
+				entidadRecuperada = laberinto.recuperarEntidadZona(i, j);
+				if(entidadRecuperada != null)
+				quitarEntidadGrafica(entidadRecuperada.getEntidadGrafica());
+			}
 		}
-		
-		
-		posJugador.setX(250);
-		posJugador.setY(350);
-		personajePrincipal.setDireccion('r');
-		this.personajePrincipal.getEntidadGrafica().actualizarImagen(2, posJugador);
-		this.personajePrincipal.actualizarPosGrafica();
-		
-		
-		this.laberinto.incorporarEntidad(personajePrincipal);
-		
-		enemigos[0].reseteo(225, 250, 'r');
-		enemigos[1].reseteo(275,250,'l');
-		
-		for(Enemigo enemig : enemigos) {
-			enemig.setPuedeCaminar(true);
-			enemig.setAcabaDeSerTeletransportado(true);
-			this.laberinto.incorporarEntidad(enemig);
-		}
-		
-		this.enTransicion = false;
-		this.hiloEnemigos.continuar();
-		
 	}
 }

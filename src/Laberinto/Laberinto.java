@@ -37,7 +37,7 @@ public class Laberinto {
 		return listaEntidades;
 	}
 	
-	private int identificarZona(int posicion) {
+	public int identificarZona(int posicion) {
 		
 		return posicion / 25;
 	}
@@ -238,6 +238,19 @@ public class Laberinto {
 		
 		return listaPersonajes;
 		
+	}
+
+	public Entidad recuperarEntidadZona(int i, int j) {
+		Entidad entidadZona = null;
+		try {
+			if(!zonas[i][j].getListaEntidades().isEmpty())
+			
+				entidadZona = zonas[i][j].getListaEntidades().first().element();
+			
+			} catch (EmptyListException e) {
+				e.printStackTrace();
+			}
+		return entidadZona;
 	}
 	
 	
