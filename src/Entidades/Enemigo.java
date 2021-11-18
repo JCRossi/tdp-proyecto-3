@@ -15,11 +15,13 @@ public abstract class Enemigo extends Personaje{
 	protected int posicionInicialX;
 	protected int posicionInicialY;
 	protected boolean debeFrenar;
+	protected boolean acabaDeSerTeletransportado;
 	
 	
 	@Override
 	public synchronized void mover() {
-		if(!debeFrenar) {
+		acabaDeSerTeletransportado = false;
+		if(!debeFrenar && puedeCaminar) {
 			int posX = pos.getX();
 			int posY = pos.getY();
 			char estado = estadoActual.estadoActual();
@@ -41,8 +43,8 @@ public abstract class Enemigo extends Personaje{
 				procesarColisiones(listaEntidadesColision);
 			}
 			
-			
-			actualizarPos();
+			if(!debeFrenar && puedeCaminar)
+				actualizarPos();
 			actualizarPosGrafica();
 			entGrafica.actualizarImagen(estadoActual.getIndiceArreglo(direccion), pos); //////////
 	}
@@ -68,32 +70,35 @@ public abstract class Enemigo extends Personaje{
 			puedeCaminar = true;
 			esVuelta = false;
 			procesarColisiones(chequearMovimiento(prioridadDireccion[i], calcularMovimiento(prioridadDireccion[i])));
-			esVuelta = checkearVuelta(prioridadDireccion[i]);
-			i++;
+			if(!acabaDeSerTeletransportado) {
+				esVuelta = checkearVuelta(prioridadDireccion[i]);
+				i++;
+			}
+			
 		}
-		if (prioridadDireccion[i-1] != direccion) {
+		if (!acabaDeSerTeletransportado && prioridadDireccion[i-1] != direccion) {
 			cambiarDireccion(prioridadDireccion[i-1]);
 		} 
 	}
 
 	private int calcularMovimiento(char c) {
-		int mov = 0;
-		switch(c) {
-		case 'l':
-			mov = (pos.getX()%10); 
-			break;
-		case'r':
-			mov = 3-(pos.getX()%10); 
-			break;
-		case 'u':
-			mov = (pos.getY()%10); 
-			break;
-		case 'd':
-			mov = 7-(pos.getY()%10); 
-			break;
-		}
-		return mov+10; // le agregue un +10 pq falla en las colisiones con las paredes, no comprendo porque ya que en el jugador funciona
-	}
+        int mov = 0;
+        switch(c) {
+        case 'l':
+            mov = (pos.getX()%25); 
+            break;
+        case'r':
+            mov = 25-((pos.getX()%25) + pos.getAncho()); 
+            break;
+        case 'u':
+            mov = (pos.getY()%25); 
+            break;
+        case 'd':
+            mov = 25-((pos.getY()%25) + pos.getAlto()); 
+            break;
+        }
+        return mov+1;
+    }
 
 	private boolean checkearVuelta(char direc) {
 		boolean esVuelta = true;
@@ -203,11 +208,23 @@ public abstract class Enemigo extends Personaje{
 
 	public abstract void cambiarEstado(int estado);
 	
+	public void setPuedeCaminar(boolean b) {
+		puedeCaminar = b;
+	}
+	
 	public boolean getDebeFrenar() {
 		return debeFrenar;
 	}
 	
 	public void setDebeFrenar(boolean b) {
 		debeFrenar = b;
+	}
+	
+	public void setDireccion(char c) {
+		direccion = c;
+	}
+	
+	public void setAcabaDeSerTeletransportado(boolean b) {
+		this.acabaDeSerTeletransportado = b;
 	}
 }

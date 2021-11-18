@@ -261,6 +261,7 @@ public class Logica {
 		
 		for(Enemigo enemig : enemigos) {
 			enemig.setDebeFrenar(true);
+			enemig.setPuedeCaminar(false);
 		}
 		
 	
@@ -283,12 +284,13 @@ public class Logica {
 		personajePrincipal.setDireccion('r');
 		this.personajePrincipal.getEntidadGrafica().actualizarImagen(2, posJugador);
 		this.personajePrincipal.actualizarPosGrafica();
-		
 		enemigos[0].reseteo(225, 250, 'r');
 		enemigos[1].reseteo(275,250,'l');
 		
 		for(Enemigo enemig : enemigos) {
 			enemig.setDebeFrenar(false);
+			enemig.setPuedeCaminar(true);
+			enemig.setAcabaDeSerTeletransportado(true);
 		}
 		
 		this.hiloEnemigos.continuar();
