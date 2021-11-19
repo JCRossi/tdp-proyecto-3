@@ -53,7 +53,8 @@ public class Blinky extends Enemigo{
 		pos.setY(posY+1);
 		ultimaZona[0] = posX/25;
 		ultimaZona[1] = posY/25;
-		cambiarEstado(3);
+		//cambiarEstado(3);
+		estadoActual = estados[3];
 		entGrafica.actualizarPos(pos);
 	}
 

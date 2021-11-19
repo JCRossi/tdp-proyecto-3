@@ -41,5 +41,10 @@ public class x2Velocidad extends Pocion {
 	public char getEfecto() {
 		return '2';
 	}
+	
+	public char getQuitarEfecto() {
+		return 'J';
+	}
+
 
 }

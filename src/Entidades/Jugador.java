@@ -79,24 +79,24 @@ public class Jugador extends Personaje {
 	//Son correctos los llamados a la Logica?
 	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
 		boolean condicion = false;
-		//puedeCaminar = false;
-		//estadoActual = estados[2]; //Cambio al estado Inmune momentaneamente para evitar que otro enemigo lo dañe
 		
-		System.out.println("MURIO EL PJ");
-		vidas--;
-		//condicion = juego.chequearFinalizacionJuego(vidas);
-		condicion = juego.chequearFinalizacionJuego(1);
-		
-		if(condicion) {
+		if(estadoActual.estadoActual() != 'i') {
+			System.out.println("MURIO EL PJ");
+			vidas--;
+			//condicion = juego.chequearFinalizacionJuego(vidas);
+			condicion = juego.chequearFinalizacionJuego(1);
 			
-			juego.reseteoEnNivel();
-			//Setear a los enemigos en la casa
+			if(condicion) {
+				
+				juego.reseteoEnNivel(true);
+				//Setear a los enemigos en la casa
+			}
+			else {
+				juego.finalizarJuego(1);
+			}
+			
+			//juego.quitarEntidadGrafica(this.getEntidadGrafica());
 		}
-		else {
-			juego.finalizarJuego(1);
-		}
-		
-		//juego.quitarEntidadGrafica(this.getEntidadGrafica());
 	}
 	
 	public void noPuedeCaminar(char c) {

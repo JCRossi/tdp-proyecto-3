@@ -19,9 +19,11 @@ public class HiloPowerUp implements Runnable {
 	public void run() {
 		
 			try {
+				miJuego.enemigosGuardanEstado();
 				miJuego.cambiarEstados(miPowerUp.getEfecto());
 				Thread.sleep(this.duracion);
-				miJuego.cambiarEstados('N');
+				
+				miJuego.cambiarEstados(miPowerUp.getQuitarEfecto());
 				
 			} catch (InterruptedException e) {
 				e.printStackTrace();

@@ -40,4 +40,8 @@ public class Inmunidad extends Pocion {
 	public char getEfecto() {
 		return 'I';
 	}
+	
+	public char getQuitarEfecto() {
+		return 'J';
+	}
 }

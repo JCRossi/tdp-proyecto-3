@@ -87,8 +87,9 @@ public class Logica {
 			case 'P':
 				personajePrincipal.cambiarEstado(0);
 				
-				for(int i = 0; i < enemigos.length; i++)
+				for(int i = 0; i < enemigos.length; i++) 
 					enemigos[i].cambiarEstado(1);
+				
 				break;
 			case '2':
 				personajePrincipal.cambiarEstado(1);
@@ -99,13 +100,32 @@ public class Logica {
 			case 'B':
 				personajePrincipal.cambiarEstado(3);
 				break;
-			case 'N':
+			case 'N': 
 				personajePrincipal.cambiarEstado(0);
 				
 				for(int i = 0; i < enemigos.length; i++)
 					enemigos[i].cambiarEstado(0);
 				break;
+			case 'J':
+				personajePrincipal.cambiarEstado(0);
+				break;
+				
+			case 'E':
+				for(int i = 0; i < enemigos.length; i++) {
+					if(!enemigos[i].estaMuerto())
+						enemigos[i].swapEstadoAuxiliar();
+				}
+					
+					
+				break;
+				
 		}
+	}
+	
+	public void enemigosGuardanEstado() {
+		for(int i = 0; i < enemigos.length; i++) 
+			if(!enemigos[i].estaMuerto())
+				enemigos[i].usarEstadoAuxiliar();
 	}
 	
 	public void chequearEstadoJugador() {
@@ -224,7 +244,7 @@ public class Logica {
 						}
 						resetearMapa();						
 						generarNivel(nivel.getNumeroNivel() + 1);
-						reseteoEnNivel();
+						reseteoEnNivel(false);
 					}
 					else
 						finalizarJuego(2);
@@ -263,7 +283,7 @@ public class Logica {
 		chequearFinalizacionJuego(2);
 	}
 	
-	public void reseteoEnNivel() {
+	public void reseteoEnNivel(boolean debeEsperar) {
         this.enTransicion = true;
         //enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
         //enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
@@ -283,7 +303,8 @@ public class Logica {
         this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
 
         try {
-            Thread.sleep(700);
+        	if(debeEsperar)
+        		Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -60,4 +60,10 @@ public class Bomba extends Pocion {
 		return 0;
 	}
 
+	@Override
+	public char getQuitarEfecto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

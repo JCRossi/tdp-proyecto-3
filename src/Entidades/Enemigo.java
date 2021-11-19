@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 public abstract class Enemigo extends Personaje{
 
 	protected EstadoEnemigo estadoActual;
+	protected EstadoEnemigo estadoAuxiliar;
 	protected int[] ultimaZona;
 	protected int posicionInicialX;
 	protected int posicionInicialY;
@@ -211,5 +212,21 @@ public abstract class Enemigo extends Personaje{
 	
 	public void setAcabaDeSerTeletransportado(boolean b) {
 		this.acabaDeSerTeletransportado = b;
+	}
+	
+	public void usarEstadoAuxiliar() {
+		estadoAuxiliar = estadoActual;
+	}
+	public void swapEstadoAuxiliar() {
+		estadoActual = estadoAuxiliar;
+	}
+	
+	public boolean estaMuerto() {
+		boolean estaMuerto = false;
+		if(estadoActual.estadoActual() == 'm') 
+			estaMuerto = true;
+		
+		return estaMuerto;
+		
 	}
 }

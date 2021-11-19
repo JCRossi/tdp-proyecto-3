@@ -44,5 +44,9 @@ public class PowerPellet extends PowerUp {
 	public char getEfecto() {
 		return 'P';
 	}
+	
+	public char getQuitarEfecto() {
+		return 'E';
+	}
 
 }
