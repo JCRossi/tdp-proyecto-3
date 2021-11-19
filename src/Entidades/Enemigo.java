@@ -19,7 +19,7 @@ public abstract class Enemigo extends Personaje{
 			int posX = pos.getX();
 			int posY = pos.getY();
 			char estado = estadoActual.estadoActual();
-			System.out.println(estado + " pos x: " + posX + " pos y:" + posY);
+			//System.out.println(estado + " pos x: " + posX + " pos y:" + posY);
 			if(posX/25 == 10  && posY/25  == 10  && estado=='m') {
 				cambiarEstado(3);
 			}

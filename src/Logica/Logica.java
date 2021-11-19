@@ -38,28 +38,6 @@ public class Logica {
 		this.tematica = t;
 	}
 	
-	/*public void iniciarLogica(GUI interfaz) {
-		this.interfaz = interfaz;
-		laberinto = new Laberinto();
-		
-		personajePrincipal = new Jugador(250, 350,'r',laberinto, this,tematica.getImagenesPacman());
-
-		
-		hiloEnemigos = new HiloEnemigo();
-		hilo = new Thread(this.hiloEnemigos);
-		enemigos = new Enemigo[1];
-		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
-		puntajePartida = new Puntaje();
-		avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
-		generarNivel(1);
-		hilo.start();
-	}
-	
-	public void generarNivel(int numero) {
-		nivel = new Nivel(numero);
-		laberinto.establecerNivel(nivel.GenerarLaberinto(this, enemigos, personajePrincipal));
-	}*/
-	
 	public void iniciarLogica(GUI interfaz) {
 		this.interfaz = interfaz;
 		
@@ -74,7 +52,7 @@ public class Logica {
 	}
 	
 	public void generarNivel(int numero) {
-		nivel.establecerVelocidadesNivel(numero);
+		//nivel.establecerVelocidadesNivel(numero);
 		laberinto.establecerNivel(nivel.GenerarLaberinto(this, enemigos, personajePrincipal));
 	}
 	
@@ -153,14 +131,6 @@ public class Logica {
 	
 	public void enlistarEntidadGrafica(Entidad entidad) {
 		interfaz.agregarEntidad(entidad.getEntidadGrafica());
-	}
-	
-	public void avisarActualizacionJugadorGrafico() {
-		
-	}
-	
-	public void avisarActualizacionEnemigosGraficos() {
-		
 	}
 	
 	public void avisarActualizacionPuntajeGrafico(int puntos) {
@@ -245,6 +215,7 @@ public class Logica {
 						resetearMapa();						
 						generarNivel(nivel.getNumeroNivel() + 1);
 						reseteoEnNivel(false);
+						personajePrincipal.setVidas(personajePrincipal.getVidas() + 1);
 					}
 					else
 						finalizarJuego(2);
@@ -255,13 +226,15 @@ public class Logica {
 	}
 	
 	public void finalizarJuego(int condicionDeFinalizacion) {
+		hiloEnemigos.frenar();
+		personajePrincipal.obtenerHilo().frenar();
+		
 		switch(condicionDeFinalizacion) {
 			case 1:
-				hiloEnemigos.frenar();
-				personajePrincipal.obtenerHilo().frenar();
+				//Falta mensaje de perder
 				break;
 			case 2:
-				//Gano
+				//Falta mensaje ganar
 				break;
 		}
 	}
@@ -302,13 +275,13 @@ public class Logica {
         this.personajePrincipal.getEntidadGrafica().actualizarImagen(0, posJugador);
         this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
 
-        try {
+        //ROMPE LA SALIDA DE LOS FANTASMAS DE LA CASA
+        /*try {
         	if(debeEsperar)
         		Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-
+        }*/
 
         posJugador.setX(250);
         posJugador.setY(350);

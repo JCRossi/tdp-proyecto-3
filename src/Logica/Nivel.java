@@ -25,35 +25,13 @@ public class Nivel {
 	private long movimientoJugador;
 	private int cantPacDots;
 	
-	/*public Nivel(int numNivel) {
-		switch(numNivel) {
-			case 1:
-				movimientoEnemigos = 1000;
-				movimientoJugador = 1250;
-				numeroNivel = 1;
-				break;
-			case 2:
-				movimientoEnemigos = 750;
-				movimientoJugador = 1250;
-				numeroNivel = 2;
-				break;
-			case 3:
-				movimientoEnemigos = 750;
-				movimientoJugador = 1250;
-				numeroNivel = 3;
-				break;
-		}
-		
-		cantPacDots = 0;
-	}*/
-	
-	
 	public Nivel(int numNivel) {
 		numeroNivel = numNivel;
 		cantPacDots = 0;
 	}
 	
-	public void establecerVelocidadesNivel(int numNivel) {
+	//NO SABEMOS SI QUEDA
+	/*public void establecerVelocidadesNivel(int numNivel) {
 		switch(numNivel) {
 			case 1:
 				movimientoEnemigos = 1000;
@@ -71,7 +49,7 @@ public class Nivel {
 				numeroNivel = 3;
 				break;
 		}
-	}
+	}*/
 	
 	public int getNumeroNivel() {
 		return numeroNivel;

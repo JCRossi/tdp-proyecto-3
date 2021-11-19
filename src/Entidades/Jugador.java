@@ -89,7 +89,6 @@ public class Jugador extends Personaje {
 			if(condicion) {
 				
 				juego.reseteoEnNivel(true);
-				//Setear a los enemigos en la casa
 			}
 			else {
 				juego.finalizarJuego(1);
@@ -205,6 +204,10 @@ public class Jugador extends Personaje {
 	
 	public void disminuirBomba() {
 		cantBombas--;
+	}
+	
+	public void setVidas(int cantVidas) {
+		vidas = cantVidas;
 	}
 	
 	public int getVidas() {
