@@ -12,7 +12,7 @@ public class Perseguir implements EstadoEnemigo {
 
 	@Override
 	public int getMovimiento() {
-		return 2;
+		return ia.getMovimiento();
 	}
 
 	@Override
