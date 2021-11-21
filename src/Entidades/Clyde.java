@@ -15,7 +15,7 @@ public class Clyde extends Enemigo {
 		ultimaZona[1] = posY/25;
 		entGrafica = new EntidadGrafica(8 ,pos,img); 
 		this.direccion = direcc;
-		posicionInicialY = 75; 
+		posicionInicialY = 425; 
 		posicionInicialX = 50; 
 		estados = new EstadoEnemigo[4];
 		estados[0] = new Perseguir(new IAClyde(personajePrincipal));
