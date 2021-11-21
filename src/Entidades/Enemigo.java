@@ -221,6 +221,15 @@ public abstract class Enemigo extends Personaje{
 		estadoActual = estadoAuxiliar;
 	}
 	
+	public boolean estaHuyendo() {
+		boolean estaMuerto = false;
+		if(estadoActual.estadoActual() == 'h') 
+			estaMuerto = true;
+		
+		return estaMuerto;
+		
+	}
+	
 	public boolean estaMuerto() {
 		boolean estaMuerto = false;
 		if(estadoActual.estadoActual() == 'm') 

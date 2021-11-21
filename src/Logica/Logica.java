@@ -93,7 +93,7 @@ public class Logica {
 				
 			case 'E':
 				for(int i = 0; i < enemigos.length; i++) {
-					if(!enemigos[i].estaMuerto())
+					if(enemigos[i].estaHuyendo())
 						enemigos[i].swapEstadoAuxiliar();
 				}
 					
@@ -105,7 +105,7 @@ public class Logica {
 	
 	public void enemigosGuardanEstado() {
 		for(int i = 0; i < enemigos.length; i++) 
-			if(!enemigos[i].estaMuerto())
+			if(enemigos[i].estaHuyendo())
 				enemigos[i].usarEstadoAuxiliar();
 	}
 	
