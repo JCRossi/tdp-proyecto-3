@@ -13,9 +13,10 @@ public abstract class Tematica {
 	public abstract String[] getImagenPared();
 	public abstract String[] getImagenPacDot();
 	public abstract String[] getImagenPowerPellet();
-	public abstract String[] getImagenZaWarudo();
 	public abstract String[] getImagenx2Velocidad();
 	public abstract String[] getImagenInmunidad();
 	public abstract String[] getImagenFruta();
 	public abstract String[] getImagenBomba();
+	public abstract String[] niveles();
+	public abstract String[] getPuerta();
 }

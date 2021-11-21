@@ -4,10 +4,10 @@ import Logica.Logica;
 
 public class Bomba extends Pocion {
 	
-	public Bomba(int posY, int posX, Logica juegoActual) {
+	public Bomba(int posY, int posX, Logica juegoActual,String[] img) {
 		puntaje = 0;
-		pos = new Posicion( posX+((25-19)/2), posY+((25-19)/2), 19, 19);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(0, pos);
+		pos = new Posicion( posX+((25-19)/2), posY+((25-19)/2), 19, 19); 
+		entGrafica = new EntidadGrafica(0, pos,img);
 		juego = juegoActual;
 		duracion = 5000;
 	}
@@ -30,7 +30,7 @@ public class Bomba extends Pocion {
 		pos.setAncho(200);
 		pos.setX(pos.getX()-(pos.getAncho()/2));
 		pos.setY(pos.getY()-(pos.getAlto()/2));
-		this.entGrafica.actualizarExplosion(12, pos);
+		this.entGrafica.actualizarExplosion(pos);
 		
 		try {
 			Thread.sleep(200);

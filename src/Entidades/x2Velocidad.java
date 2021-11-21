@@ -5,9 +5,9 @@ import Logica.Logica;
 
 public class x2Velocidad extends Pocion {
 	
-	public x2Velocidad(int posY, int posX, Logica juegoActual) {
+	public x2Velocidad(int posY, int posX, Logica juegoActual,String[] img) {
 		pos = new Posicion( posX+((25-19)/2), posY+((25-20)/2), 19, 20);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(6, pos);
+		entGrafica = new EntidadGrafica(0, pos,img);
 		juego = juegoActual;
 		duracion = 5000;
 	}

@@ -2,9 +2,9 @@ package Entidades;
 
 public class Puerta extends Entidad{
 		
-		public Puerta(int posY, int posX) {
-			pos = new Posicion( posX, posY, 25, 25);  //999999 = ancho        111111111 = alto
-			entGrafica = new EntidadGrafica(13, pos);
+		public Puerta(int posY, int posX,String[] img) {
+			pos = new Posicion( posX, posY, 25, 25);  
+			entGrafica = new EntidadGrafica(0, pos,img);
 
 		}
 

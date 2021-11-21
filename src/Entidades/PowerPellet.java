@@ -5,10 +5,10 @@ import Logica.Logica;
 
 public class PowerPellet extends PowerUp {
 	
-	public PowerPellet(int posY, int posX, Logica juegoActual) {
+	public PowerPellet(int posY, int posX, Logica juegoActual,String[] img) {
 		puntaje = 50;
-		pos = new Posicion( posX+((25-18)/2), posY+((25-19)/2), 18, 19);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(5, pos);
+		pos = new Posicion( posX+((25-18)/2), posY+((25-19)/2), 18, 19);  
+		entGrafica = new EntidadGrafica(0, pos,img);
 		juego = juegoActual;
 		duracion = 5000;
 	}

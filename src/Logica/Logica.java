@@ -48,7 +48,7 @@ public class Logica {
 		enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
 		//enemigos[2] = new Inky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma3(),enemigos[0]);
 		//enemigos[3] = new Clyde(250, 250, 'u', laberinto, hiloEnemigos, personajePrincipal, this, this.tematica.getImagenesFantasma4());
-		nivel = new Nivel(3);
+		nivel = new Nivel(1,tematica);
 		generarNivel(nivel.getNumeroNivel());
 		hilo.start();
 	}
@@ -150,7 +150,7 @@ public class Logica {
 	public void plantarBomba(){
 		if(personajePrincipal.tieneBomba()){
 			Posicion pos = personajePrincipal.getPosicion();
-			Bomba bomba = new Bomba(pos.getY(),pos.getX(),this);
+			Bomba bomba = new Bomba(pos.getY(),pos.getX(),this,tematica.getImagenBomba());
 			interfaz.agregarEntidad(bomba.getEntidadGrafica());
 			
 			System.out.println("Plantaste la bomba");

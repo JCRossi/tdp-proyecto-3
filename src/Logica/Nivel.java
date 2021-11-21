@@ -15,6 +15,7 @@ import Entidades.Pared;
 import Entidades.PowerPellet;
 import Entidades.Puerta;
 import Entidades.x2Velocidad;
+import GUI.Tematica;
 import Hilos.HiloEnemigo;
 import Laberinto.Laberinto;
 import Laberinto.Zona;
@@ -24,10 +25,12 @@ public class Nivel {
 	private long movimientoEnemigos;
 	private long movimientoJugador;
 	private int cantPacDots;
+	private Tematica tematica;
 	
-	public Nivel(int numNivel) {
+	public Nivel(int numNivel,Tematica tem) {
 		numeroNivel = numNivel;
 		cantPacDots = 0;
+		this.tematica = tem;
 	}
 	
 	//NO SABEMOS SI QUEDA
@@ -100,39 +103,39 @@ public class Nivel {
 	
 					switch(caracter) {
 						case 'P':
-							entidad = new Pared(i*25, j*25);
+							entidad = new Pared(i*25, j*25,tematica.getImagenPared());
 							enlistar = true;
 							break;
 						case ' ':
 							enlistar = false;
 							break;
 						case 'M':
-							entidad = new PacDot(i*25, j*25, logica);
+							entidad = new PacDot(i*25, j*25, logica,tematica.getImagenPacDot());
 							cantPacDots++;
 							enlistar = true;
 							break;
 						case 'W':
-							entidad = new PowerPellet(i*25, j*25, logica);
+							entidad = new PowerPellet(i*25, j*25, logica,tematica.getImagenPowerPellet());
 							enlistar = true;
 							break;
 						case 'F':
-							entidad = new Fruta(i*25, j*25, logica);
+							entidad = new Fruta(i*25, j*25, logica,tematica.getImagenFruta());
 							enlistar = true;
 							break;
 						case 'I':
-							entidad = new Inmunidad(i*25, j*25, logica);
+							entidad = new Inmunidad(i*25, j*25, logica,tematica.getImagenInmunidad());
 							enlistar = true;
 							break;
 						case 'B':
-							entidad = new Bomba(i*25, j*25, logica);
+							entidad = new Bomba(i*25, j*25, logica,tematica.getImagenBomba());
 							enlistar = true;
 							break;
 						case 'V':
-							entidad = new x2Velocidad(i*25, j*25, logica);
+							entidad = new x2Velocidad(i*25, j*25, logica,tematica.getImagenx2Velocidad());
 							enlistar = true;
 							break;
 						case 'D':
-							entidad = new Puerta(i*25, j*25);
+							entidad = new Puerta(i*25, j*25,tematica.getPuerta());
 							enlistar = true;
 							break;
 						case '1':

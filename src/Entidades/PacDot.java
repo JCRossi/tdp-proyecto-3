@@ -4,10 +4,10 @@ import Logica.Logica;
 
 public class PacDot extends Consumible {
 
-	public PacDot(int posY, int posX, Logica juegoActual) {
+	public PacDot(int posY, int posX, Logica juegoActual,String[] img) {
 		puntaje = 10;
-		pos = new Posicion( posX+((25-10)/2), posY+((25-11)/2), 10, 11);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(3, pos);
+		pos = new Posicion( posX+((25-10)/2), posY+((25-11)/2), 10, 11);  
+		entGrafica = new EntidadGrafica(0, pos,img);
 		juego = juegoActual;
 	}
 

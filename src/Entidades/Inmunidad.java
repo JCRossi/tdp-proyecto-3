@@ -5,9 +5,9 @@ import Logica.Logica;
 
 public class Inmunidad extends Pocion {
 	
-	public Inmunidad(int posY, int posX, Logica juegoActual) {
-		pos = new Posicion( posX+((25-19)/2), posY+((25-22)/2), 19, 22);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(2, pos);
+	public Inmunidad(int posY, int posX, Logica juegoActual,String[] img) {
+		pos = new Posicion( posX+((25-19)/2), posY+((25-22)/2), 19, 22); 
+		entGrafica = new EntidadGrafica(0, pos,img);
 		juego = juegoActual;
 		duracion = 5000;
 	}

@@ -4,10 +4,10 @@ import Logica.Logica;
 
 public class Fruta extends Consumible {
 	
-	public Fruta(int posY, int posX, Logica juegoActual) {
+	public Fruta(int posY, int posX, Logica juegoActual,String[] img) {
 		puntaje = 150;
-		pos = new Posicion( posX+((25-15)/2), posY+((25-22)/2), 15, 22);  //999999 = ancho        111111111 = alto
-		entGrafica = new EntidadGrafica(1, pos);
+		pos = new Posicion( posX+((25-15)/2), posY+((25-22)/2), 15, 22);  
+		entGrafica = new EntidadGrafica(0, pos,img);
 		juego = juegoActual;
 	}
 
