@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
-	private static JPanel panel;
+	private static Fondo panel;
 	private JLabel lblPuntajeNumero;
 	private JLabel lblVidasNumero;
 
@@ -42,7 +42,7 @@ public class GUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		//Poner new Fondo() despues
-		panel = new JPanel();
+		panel = new Fondo("/images/maxresdefault.png");
 		panel.setBounds(0, 0, 525, 525);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -148,6 +148,11 @@ public class GUI extends JFrame {
 	public void agregarEntidad(JLabel entidad) {
 			panel.add(entidad); 
 		
+	}
+	
+	public void actualizarFondo(String direccion) {
+		panel.setFondo(direccion); 
+	
 	}
 	
 	public void quitarEntidad(JLabel entidad) {

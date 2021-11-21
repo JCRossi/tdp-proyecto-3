@@ -7,12 +7,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Fondo extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Image fondo;
+	private String direccion;
+	
+	public Fondo(String direccion) {
+		this.direccion = direccion;
+	}
 	
 	public void paint(Graphics g) {
-		fondo = new ImageIcon(GUI.class.getResource("/images/maxresdefault.png")).getImage();
-		g.drawImage(fondo, 0, 0, 616, 700, this);
+		fondo = new ImageIcon(GUI.class.getResource(direccion)).getImage();
+		g.drawImage(fondo, 0, 0, 525, 525, this);
 		setOpaque(false);
 		super.paint(g);
+	}
+	
+	public void setFondo(String direccion) {
+		this.direccion = direccion;
 	}
 }
