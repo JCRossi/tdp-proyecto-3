@@ -59,7 +59,7 @@ public class TematicaParte2 extends Tematica {
 
 	@Override
 	public String[] getImagenBomba() {
-		return new String[] {"/images/bomba/bomb25px.gif","/images/bomba/explosion.gif"};
+		return new String[] {"/images/bomba/bomb25px.gif","/images/bomba/explosion.png"};
 	}
 
 	@Override

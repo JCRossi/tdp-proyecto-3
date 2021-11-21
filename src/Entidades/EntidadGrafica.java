@@ -30,7 +30,7 @@ public class EntidadGrafica extends JLabel {
 	}
 	
 	public void actualizarExplosion(Posicion pos) {
-		grafico = new ImageIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(EntidadGrafica.class.getResource(imagenes[2]))).getImage().getScaledInstance(pos.getAncho(),pos.getAlto()+1,Image.SCALE_DEFAULT) );
+		grafico = new ImageIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(EntidadGrafica.class.getResource(imagenes[1]))).getImage().getScaledInstance(pos.getAncho(),pos.getAlto()+1,Image.SCALE_DEFAULT) );
 		this.setBounds(pos.getX(),pos.getY(),pos.getAncho(),pos.getAlto());
 		this.setIcon(grafico);
 	}
