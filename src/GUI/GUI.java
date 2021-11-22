@@ -34,7 +34,7 @@ public class GUI extends JFrame {
 	public GUI(Logica logica,String pathMusical) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 656, 564);
-		contentPane = new JPanel();
+		contentPane = new FondoJuego("/images/GUI/fondoJuego.png");
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,36 +50,36 @@ public class GUI extends JFrame {
 		JLabel lblPuntaje = new JLabel("Puntaje:");
 		lblPuntaje.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPuntaje.setForeground(Color.WHITE);
+		lblPuntaje.setForeground(Color.BLACK);
 		lblPuntaje.setBounds(535, 29, 79, 14);
 		contentPane.add(lblPuntaje);
 		
 		lblPuntajeNumero = new JLabel("0");
 		lblPuntajeNumero.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPuntajeNumero.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblPuntajeNumero.setForeground(Color.WHITE);
+		lblPuntajeNumero.setForeground(Color.BLACK);
 		lblPuntajeNumero.setBounds(568, 54, 46, 14);
 		contentPane.add(lblPuntajeNumero);
 		
 		JLabel lblVidas = new JLabel("Vidas:");
 		lblVidas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblVidas.setForeground(Color.WHITE);
+		lblVidas.setForeground(Color.BLACK);
 		lblVidas.setBounds(535, 106, 79, 14);
 		contentPane.add(lblVidas);
 		
 		lblVidasNumero = new JLabel("0");
 		lblVidasNumero.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblVidasNumero.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblVidasNumero.setForeground(Color.WHITE);
+		lblVidasNumero.setForeground(Color.BLACK);
 		lblVidasNumero.setBounds(568, 135, 46, 14);
 		contentPane.add(lblVidasNumero);
 		
 		lblPausa = new JLabel("");
 		lblPausa.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblPausa.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPausa.setForeground(Color.WHITE);
-		lblPausa.setBounds(540, 250, 80, 100);
+		lblPausa.setForeground(Color.BLACK);
+		lblPausa.setBounds(550, 250, 80, 100);
 		contentPane.add(lblPausa);
 		
 		File archivo = new File(pathMusical);
