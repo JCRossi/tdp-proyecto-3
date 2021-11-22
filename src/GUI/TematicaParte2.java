@@ -68,7 +68,7 @@ public class TematicaParte2 extends Tematica {
 	}
 	
 	public String[] niveles() {
-		return new String [] {"/images/nivel 1/nivel1Parte2.png","/images/nivel 2/nivel2Parte2.png","/images/nivel 3/nivel3Parte2.png"};
+		return new String [] {"/images/nivel_1/nivel1Parte2.png","/images/nivel 2/nivel2Parte2.png","/images/nivel 3/nivel3Parte2.png"};
 	}
 	
 	public String[] getPuerta() {
