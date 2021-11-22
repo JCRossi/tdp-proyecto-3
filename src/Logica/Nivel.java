@@ -33,8 +33,7 @@ public class Nivel {
 		this.tematica = tem;
 	}
 	
-	//NO SABEMOS SI QUEDA
-	/*public void establecerVelocidadesNivel(int numNivel) {
+	public void establecerVelocidadesNivel(int numNivel) {
 		switch(numNivel) {
 			case 1:
 				movimientoEnemigos = 1000;
@@ -52,7 +51,7 @@ public class Nivel {
 				numeroNivel = 3;
 				break;
 		}
-	}*/
+	}
 	
 	public int getNumeroNivel() {
 		return numeroNivel;

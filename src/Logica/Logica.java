@@ -2,16 +2,13 @@ package Logica;
 
 import Laberinto.*;
 
-import javax.swing.JLabel;
-
 import Entidades.*;
-import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
 import GUI.GUI;
 import GUI.Tematica;
 import Hilos.HiloBomba;
 import Hilos.HiloEnemigo;
-import Hilos.HiloJugador;
+
 
 public class Logica {
 	private Puntaje puntajePartida;
@@ -24,6 +21,7 @@ public class Logica {
 	private HiloEnemigo hiloEnemigos;
 	private Tematica tematica;
 	private boolean enTransicion;
+	private boolean juegoPausado;
 	
 	public Logica() { 
 		laberinto = new Laberinto();
@@ -32,6 +30,7 @@ public class Logica {
 		enemigos = new Enemigo[2];
 		puntajePartida = new Puntaje();
 		enTransicion = false;
+		juegoPausado = false;
 	}
 	
 	public void setTematica(Tematica t) {
@@ -48,13 +47,13 @@ public class Logica {
 		enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
 		//enemigos[2] = new Inky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma3(),enemigos[0]);
 		//enemigos[3] = new Clyde(250, 250, 'u', laberinto, hiloEnemigos, personajePrincipal, this, this.tematica.getImagenesFantasma4());
-		nivel = new Nivel(3,tematica);
+		nivel = new Nivel(1,tematica);
 		generarNivel(nivel.getNumeroNivel());
 		hilo.start();
 	}
 	
 	public void generarNivel(int numero) {
-		//nivel.establecerVelocidadesNivel(numero);
+		nivel.establecerVelocidadesNivel(numero);
 		laberinto.establecerNivel(nivel.GenerarLaberinto(this, enemigos, personajePrincipal));
 		interfaz.actualizarFondo(tematica.niveles()[numero-1]);
 	}
@@ -94,7 +93,7 @@ public class Logica {
 			case 'E':
 				for(int i = 0; i < enemigos.length; i++) {
 					if(enemigos[i].estaHuyendo())
-						enemigos[i].swapEstadoAuxiliar();
+						enemigos[i].cambiarEstado(0);
 				}
 					
 					
@@ -102,13 +101,7 @@ public class Logica {
 				
 		}
 	}
-	
-	public void enemigosGuardanEstado() {
-		for(int i = 0; i < enemigos.length; i++) 
-			if(enemigos[i].estaHuyendo())
-				enemigos[i].usarEstadoAuxiliar();
-	}
-	
+		
 	public void chequearEstadoJugador() {
 		boolean noPersiguiendoOMuerto = true;
 		
@@ -123,7 +116,7 @@ public class Logica {
 	}
 	
 	public void cambiarDireccionJugador(char c) {
-		if(!this.enTransicion)
+		if(!this.enTransicion && !juegoPausado)
 			personajePrincipal.cambiarDireccion(c);
 	}
 	
@@ -165,25 +158,26 @@ public class Logica {
 	}
 	
 	public void estallido(Posicion pos) {
-		Personaje[] personajes = new Personaje[5];
-		ListaSimplementeEnlazada<Personaje> listaEntidades;
-		System.out.println("EXPLOTO LA BOMBA");
-		
-		personajes[0] = this.personajePrincipal;
-		
-		for(int i=1; i<=enemigos.length;i++) {
-			personajes[i] = enemigos[i-1];
-		}
-		
-		listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
-		
-		for(Personaje ent: listaEntidades) {
-			if(ent !=null) {
-				System.out.println("SE MURIO ALGUIEN");
-				ent.morir();
+		if (!juegoPausado) {
+			Personaje[] personajes = new Personaje[5];
+			ListaSimplementeEnlazada<Personaje> listaEntidades;
+			System.out.println("EXPLOTO LA BOMBA");
+			
+			personajes[0] = this.personajePrincipal;
+			
+			for(int i=1; i<=enemigos.length;i++) {
+				personajes[i] = enemigos[i-1];
 			}
-		}
-		
+			
+			listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
+			
+			for(Personaje ent: listaEntidades) {
+				if(ent !=null) {
+					System.out.println("SE MURIO ALGUIEN");
+					ent.morir();
+				}
+			}
+		}	
 	}
 	
 	//Chequear si se esta en el ultimo nivel o no tambien chequear si pacman perdio todas las vidas cuando muere
@@ -279,12 +273,12 @@ public class Logica {
         this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
 
         //ROMPE LA SALIDA DE LOS FANTASMAS DE LA CASA
-        /*try {
+        try {
         	if(debeEsperar)
         		Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
 
         posJugador.setX(250);
         posJugador.setY(350);
@@ -299,7 +293,7 @@ public class Logica {
         enemigos[1].reseteo(275,250,'l');
         //enemigos[2].reseteo(275, 250, 'l');
         //enemigos[3].reseteo(250, 250, 'u');
-
+        
         for(Enemigo enemig : enemigos) {
             enemig.setPuedeCaminar(true);
             enemig.setAcabaDeSerTeletransportado(true);
@@ -322,4 +316,24 @@ public class Logica {
 			}
 		}
 	}
+
+	public void pausarJuego() {
+		if(juegoPausado) {
+			juegoPausado = false;
+			hiloEnemigos.seguir();
+			personajePrincipal.seguir();
+			interfaz.seguir();
+		} else {
+			juegoPausado = true;
+			hiloEnemigos.pausar();
+			personajePrincipal.pausar();
+			interfaz.pausar();
+		}
+			
+	}
+
+
+		
+	
+	
 }

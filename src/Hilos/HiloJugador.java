@@ -9,11 +9,13 @@ public class HiloJugador implements Runnable {
 	private long intervaloDeMovimiento;
 	private boolean continuar;
 	private Jugador miJugador;
+	private boolean pausa;
 	
 	public HiloJugador(Jugador miJugador) {
 		this.miJugador = miJugador;
 		this.continuar = true;
 		intervaloDeMovimiento = intervaloDeMovimientoNivelUno;
+		pausa = false;
 	}
 	
 	@Override
@@ -23,7 +25,8 @@ public class HiloJugador implements Runnable {
 			
 			while(this.continuar) {
 				Thread.sleep(this.intervaloDeMovimiento);
-				avisarMovimientoJugador();
+				if(!pausa)
+					avisarMovimientoJugador();
 			}
 				
 				
@@ -41,4 +44,11 @@ public class HiloJugador implements Runnable {
 		miJugador.mover();
 	}
 	
+	public void pausar() {
+		pausa = true;
+	}
+	
+	public void seguir() {
+		pausa = false;
+	}
 }

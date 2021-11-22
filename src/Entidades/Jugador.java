@@ -1,13 +1,7 @@
 package Entidades;
 
-import java.awt.Rectangle;
 import java.util.LinkedHashSet;
 
-import Estructuras.BoundaryViolationException;
-import Estructuras.EmptyListException;
-import Estructuras.InvalidPositionException;
-import Estructuras.ListaSimplementeEnlazada;
-import Estructuras.Position;
 import Hilos.HiloJugador;
 import Laberinto.Laberinto;
 import Logica.Logica;
@@ -42,7 +36,6 @@ public class Jugador extends Personaje {
 		hilo = new Thread(this.hiloMovimiento);
 	
 		hilo.start();
-
 	}
 
 	@Override
@@ -228,5 +221,15 @@ public class Jugador extends Personaje {
 	
 	public HiloJugador obtenerHilo() {
 		return hiloMovimiento;
+	}
+	
+
+
+	public void pausar() {
+		hiloMovimiento.pausar();
+	}
+	
+	public void seguir() {
+		hiloMovimiento.seguir();	
 	}
 }

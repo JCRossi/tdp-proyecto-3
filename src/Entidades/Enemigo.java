@@ -5,7 +5,6 @@ import java.util.LinkedHashSet;
 public abstract class Enemigo extends Personaje{
 
 	protected EstadoEnemigo estadoActual;
-	protected EstadoEnemigo estadoAuxiliar;
 	protected int[] ultimaZona;
 	protected int posicionInicialX;
 	protected int posicionInicialY;
@@ -20,7 +19,7 @@ public abstract class Enemigo extends Personaje{
 			int posY = pos.getY();
 			char estado = estadoActual.estadoActual();
 			//System.out.println(estado + " pos x: " + posX + " pos y:" + posY);
-			if(posX/25 == 10  && posY/25  == 10  && estado=='m') {
+			if(posX/25 == 10 && posY/25  == 10  && estado=='m') {
 				cambiarEstado(3);
 			}
 			
@@ -54,8 +53,6 @@ public abstract class Enemigo extends Personaje{
 	}
 
 	private void actualizarDireccion() {
-		int posObjetivoX = 0;
-		int posObjetivoY = 0;
 		char[] prioridadDireccion = estadoActual.calcularProximaPosicion(pos);
 		puedeCaminar = false;
 		boolean esVuelta = true;
@@ -214,13 +211,6 @@ public abstract class Enemigo extends Personaje{
 		this.acabaDeSerTeletransportado = b;
 	}
 	
-	public void usarEstadoAuxiliar() {
-		estadoAuxiliar = estadoActual;
-	}
-	public void swapEstadoAuxiliar() {
-		estadoActual = estadoAuxiliar;
-	}
-	
 	public boolean estaHuyendo() {
 		boolean estaMuerto = false;
 		if(estadoActual.estadoActual() == 'h') 
@@ -238,4 +228,6 @@ public abstract class Enemigo extends Personaje{
 		return estaMuerto;
 		
 	}
+	
+	
 }

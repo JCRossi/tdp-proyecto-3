@@ -25,8 +25,7 @@ public class GUI extends JFrame {
 	private JPanel contentPane;
 	private static Fondo panel;
 	private JLabel lblPuntajeNumero;
-	private JLabel lblVidasNumero;
-
+	private JLabel lblVidasNumero, lblPausa;
 	
 
 	/**
@@ -75,6 +74,13 @@ public class GUI extends JFrame {
 		lblVidasNumero.setForeground(Color.WHITE);
 		lblVidasNumero.setBounds(568, 135, 46, 14);
 		contentPane.add(lblVidasNumero);
+		
+		lblPausa = new JLabel("");
+		lblPausa.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblPausa.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPausa.setForeground(Color.WHITE);
+		lblPausa.setBounds(540, 250, 80, 100);
+		contentPane.add(lblPausa);
 		
 		File archivo = new File(pathMusical);
 		PlayMusic p = new PlayMusic(archivo);
@@ -127,6 +133,11 @@ public class GUI extends JFrame {
                     	logica.plantarBomba();
                         break;
                     }
+                    case 80:{
+					}
+                    case 27:{
+                    	logica.pausarJuego();
+                    }
 
                 }
             }
@@ -172,6 +183,15 @@ public class GUI extends JFrame {
 	
 	public void actualizarVidaGrafica(int cantVidas) {
 		lblVidasNumero.setText("" + cantVidas);
+	}
+
+
+	public void seguir() {
+		lblPausa.setText("");
+	}
+	
+	public void pausar() {
+		lblPausa.setText("<html>Juego <br/> Pausado <br/> pulse 'p'  <br/> o 'Esc' para continuar  <br/>");
 	}
 }
 

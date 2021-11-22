@@ -11,8 +11,8 @@ public class IAPinky extends IA{
 	
 	@Override
 	public char[] calcularProximaPosicion(Posicion pos) {
-		int movVertical = pos.getY() - jugador.getPosicion().getX();
-		int movHorizontal = pos.getX() - jugador.getPosicion().getY();
+		int movVertical = pos.getY() - jugador.getPosicion().getY();
+		int movHorizontal = pos.getX() - jugador.getPosicion().getX();
 		char[] prioridades = new char[4];
 		switch(jugador.getDireccion()) {
 		case 'r':
