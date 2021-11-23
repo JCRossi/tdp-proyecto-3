@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import Logica.Logica;
+import Logica.Nivel;
 import Musica.PlayMusic;
 
 import javax.swing.JLabel;
@@ -19,6 +20,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLayeredPane;
 
 public class GUI extends JFrame {
 
@@ -26,6 +28,7 @@ public class GUI extends JFrame {
 	private static Fondo panel;
 	private JLabel lblPuntajeNumero;
 	private JLabel lblVidasNumero, lblPausa;
+	private JLayeredPane layeredPane;
 	
 
 	/**
@@ -95,6 +98,18 @@ public class GUI extends JFrame {
 		});
 		btnNewButton.setBounds(561, 475, 46, 39);
 		contentPane.add(btnNewButton);
+		
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 1, 1);
+		contentPane.add(layeredPane);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 10, 10);
+		layeredPane.add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(0, 0, 10, 10);
+		layeredPane.add(panel_2);
 		
 		logica.iniciarLogica(this);
 		
@@ -192,6 +207,18 @@ public class GUI extends JFrame {
 	
 	public void pausar() {
 		lblPausa.setText("<html>Juego <br/> Pausado <br/> pulse 'p'  <br/> o 'Esc' para continuar  <br/>");
+	}
+
+
+	public void perdiste(int puntaje, Nivel nivel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void ganaste(int puntaje) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

@@ -15,6 +15,7 @@ public class Jugador extends Personaje {
 	private int cantBombas;
 	private int vidas;
 	private char direccionProhibida;
+	private boolean modoInvencible;
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual,String[] imagenes) {
 		
@@ -31,7 +32,7 @@ public class Jugador extends Personaje {
 		miLaberinto = milaberinto;
 		juego = juegoActual;
 		vidas = 3;
-		
+		modoInvencible=false;
 		hiloMovimiento = new HiloJugador(this);
 		hilo = new Thread(this.hiloMovimiento);
 	
@@ -73,7 +74,7 @@ public class Jugador extends Personaje {
 	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
 		boolean condicion = false;
 		
-		if(estadoActual.estadoActual() != 'i') {
+		if(estadoActual.estadoActual() != 'i' && !modoInvencible) {
 			System.out.println("MURIO EL PJ");
 			vidas--;
 			//condicion = juego.chequearFinalizacionJuego(vidas);
@@ -232,4 +233,13 @@ public class Jugador extends Personaje {
 	public void seguir() {
 		hiloMovimiento.seguir();	
 	}
+	
+	public void invencible() {
+		modoInvencible = true;
+	}
+		
+	public boolean esInvencible() {
+		return modoInvencible;
+	}
+	
 }

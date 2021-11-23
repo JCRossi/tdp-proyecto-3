@@ -121,8 +121,11 @@ public class Logica {
 	}
 	
 	public void actualizarPuntaje(int puntos) {
-		puntajePartida.sumarPuntaje(puntajePartida.obtenerPuntaje() + puntos);
-		avisarActualizacionPuntajeGrafico(puntajePartida.obtenerPuntaje());
+		if (!personajePrincipal.esInvencible()) {
+			puntajePartida.sumarPuntaje(puntajePartida.obtenerPuntaje() + puntos);
+			avisarActualizacionPuntajeGrafico(puntajePartida.obtenerPuntaje());
+		}
+		
 	}
 	
 	public void enlistarEntidadGrafica(Entidad entidad) {
@@ -224,10 +227,10 @@ public class Logica {
 		
 		switch(condicionDeFinalizacion) {
 			case 1:
-				//Falta mensaje de perder
+				interfaz.perdiste(puntajePartida.obtenerPuntaje(), nivel);
 				break;
 			case 2:
-				//Falta mensaje ganar
+				interfaz.ganaste(puntajePartida.obtenerPuntaje());
 				break;
 		}
 	}
@@ -328,9 +331,11 @@ public class Logica {
 		}
 			
 	}
+	
+	public void invencible() {
+		personajePrincipal.invencible();
+	}
 
-
-		
 	
 	
 }
