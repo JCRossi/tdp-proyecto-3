@@ -27,7 +27,8 @@ public class x2Velocidad extends Pocion {
 	}
 	
 	public void serComido() {
-		HiloPowerUp hiloPowUp = new HiloPowerUp(this,juego);
+		juego.seComioX2Velocidad();
+		HiloPowerUp hiloPowUp = new HiloPowerUp(this);
 		Thread hilo = new Thread(hiloPowUp);
 		hilo.start();
 	}
@@ -48,7 +49,7 @@ public class x2Velocidad extends Pocion {
 
 	@Override
 	public void terminaEfecto() {
-		// TODO Auto-generated method stub
+		juego.terminoEfectoX2Velocidad();
 		
 	}
 

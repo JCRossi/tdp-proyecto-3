@@ -26,7 +26,8 @@ public class Inmunidad extends Pocion {
 	}
 	
 	public void serComido() {
-		HiloPowerUp hiloPowUp = new HiloPowerUp(this,juego);
+		juego.seComioInmunidad();
+		HiloPowerUp hiloPowUp = new HiloPowerUp(this);
 		Thread hilo = new Thread(hiloPowUp);
 		hilo.start();
 	}
@@ -47,7 +48,7 @@ public class Inmunidad extends Pocion {
 
 	@Override
 	public void terminaEfecto() {
-		// TODO Auto-generated method stub
+		juego.terminoEfectoInmunidad();
 		
 	}
 }

@@ -30,7 +30,7 @@ public class PowerPellet extends PowerUp {
 	public void serComido() {
 		juego.actualizarPuntaje(puntaje);
 		juego.seComioPowerPellet();
-		HiloPowerUp hiloPowUp = new HiloPowerUp(this,juego);
+		HiloPowerUp hiloPowUp = new HiloPowerUp(this);
 		Thread hilo = new Thread(hiloPowUp);
 		hilo.start();
 	}

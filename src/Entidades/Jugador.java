@@ -241,5 +241,17 @@ public class Jugador extends Personaje {
 	public boolean esInvencible() {
 		return modoInvencible;
 	}
+
+	public void comerX2Velocidad() {
+		estadoActual = estados[1];
+	}
+	
+	public void setEstadoNormal() {
+		this.estadoActual = estados[0];
+	}
+
+	public void comerInmunidad() {
+		this.estadoActual = estados[2];
+	}
 	
 }

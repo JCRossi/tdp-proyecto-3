@@ -62,58 +62,6 @@ public class Logica {
 		personajePrincipal = personajeP;
 	}
 	
-	public void cambiarEstados(char efecto) {
-		switch(efecto) {
-			case 'P':
-				personajePrincipal.cambiarEstado(0);
-				
-				for(int i = 0; i < enemigos.length; i++) 
-					enemigos[i].cambiarEstado(1);
-				
-				break;
-			case '2':
-				personajePrincipal.cambiarEstado(1);
-				break;
-			case 'I':
-				personajePrincipal.cambiarEstado(2);
-				break;
-			case 'B':
-				personajePrincipal.cambiarEstado(3);
-				break;
-			case 'N': 
-				personajePrincipal.cambiarEstado(0);
-				
-				for(int i = 0; i < enemigos.length; i++)
-					enemigos[i].cambiarEstado(0);
-				break;
-			case 'J':
-				personajePrincipal.cambiarEstado(0);
-				break;
-				
-			case 'E':
-				for(int i = 0; i < enemigos.length; i++) {
-					if(enemigos[i].estaHuyendo())
-						enemigos[i].cambiarEstado(0);
-				}
-					
-					
-				break;
-				
-		}
-	}
-		
-	public void chequearEstadoJugador() {
-		boolean noPersiguiendoOMuerto = true;
-		
-		for(int i = 0; i < enemigos.length && noPersiguiendoOMuerto; i++) {
-			if(enemigos[i].getEstado() != 'p' || enemigos[i].getEstado() != 'm') {
-				noPersiguiendoOMuerto = true;
-			}
-		}
-			
-		if(noPersiguiendoOMuerto == true)
-			cambiarEstados('N');
-	}
 	
 	public void cambiarDireccionJugador(char c) {
 		if(!this.enTransicion && !juegoPausado)
@@ -150,7 +98,6 @@ public class Logica {
 			Bomba bomba = new Bomba(pos.getY(),pos.getX(),this,tematica.getImagenBomba());
 			interfaz.agregarEntidad(bomba.getEntidadGrafica());
 			
-			System.out.println("Plantaste la bomba");
 			HiloBomba hbomba = new HiloBomba(bomba);
 			Thread hilo = new Thread(hbomba);
 			hilo.start();
@@ -163,7 +110,6 @@ public class Logica {
 	public void estallido(Posicion pos) {
         if (!juegoPausado) {
             ListaSimplementeEnlazada<Personaje> listaEntidades;
-            System.out.println("EXPLOTO LA BOMBA");
 
         
             listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, enemigos);
@@ -171,25 +117,11 @@ public class Logica {
 
 
             for(Personaje ent: listaEntidades) {
-                if(ent !=null) {
-                    System.out.println("SE MURIO ALGUIEN");
+                if(ent !=null) 
                     ent.morir();
-                }
             }
         }
     }
-	
-	//Chequear si se esta en el ultimo nivel o no tambien chequear si pacman perdio todas las vidas cuando muere
-	/*public boolean chequearFinalizacionJuego(int vidasJugador) {
-		boolean continuaJuego = true;
-		
-		if(vidasJugador == 0)
-			continuaJuego = false;
-		else
-			avisarActualizacionVidaGrafica(vidasJugador);
-		
-		return continuaJuego;
-	}*/
 	
 	public boolean chequearFinalizacionJuego(int condicionDeLlamado) {
 		boolean continuaJuego = true;
@@ -344,17 +276,26 @@ public class Logica {
 	}
 	
 	public void seComioX2Velocidad() {
-		
+		this.personajePrincipal.comerX2Velocidad();
 	}
 	
 	public void seComioInmunidad() {
-		
+		this.personajePrincipal.comerInmunidad();
 	}
 
 	public void terminoEfectoPowerPellet() {
 		for(int i = 0; i < enemigos.length; i++) {
 			enemigos[i].terminoPowerPellet();
 		}
+	}
+
+	public void terminoEfectoX2Velocidad() {
+		this.personajePrincipal.setEstadoNormal();
+		
+	}
+
+	public void terminoEfectoInmunidad() {
+		this.personajePrincipal.setEstadoNormal();
 	}
 	
 	
