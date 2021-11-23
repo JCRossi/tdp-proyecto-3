@@ -8,7 +8,6 @@ import Logica.Logica;
 
 public class Pinky extends Enemigo{
 	
-		private EstadoEnemigo[] estados;
 
 		public Pinky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal,Logica miJuego,String[] img) {
 		
@@ -60,7 +59,7 @@ public class Pinky extends Enemigo{
 		
 	}
 	
-	public void jugadorComioPowerPellet() {
+	/*public void jugadorComioPowerPellet() {
 		int posX = pos.getX();
 		int posY = pos.getY();
 		
@@ -72,7 +71,7 @@ public class Pinky extends Enemigo{
 				estadoActual = estados[1];
 			}
 		}	
-	}
+	}*/
 	
 	public void terminoPowerPellet() {
 		if(estadoActual == estados[1])

@@ -56,7 +56,7 @@ public class Blinky extends Enemigo{
 		entGrafica.actualizarPos(pos);
 	}
 	
-	public void jugadorComioPowerPellet() {
+	/*public void jugadorComioPowerPellet() {
 		int posX = pos.getX();
 		int posY = pos.getY();
 		
@@ -68,7 +68,7 @@ public class Blinky extends Enemigo{
 				estadoActual = estados[1];
 			}
 		}	
-	}
+	}*/
 	
 	public void terminoPowerPellet() {
 		if(estadoActual == estados[1])

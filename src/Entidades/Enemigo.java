@@ -229,9 +229,9 @@ public abstract class Enemigo extends Personaje{
 		return estaMuerto;
 		
 	}
-	public abstract void jugadorComioPowerPellet();
+	//public abstract void jugadorComioPowerPellet();
 	
-	/*public void jugadorComioPowerPellet() {
+	public void jugadorComioPowerPellet() {
 		int posX = pos.getX();
 		int posY = pos.getY();
 		
@@ -243,7 +243,7 @@ public abstract class Enemigo extends Personaje{
 				estadoActual = estados[1];
 			}
 		}	
-	}*/
+	}
 	public abstract void terminoPowerPellet();
 	/*public void terminoPowerPellet() {
 		if(estadoActual == estados[1])

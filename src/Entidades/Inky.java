@@ -7,8 +7,6 @@ import Logica.Logica;
 
 public class Inky extends Enemigo {
 	
-	
-	private EstadoEnemigo[] estados;
 
 	public Inky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal,Logica miJuego,String[] img, Enemigo Blinky) {
 		pos = new Posicion( posX+1, posY+1, 23, 23);	
@@ -59,7 +57,7 @@ public class Inky extends Enemigo {
 		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
 	}
 	
-	public void jugadorComioPowerPellet() {
+	/*public void jugadorComioPowerPellet() {
 		int posX = pos.getX();
 		int posY = pos.getY();
 		
@@ -71,7 +69,7 @@ public class Inky extends Enemigo {
 				estadoActual = estados[1];
 			}
 		}	
-	}
+	}*/
 	
 	public void terminoPowerPellet() {
 		if(estadoActual == estados[1])

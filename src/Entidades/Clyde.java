@@ -6,7 +6,8 @@ import Laberinto.Laberinto;
 import Logica.Logica;
 
 public class Clyde extends Enemigo {
-	private EstadoEnemigo[] estados;
+	
+	
 
 	public Clyde(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal,Logica miJuego,String[] img) {
 		pos = new Posicion( posX+1, posY+1, 23, 23);	
@@ -50,7 +51,7 @@ public class Clyde extends Enemigo {
 		entGrafica.actualizarPos(pos);
 	}
 	
-	public void jugadorComioPowerPellet() {
+	/*public void jugadorComioPowerPellet() {
 		int posX = pos.getX();
 		int posY = pos.getY();
 		
@@ -62,7 +63,7 @@ public class Clyde extends Enemigo {
 				estadoActual = estados[1];
 			}
 		}	
-	}
+	}*/
 	
 	public void terminoPowerPellet() {
 		if(estadoActual == estados[1])
