@@ -47,7 +47,7 @@ public class Logica {
 		enemigos[1] = new Pinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
 		enemigos[2] = new Inky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma3(),enemigos[0]);
 		enemigos[3] = new Clyde(250, 250, 'u', laberinto, hiloEnemigos, personajePrincipal, this, this.tematica.getImagenesFantasma4());
-		nivel = new Nivel(3,tematica);
+		nivel = new Nivel(1,tematica);
 		generarNivel(nivel.getNumeroNivel());
 		hilo.start();
 	}
