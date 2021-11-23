@@ -2,7 +2,7 @@ package Entidades;
 
 import Logica.Logica;
 
-public class Bomba extends Pocion {
+public class Bomba extends PowerUp {
 	
 	public Bomba(int posY, int posX, Logica juegoActual,String[] img) {
 		puntaje = 0;
@@ -54,17 +54,6 @@ public class Bomba extends Pocion {
 		return duracion;
 	}
 
-	@Override
-	public char getEfecto() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public char getQuitarEfecto() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public void terminaEfecto() {

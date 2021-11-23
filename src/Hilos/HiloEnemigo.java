@@ -5,8 +5,6 @@ import Estructuras.ListaSimplementeEnlazada;
 
 public class HiloEnemigo implements Runnable {
 	
-	private static final long intervaloDeMovimientoNivelUno = 20; 
-
 	private long intervaloDeMovimiento;
 	private boolean continuar;
 	private ListaSimplementeEnlazada<Enemigo> enemigos;
@@ -16,7 +14,7 @@ public class HiloEnemigo implements Runnable {
 	public HiloEnemigo() {
 		this.continuar = true;
 		existe = true;
-		intervaloDeMovimiento = intervaloDeMovimientoNivelUno;
+		intervaloDeMovimiento = 20;
 		enemigos = new ListaSimplementeEnlazada<Enemigo>();
 		pausa = false;
 	}

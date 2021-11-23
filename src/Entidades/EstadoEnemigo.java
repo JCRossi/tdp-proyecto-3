@@ -10,9 +10,4 @@ public interface EstadoEnemigo {
 	
 	public int getIndiceArreglo(char direccion);
 
-	
-
-	
-
-
 }

@@ -56,11 +56,7 @@ public class IAInky extends IA{
 			}
 		}
 		
-		
-		
-		
-		
-		
+
 		return prioridades;
 	}
 
@@ -69,13 +65,5 @@ public class IAInky extends IA{
 		return 1;
 	}
 	
-	/*
-	private int pitagoras(int x, int  y ) {
-		int hipotenusa = (int) Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
-		
-		
-		return hipotenusa;
-	}
-	*/
 
 }

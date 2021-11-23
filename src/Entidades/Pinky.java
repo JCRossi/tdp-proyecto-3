@@ -1,14 +1,12 @@
 package Entidades;
 
 import Hilos.HiloEnemigo;
-import IA.IABlinky;
 import IA.IAPinky;
 import Laberinto.Laberinto;
 import Logica.Logica;
 
 public class Pinky extends Enemigo{
 	
-
 		public Pinky(int posX, int posY, char direcc, Laberinto milaberinto, HiloEnemigo hiloEnemigo, Jugador personajePrincipal,Logica miJuego,String[] img) {
 		
 		pos = new Posicion( posX+1, posY+1, 23, 23);	
@@ -31,52 +29,5 @@ public class Pinky extends Enemigo{
 		hiloEnemigo.set(this);
 		 
 	}
-		
-	public void cambiarEstado(int estado) {
-		if(estadoActual != estados[2])
-			estadoActual = estados[estado];
-		else if ((pos.getX()/25==10)&&(pos.getY()/25==10)) {
-			estadoActual = estados[estado];
-			direccion = 'u';
-		}
-			
-		
-		
-
-		
-		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
-	}
-
-	@Override
-	public void reseteo(int posX, int posY, char direc) {
-		this.direccion = direc;
-		pos.setX(posX+1);
-		pos.setY(posY+1);
-		ultimaZona[0] = posX/25;
-		ultimaZona[1] = posY/25;
-		cambiarEstado(3);
-		entGrafica.actualizarPos(pos);
-		
-	}
-	
-	/*public void jugadorComioPowerPellet() {
-		int posX = pos.getX();
-		int posY = pos.getY();
-		
-		if(estadoActual == estados[0]) 
-			estadoActual = estados[1];
-		
-		if(estadoActual == estados[3]) {
-			if (!(posX >= 220 && posX <= 305 && posY >= 227 && posY <= 275)){
-				estadoActual = estados[1];
-			}
-		}	
-	}*/
-	
-	public void terminoPowerPellet() {
-		if(estadoActual == estados[1])
-			estadoActual = estados[0];
-	}
-
 	
 }

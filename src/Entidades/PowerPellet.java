@@ -37,23 +37,12 @@ public class PowerPellet extends PowerUp {
 
 	@Override
 	public long getDuracion() {
-		
 		return duracion;
-	}
-
-	@Override
-	public char getEfecto() {
-		return 'P';
-	}
-	
-	public char getQuitarEfecto() {
-		return 'E';
 	}
 
 	@Override
 	public void terminaEfecto() {
 		juego.terminoEfectoPowerPellet();
-		
 	}
 
 }

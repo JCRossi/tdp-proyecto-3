@@ -3,7 +3,7 @@ package Entidades;
 import Hilos.HiloPowerUp;
 import Logica.Logica;
 
-public class Inmunidad extends Pocion {
+public class Inmunidad extends PowerUp {
 	
 	public Inmunidad(int posY, int posX, Logica juegoActual,String[] img) {
 		pos = new Posicion( posX+((25-19)/2), posY+((25-22)/2), 19, 21); 
@@ -35,15 +35,6 @@ public class Inmunidad extends Pocion {
 	@Override
 	public long getDuracion() {
 		return duracion;
-	}
-
-	@Override
-	public char getEfecto() {
-		return 'I';
-	}
-	
-	public char getQuitarEfecto() {
-		return 'J';
 	}
 
 	@Override

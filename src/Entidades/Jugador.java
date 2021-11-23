@@ -19,7 +19,7 @@ public class Jugador extends Personaje {
 	
 	public Jugador(int posX, int posY, char direcc, Laberinto milaberinto, Logica juegoActual,String[] imagenes) {
 		
-		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18);  //250 - 350     		
+		pos = new Posicion( posX+((25-22)/2), posY+((25-18)/2), 22, 18); 		
 		
 		entGrafica = new EntidadGrafica(2 ,pos,imagenes); 
 		this.direccion = direcc;
@@ -70,25 +70,21 @@ public class Jugador extends Personaje {
 		return entidad.colisionasteConJugador(this);
 	}
 
-	//Son correctos los llamados a la Logica?
-	public void morir() {//FALTA IMPLEMENTAR FALTA IMPLEMENTAR FALTA IMPLEMENTAR
+	public void morir() {
 		boolean condicion = false;
 		
 		if(estadoActual.estadoActual() != 'i' && !modoInvencible) {
-			System.out.println("MURIO EL PJ");
 			vidas--;
-			//condicion = juego.chequearFinalizacionJuego(vidas);
 			condicion = juego.chequearFinalizacionJuego(1);
 			
 			if(condicion) {
 				
-				juego.reseteoEnNivel(true);
+				juego.reseteoEnNivel();
 			}
 			else {
 				juego.finalizarJuego(1);
 			}
-			
-			//juego.quitarEntidadGrafica(this.getEntidadGrafica());
+
 		}
 	}
 	
@@ -132,7 +128,7 @@ public class Jugador extends Personaje {
 		direccion = c;
 		puedeCaminar = true;
 		
-		if(this.estadoActual.estadoActual()=='n' && this.tieneBomba()) { //NO TENEMOS ESTADO TIENEBOMBA
+		if(this.estadoActual.estadoActual()=='n' && this.tieneBomba()) { //Controlamos esto ya que no hay estado TieneBomba
 			switch(direccion) {
 			case 'l':
 				entGrafica.actualizarImagen(8, pos);
@@ -223,8 +219,6 @@ public class Jugador extends Personaje {
 	public HiloJugador obtenerHilo() {
 		return hiloMovimiento;
 	}
-	
-
 
 	public void pausar() {
 		hiloMovimiento.pausar();

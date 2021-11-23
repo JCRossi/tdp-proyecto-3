@@ -17,7 +17,7 @@ public class Normal implements EstadoJugador {
 
 	@Override
 	public int getIndiceArreglo(char c) {
-int retorno = 0;
+		int retorno = 0;
 		
 		switch(c) {
 		case 'l':

@@ -3,29 +3,21 @@ package Laberinto;
 import Entidades.Entidad;
 
 import java.awt.Rectangle;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.LinkedHashSet;
 
 import Entidades.*;
 import Estructuras.EmptyListException;
 import Estructuras.ListaSimplementeEnlazada;
-import Logica.Logica;
 
 public class Laberinto {
 	
-	protected Zona[][] zonas;
+	private Zona[][] zonas;
 	
-	public void chequearObjetoPosicion(int[] posicion) {
-		
-	}
 	
 	public LinkedHashSet<Entidad> chequearColision(Posicion pos, int velocidad, char direccion){
 		LinkedHashSet<Entidad> listaEntidades = new LinkedHashSet<Entidad>();
 		LinkedHashSet<Zona> listaZonas = new LinkedHashSet<Zona>();
 		Rectangle rectanguloActual = calcularRectanguloHipotetico(pos,velocidad,direccion);
-		//listaEntidades = zonas[identificarZona(posx)][identificarZona(posy)].getListaEntidades();
 		
 		listaZonas = calcularZonasOcupadas(pos, direccion,velocidad);
 		
@@ -72,8 +64,6 @@ public class Laberinto {
 	}
 	
 	
-	
-	//Esto se podria hacer con listas que no repiten elementos
 	private LinkedHashSet<Zona> calcularZonasOcupadas(Posicion pos, char direccion, int velocidad){
 		LinkedHashSet<Zona> listaZonas = new LinkedHashSet<Zona>();
 		int posx = pos.getX();

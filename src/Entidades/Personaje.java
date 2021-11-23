@@ -2,7 +2,6 @@ package Entidades;
 
 import java.util.LinkedHashSet;
 
-import Estructuras.ListaSimplementeEnlazada;
 import Laberinto.Laberinto;
 
 public abstract class Personaje extends Entidad{

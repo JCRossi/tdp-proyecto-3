@@ -19,7 +19,7 @@ public abstract class Enemigo extends Personaje{
 			int posX = pos.getX();
 			int posY = pos.getY();
 			char estado = estadoActual.estadoActual();
-			//System.out.println(estado + " pos x: " + posX + " pos y:" + posY);
+			
 			if(posX/25 == 10 && posY/25  == 10  && estado=='m') {
 				cambiarEstado(3);
 			}
@@ -40,7 +40,7 @@ public abstract class Enemigo extends Personaje{
 			if(puedeCaminar) 
 				actualizarPos();
 			actualizarPosGrafica();
-			entGrafica.actualizarImagen(estadoActual.getIndiceArreglo(direccion), pos); //////////
+			entGrafica.actualizarImagen(estadoActual.getIndiceArreglo(direccion), pos);
 	}
 	}
 
@@ -122,9 +122,7 @@ public abstract class Enemigo extends Personaje{
 
 	@Override
 	public void morir() {
-		System.out.println("MURIO UN ENEMIGO");
 		this.cambiarEstado(2);
-		//juego.quitarEntidadGrafica(this.getEntidadGrafica());
 	}
 
 	@Override
@@ -196,9 +194,27 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	
-	public abstract void reseteo(int posX, int posY, char direc);
+	public void reseteo(int posX, int posY, char direc) {
+		this.direccion = direc;
+		pos.setX(posX+1);
+		pos.setY(posY+1);
+		ultimaZona[0] = posX/25;
+		ultimaZona[1] = posY/25;
+		cambiarEstado(3);
+		entGrafica.actualizarPos(pos);
+		
+	}
 
-	public abstract void cambiarEstado(int estado);
+	protected void cambiarEstado(int estado) {
+		if(estadoActual != estados[2])
+			estadoActual = estados[estado];
+		else if ((pos.getX()/25==10)&&(pos.getY()/25==10)) {
+			estadoActual = estados[estado];
+			direccion = 'u';
+		}
+			
+		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
+	}
 	
 	public void setPuedeCaminar(boolean b) {
 		puedeCaminar = b;
@@ -229,7 +245,6 @@ public abstract class Enemigo extends Personaje{
 		return estaMuerto;
 		
 	}
-	//public abstract void jugadorComioPowerPellet();
 	
 	public void jugadorComioPowerPellet() {
 		int posX = pos.getX();
@@ -244,9 +259,9 @@ public abstract class Enemigo extends Personaje{
 			}
 		}	
 	}
-	public abstract void terminoPowerPellet();
-	/*public void terminoPowerPellet() {
+	
+	public void terminoPowerPellet() {
 		if(estadoActual == estados[1])
 			estadoActual = estados[0];
-	}*/
+	}
 }

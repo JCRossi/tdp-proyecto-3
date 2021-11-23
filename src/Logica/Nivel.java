@@ -16,14 +16,10 @@ import Entidades.PowerPellet;
 import Entidades.Puerta;
 import Entidades.x2Velocidad;
 import GUI.Tematica;
-import Hilos.HiloEnemigo;
-import Laberinto.Laberinto;
 import Laberinto.Zona;
 
 public class Nivel {
 	private int numeroNivel;
-	private long movimientoEnemigos;
-	private long movimientoJugador;
 	private int cantPacDots;
 	private Tematica tematica;
 	
@@ -33,21 +29,15 @@ public class Nivel {
 		this.tematica = tem;
 	}
 	
-	public void establecerVelocidadesNivel(int numNivel) {
+	public void establecerNumeroNivel(int numNivel) {
 		switch(numNivel) {
 			case 1:
-				movimientoEnemigos = 1000;
-				movimientoJugador = 1250;
 				numeroNivel = 1;
 				break;
 			case 2:
-				movimientoEnemigos = 750;
-				movimientoJugador = 1250;
 				numeroNivel = 2;
 				break;
 			case 3:
-				movimientoEnemigos = 750;
-				movimientoJugador = 1250;
 				numeroNivel = 3;
 				break;
 		}
@@ -57,14 +47,6 @@ public class Nivel {
 		return numeroNivel;
 	}
 	
-	public long getMovimientoJugador() {
-		return movimientoJugador;
-	}
-	
-	public long getMovimientoEnemigos() {
-		return movimientoEnemigos;
-	}
-
 	public Zona[][] GenerarLaberinto(Logica logica, Enemigo[] enemigos, Jugador personajePrincipal) {
 		Zona[][] entidadesEstaticas = new Zona[21][21];
 		switch(numeroNivel) {

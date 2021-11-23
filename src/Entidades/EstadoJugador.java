@@ -2,10 +2,10 @@ package Entidades;
 
 public interface EstadoJugador {
 	
-	public char estadoActual();
+	char estadoActual();
 	
-	public int getMovimiento();
+	int getMovimiento();
 	
-	public int getIndiceArreglo(char c);
+	int getIndiceArreglo(char c);
 
 }

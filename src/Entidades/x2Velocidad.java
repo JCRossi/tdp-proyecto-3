@@ -3,10 +3,10 @@ package Entidades;
 import Hilos.HiloPowerUp;
 import Logica.Logica;
 
-public class x2Velocidad extends Pocion {
+public class x2Velocidad extends PowerUp {
 	
 	public x2Velocidad(int posY, int posX, Logica juegoActual,String[] img) {
-		pos = new Posicion( posX+((25-19)/2), posY+((25-20)/2), 19, 20);  //999999 = ancho        111111111 = alto
+		pos = new Posicion( posX+((25-19)/2), posY+((25-20)/2), 19, 20);  
 		entGrafica = new EntidadGrafica(0, pos,img);
 		juego = juegoActual;
 		duracion = 5000;
@@ -38,14 +38,6 @@ public class x2Velocidad extends Pocion {
 		return duracion;
 	}
 
-	@Override
-	public char getEfecto() {
-		return '2';
-	}
-	
-	public char getQuitarEfecto() {
-		return 'J';
-	}
 
 	@Override
 	public void terminaEfecto() {

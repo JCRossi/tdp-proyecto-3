@@ -28,52 +28,6 @@ public class Inky extends Enemigo {
 		this.juego = miJuego;
 		hiloEnemigo.set(this);
 		
-		
-	}
-	
-	
-	
-	
-	@Override
-	public void reseteo(int posX, int posY, char direc) {
-		this.direccion = direc;
-		pos.setX(posX+1);
-		pos.setY(posY+1);
-		ultimaZona[0] = posX/25;
-		ultimaZona[1] = posY/25;
-		cambiarEstado(3);
-		entGrafica.actualizarPos(pos);
-	}
-
-	@Override
-	public void cambiarEstado(int estado) {
-		if(estadoActual != estados[2])
-			estadoActual = estados[estado];
-		else if ((pos.getX()/25==10)&&(pos.getY()/25==10)) {
-			estadoActual = estados[estado];
-			direccion = 'u';
-		}
-			
-		entGrafica.actualizarImagen(this.estadoActual.getIndiceArreglo(this.direccion), pos);
-	}
-	
-	/*public void jugadorComioPowerPellet() {
-		int posX = pos.getX();
-		int posY = pos.getY();
-		
-		if(estadoActual == estados[0]) 
-			estadoActual = estados[1];
-		
-		if(estadoActual == estados[3]) {
-			if (!(posX >= 220 && posX <= 305 && posY >= 227 && posY <= 275)){
-				estadoActual = estados[1];
-			}
-		}	
-	}*/
-	
-	public void terminoPowerPellet() {
-		if(estadoActual == estados[1])
-			estadoActual = estados[0];
 	}
 
 }

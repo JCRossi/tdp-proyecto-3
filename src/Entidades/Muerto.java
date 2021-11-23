@@ -13,7 +13,7 @@ public class Muerto implements EstadoEnemigo {
 	}
 
 	@Override
-	public char[] calcularProximaPosicion(Posicion pos) { //Copy-paste de metodo en Perseguir
+	public char[] calcularProximaPosicion(Posicion pos) { 
 		int movVertical = pos.getY() - 250;
 		int movHorizontal = pos.getX() - 250;
 		char[] prioridades = new char[4];
@@ -54,24 +54,8 @@ public class Muerto implements EstadoEnemigo {
 
 	@Override
 	public int getIndiceArreglo(char direccion) {
-		int retorno = 0;
-		
-		/*switch(direccion) {
-		case 'l':
-			retorno = 4;
-		break;
-		case'r':
-			retorno = 2;
-		break;
-		case 'u':
-			retorno = 1;
-		break;
-		case 'd':
-			retorno = 3;
-		break;
-		
-		}*/
-		return retorno;
+			
+		return 0;
 	}
 
 

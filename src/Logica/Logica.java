@@ -53,7 +53,7 @@ public class Logica {
 	}
 	
 	public void generarNivel(int numero) {
-		nivel.establecerVelocidadesNivel(numero);
+		nivel.establecerNumeroNivel(numero);
 		laberinto.establecerNivel(nivel.GenerarLaberinto(this, enemigos, personajePrincipal));
 		interfaz.actualizarFondo(tematica.niveles()[numero-1]);
 	}
@@ -110,11 +110,7 @@ public class Logica {
 	public void estallido(Posicion pos) {
         if (!juegoPausado) {
             ListaSimplementeEnlazada<Personaje> listaEntidades;
-
-        
             listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, enemigos);
-
-
 
             for(Personaje ent: listaEntidades) {
                 if(ent !=null) 
@@ -142,7 +138,7 @@ public class Logica {
 						}
 						resetearMapa();						
 						generarNivel(nivel.getNumeroNivel() + 1);
-						reseteoEnNivel(false);
+						reseteoEnNivel();
 						personajePrincipal.setVidas(personajePrincipal.getVidas() + 1);
 					}
 					else
@@ -184,7 +180,7 @@ public class Logica {
 		chequearFinalizacionJuego(2);
 	}
 	
-	public void reseteoEnNivel(boolean debeEsperar) {
+	public void reseteoEnNivel() {
         this.enTransicion = true;
         
         this.hiloEnemigos.frenar();
