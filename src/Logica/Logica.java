@@ -27,7 +27,7 @@ public class Logica {
 		laberinto = new Laberinto();
 		hiloEnemigos = new HiloEnemigo();
 		hilo = new Thread(this.hiloEnemigos);
-		enemigos = new Enemigo[2];
+		enemigos = new Enemigo[4];
 		puntajePartida = new Puntaje();
 		enTransicion = false;
 		juegoPausado = false;
@@ -43,11 +43,11 @@ public class Logica {
 		personajePrincipal = new Jugador(250, 350,'r',laberinto, this,tematica.getImagenesPacman());
 		avisarActualizacionVidaGrafica(personajePrincipal.getVidas());
 		
-		enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
-		enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
-		//enemigos[2] = new Inky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma3(),enemigos[0]);
-		//enemigos[3] = new Clyde(250, 250, 'u', laberinto, hiloEnemigos, personajePrincipal, this, this.tematica.getImagenesFantasma4());
-		nivel = new Nivel(1,tematica);
+		enemigos[0] = new Blinky(250, 200, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
+		enemigos[1] = new Pinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
+		enemigos[2] = new Inky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma3(),enemigos[0]);
+		enemigos[3] = new Clyde(250, 250, 'u', laberinto, hiloEnemigos, personajePrincipal, this, this.tematica.getImagenesFantasma4());
+		nivel = new Nivel(3,tematica);
 		generarNivel(nivel.getNumeroNivel());
 		hilo.start();
 	}
@@ -159,21 +159,11 @@ public class Logica {
 	
 	public void estallido(Posicion pos) {
         if (!juegoPausado) {
-            Personaje[] personajes = new Personaje[5];
             ListaSimplementeEnlazada<Personaje> listaEntidades;
             System.out.println("EXPLOTO LA BOMBA");
 
-            personajes[0] = this.personajePrincipal;
-
-            listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
-
-            if(listaEntidades.isEmpty()) {
-                for(int i=0; i<enemigos.length;i++) {
-                    personajes[i] = enemigos[i];
-                }
-
-                listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
-            }
+        
+            listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, enemigos);
 
 
 
@@ -261,8 +251,7 @@ public class Logica {
 	
 	public void reseteoEnNivel(boolean debeEsperar) {
         this.enTransicion = true;
-        //enemigos[0] = new Blinky(225, 250, 'r',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma1());
-        //enemigos[1] = new Pinky(275, 250, 'l',laberinto, hiloEnemigos, personajePrincipal,this,this.tematica.getImagenesFantasma2());
+        
         this.hiloEnemigos.frenar();
 
         for(Enemigo enemig : enemigos) {
@@ -297,11 +286,11 @@ public class Logica {
 
         this.laberinto.incorporarEntidad(personajePrincipal);
 
-        enemigos[0].reseteo(225, 250, 'r');
-        enemigos[1].reseteo(275,250,'l');
-        //enemigos[2].reseteo(275, 250, 'l');
-        //enemigos[3].reseteo(250, 250, 'u');
-        
+        enemigos[0].reseteo(250, 200, 'r');
+        enemigos[1].reseteo(225, 250,'r');
+        enemigos[2].reseteo(275, 250, 'l');
+        enemigos[3].reseteo(250, 250, 'u');
+       
         for(Enemigo enemig : enemigos) {
             enemig.setPuedeCaminar(true);
             enemig.setAcabaDeSerTeletransportado(true);

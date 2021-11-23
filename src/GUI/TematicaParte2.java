@@ -19,12 +19,12 @@ public class TematicaParte2 extends Tematica {
 
 	@Override
 	public String[] getImagenesFantasma3() {
-		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Inky/normal/santana_arriba.gif","/images/Inky/normal/santana_derecha.gif","/images/Inky/normal/santana_abajo.gif","/images/Inky/normal/santana_izquierda.gif","/images/Inky/vulnerable/santana_arriba_debil.gif","/images/Inky/vulnerable/santana_derecha_debil.gif","/images/Inky/vulnerable/santana_abajo_debil.gif","/images/Inky/vulnerable/santana_izquierda_debil.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Inky/normal/santana_arriba.png","/images/Inky/normal/santana_derecha.png","/images/Inky/normal/santana_abajo.png","/images/Inky/normal/santana_izquierda.png","/images/Inky/vulnerable/santana_arriba_debil.png","/images/Inky/vulnerable/santana_derecha_debil.png","/images/Inky/vulnerable/santana_abajo_debil.png","/images/Inky/vulnerable/santana_izquierda_debil.png"};
 	}
 
 	@Override
 	public String[] getImagenesFantasma4() {
-		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Clyde/normal/esidisi_arriba.gif","/images/Clyde/normal/esidisi_derecha.gif","/images/Clyde/normal/esidisi_abajo.gif","/images/Clyde/normal/esidisi_izquierda.gif","/images/Clyde/vulnerable/esidisi_arriba_debil.gif","/images/Clyde/vulnerable/esidisi_derecha_debil.gif","/images/Clyde/vulnerable/esidisi_abajo_debil.gif","/images/Clyde/vulnerable/esidisi_izquierda_debil.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Clyde/normal/esidisi_arriba.png","/images/Clyde/normal/esidisi_derecha.png","/images/Clyde/normal/esidisi_abajo.png","/images/Clyde/normal/esidisi_izquierda.png","/images/Clyde/vulnerable/esidisi_arriba_debil.png","/images/Clyde/vulnerable/esidisi_derecha_debil.png","/images/Clyde/vulnerable/esidisi_abajo_debil.png","/images/Clyde/vulnerable/esidisi_izquierda_debil.png"};
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class TematicaParte2 extends Tematica {
 	}
 	
 	public String[] niveles() {
-		return new String [] {"/images/nivel_1/nivel1Parte2.png","/images/nivel 2/nivel2Parte2.png","/images/nivel 3/nivel3Parte2.png"};
+		return new String [] {"/images/nivel_1/nivel1Parte2.png","/images/nivel_2/nivel2Parte2.png","/images/nivel_3/nivel3Parte2.png"};
 	}
 	
 	public String[] getPuerta() {

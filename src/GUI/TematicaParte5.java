@@ -9,22 +9,22 @@ public class TematicaParte5 extends Tematica{
 
 	@Override
 	public String[] getImagenesFantasma1() {
-		return  new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Blinky/normal/diavolo_arriba.png","/images/Blinky/normal/diavolo_derecha.png","/images/Blinky/normal/diavolo_abajo.png","/images/Blinky/normal/diavolo_izquierda.png","/images/Blinky/vulnerable/diavolo_vulnerable_arriba.png","/images/Blinky/vulnerable/diavolo_vulnerable_derecha.png","/images/Blinky/vulnerable/diavolo_vulnerable_abajo.png","/images/Blinky/vulnerable/diavolo_vulnerable_izquierda.png"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Blinky/normal/diavolo_arriba.png","/images/Blinky/normal/diavolo_derecha.png","/images/Blinky/normal/diavolo_abajo.png","/images/Blinky/normal/diavolo_izquierda.png","/images/Blinky/vulnerable/diavolo_vulnerable_arriba.png","/images/Blinky/vulnerable/diavolo_vulnerable_derecha.png","/images/Blinky/vulnerable/diavolo_vulnerable_abajo.png","/images/Blinky/vulnerable/diavolo_vulnerable_izquierda.png"};
 	}
 
 	@Override
 	public String[] getImagenesFantasma2() {
-		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Pinky/normal/nero_arriba.gif","/images/Pinky/normal/nero_derecha.gif","/images/Pinky/normal/nero_abajo.gif","/images/Pinky/normal/nero_izquierda.gif","/images/Pinky/vulnerable/nero_arriba_huyendo.png","/images/Pinky/vulnerable/nero_derecha_huyendo.png","/images/Pinky/vulnerable/nero_abajo_huyendo.png","/images/Pinky/vulnerable/nero_izquierda_huyendo.png"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Pinky/normal/nero_arriba.png","/images/Pinky/normal/nero_derecha.png","/images/Pinky/normal/nero_abajo.png","/images/Pinky/normal/nero_izquierda.png","/images/Pinky/vulnerable/nero_arriba_huyendo.png","/images/Pinky/vulnerable/nero_derecha_huyendo.png","/images/Pinky/vulnerable/nero_abajo_huyendo.png","/images/Pinky/vulnerable/nero_izquierda_huyendo.png"};
 	}
 
 	@Override
 	public String[] getImagenesFantasma3() {
-		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Inky/normal/cioccolata_arriba.gif","/images/Inky/normal/cioccolata_derecha.gif","/images/Inky/normal/cioccolata_abajo.gif","/images/Inky/normal/cioccolata_izquierda.gif","/images/Inky/vulnerable/cioccolata_vulnerable_arriba.gif","/images/Inky/vulnerable/cioccolata_vulnerable_derecha.gif","/images/Inky/vulnerable/cioccolata_vulnerable_abajo.gif","/images/Inky/vulnerable/cioccolata_vulnerable_izquierda.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Inky/normal/cioccolata_arriba.png","/images/Inky/normal/cioccolata_derecha.png","/images/Inky/normal/cioccolata_abajo.png","/images/Inky/normal/cioccolata_izquierda.png","/images/Inky/vulnerable/cioccolata_vulnerable_arriba.png","/images/Inky/vulnerable/cioccolata_vulnerable_derecha.png","/images/Inky/vulnerable/cioccolata_vulnerable_abajo.png","/images/Inky/vulnerable/cioccolata_vulnerable_izquierda.png"};
 	}
 
 	@Override
 	public String[] getImagenesFantasma4() {
-		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Clyde/normal/ghiaccio_arriba.gif","/images/Clyde/normal/ghiaccio_derecha.gif","/images/Clyde/normal/ghiaccio_abajo.gif","/images/Clyde/normal/ghiaccio_izquierda.gif","/images/Clyde/vulnerable/ghiaccio_arriba_vulnerable.gif","/images/Clyde/vulnerable/ghiaccio_derecha_vulnerable.gif","/images/Clyde/vulnerable/ghiaccio_abajo_vulnerable.gif","/images/Clyde/vulnerable/ghiaccio_izquierda_vulnerable.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Clyde/normal/ghiaccio_arriba.png","/images/Clyde/normal/ghiaccio_derecha.png","/images/Clyde/normal/ghiaccio_abajo.png","/images/Clyde/normal/ghiaccio_izquierda.png","/images/Clyde/vulnerable/ghiaccio_arriba_vulnerable.png","/images/Clyde/vulnerable/ghiaccio_derecha_vulnerable.png","/images/Clyde/vulnerable/ghiaccio_abajo_vulnerable.png","/images/Clyde/vulnerable/ghiaccio_izquierda_vulnerable.png"};
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class TematicaParte5 extends Tematica{
 	}
 	
 	public String[] niveles() {
-		return new String [] {"/images/nivel_1/nivel1Parte5.png","/images/nivel 2/nivel2Parte5.png","/images/nivel 3/nivel3Parte5.png"};
+		return new String [] {"/images/nivel_1/nivel1Parte5.png","/images/nivel_2/nivel2Parte5.png","/images/nivel_3/nivel3Parte5.png"};
 	}
 	
 	public String[] getPuerta() {

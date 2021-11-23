@@ -17,8 +17,8 @@ public class Inky extends Enemigo {
 		ultimaZona[1] = posY/25;
 		entGrafica = new EntidadGrafica(8 ,pos,img); 
 		this.direccion = direcc;
-		posicionInicialY = 375; 
-		posicionInicialX = 450; 
+		posicionInicialY = 25; 
+		posicionInicialX = 25; 
 		estados = new EstadoEnemigo[4];
 		estados[0] = new Perseguir(new IAInky(personajePrincipal,Blinky));
 		estados[1] = new Huir(personajePrincipal.getPosicion()); 

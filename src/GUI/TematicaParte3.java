@@ -70,7 +70,7 @@ public class TematicaParte3 extends Tematica {
 	}
 	
 	public String[] niveles() {
-		return new String [] {"/images/nivel_1/nivel1Parte3.png","/images/nivel 2/nivel2Parte3.png","/images/nivel 3/nivel3Parte3.png"};
+		return new String [] {"/images/nivel_1/nivel1Parte3.png","/images/nivel_2/nivel2Parte3.png","/images/nivel_3/nivel3Parte3.png"};
 	}
 	
 	public String[] getPuerta() {
