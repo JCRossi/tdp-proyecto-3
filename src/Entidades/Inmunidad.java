@@ -44,4 +44,10 @@ public class Inmunidad extends Pocion {
 	public char getQuitarEfecto() {
 		return 'J';
 	}
+
+	@Override
+	public void terminaEfecto() {
+		// TODO Auto-generated method stub
+		
+	}
 }

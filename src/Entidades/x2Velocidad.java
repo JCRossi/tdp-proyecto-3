@@ -46,5 +46,11 @@ public class x2Velocidad extends Pocion {
 		return 'J';
 	}
 
+	@Override
+	public void terminaEfecto() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

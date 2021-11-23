@@ -336,6 +336,27 @@ public class Logica {
 		personajePrincipal.invencible();
 	}
 
+
+	public void seComioPowerPellet() {
+		for(int i = 0; i < enemigos.length; i++) {
+			enemigos[i].jugadorComioPowerPellet();
+		}
+	}
+	
+	public void seComioX2Velocidad() {
+		
+	}
+	
+	public void seComioInmunidad() {
+		
+	}
+
+	public void terminoEfectoPowerPellet() {
+		for(int i = 0; i < enemigos.length; i++) {
+			enemigos[i].terminoPowerPellet();
+		}
+	}
+	
 	
 	
 }

@@ -66,4 +66,10 @@ public class Bomba extends Pocion {
 		return 0;
 	}
 
+	@Override
+	public void terminaEfecto() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

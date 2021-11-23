@@ -49,4 +49,23 @@ public class Clyde extends Enemigo {
 		estadoActual = estados[3];
 		entGrafica.actualizarPos(pos);
 	}
+	
+	public void jugadorComioPowerPellet() {
+		int posX = pos.getX();
+		int posY = pos.getY();
+		
+		if(estadoActual == estados[0]) 
+			estadoActual = estados[1];
+		
+		if(estadoActual == estados[3]) {
+			if (!(posX >= 220 && posX <= 305 && posY >= 227 && posY <= 275)){
+				estadoActual = estados[1];
+			}
+		}	
+	}
+	
+	public void terminoPowerPellet() {
+		if(estadoActual == estados[1])
+			estadoActual = estados[0];
+	}
 }

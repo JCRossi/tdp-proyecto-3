@@ -9,6 +9,7 @@ public abstract class Enemigo extends Personaje{
 	protected int posicionInicialX;
 	protected int posicionInicialY;
 	protected boolean acabaDeSerTeletransportado;
+	protected EstadoEnemigo[] estados;
 	
 	
 	@Override
@@ -228,6 +229,24 @@ public abstract class Enemigo extends Personaje{
 		return estaMuerto;
 		
 	}
+	public abstract void jugadorComioPowerPellet();
 	
-	
+	/*public void jugadorComioPowerPellet() {
+		int posX = pos.getX();
+		int posY = pos.getY();
+		
+		if(estadoActual == estados[0]) 
+			estadoActual = estados[1];
+		
+		if(estadoActual == estados[3]) {
+			if (!(posX >= 220 && posX <= 305 && posY >= 227 && posY <= 275)){
+				estadoActual = estados[1];
+			}
+		}	
+	}*/
+	public abstract void terminoPowerPellet();
+	/*public void terminoPowerPellet() {
+		if(estadoActual == estados[1])
+			estadoActual = estados[0];
+	}*/
 }

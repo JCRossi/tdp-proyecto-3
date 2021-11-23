@@ -29,6 +29,7 @@ public class PowerPellet extends PowerUp {
 	
 	public void serComido() {
 		juego.actualizarPuntaje(puntaje);
+		juego.seComioPowerPellet();
 		HiloPowerUp hiloPowUp = new HiloPowerUp(this,juego);
 		Thread hilo = new Thread(hiloPowUp);
 		hilo.start();
@@ -47,6 +48,12 @@ public class PowerPellet extends PowerUp {
 	
 	public char getQuitarEfecto() {
 		return 'E';
+	}
+
+	@Override
+	public void terminaEfecto() {
+		juego.terminoEfectoPowerPellet();
+		
 	}
 
 }
