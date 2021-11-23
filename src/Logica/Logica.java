@@ -167,7 +167,7 @@ public class Logica {
 
             listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
 
-            if(listaEntidades == null) {
+            if(listaEntidades.isEmpty()) {
                 for(int i=0; i<enemigos.length;i++) {
                     personajes[i] = enemigos[i];
                 }
