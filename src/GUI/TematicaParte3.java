@@ -21,12 +21,12 @@ public class TematicaParte3 extends Tematica {
 
 	@Override
 	public String[] getImagenesFantasma3() {
-		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Inky/normal/darby_arriba.gif","/images/Inky/normal/darby_derecha.gif","/images/Inky/normal/darby_abajo.gif","/images/Inky/normal/darby_izquierda.gif","/images/Inky/vulnerable/darby_arriba_debil.gif","/images/Inky/vulnerable/darby_derecha_debil.gif","/images/Inky/vulnerable/darby_abajo_debil.gif","/images/Inky/vulnerable/darby_izquierda_debil.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Inky/normal/darby_arriba.png","/images/Inky/normal/darby_derecha.png","/images/Inky/normal/darby_abajo.png","/images/Inky/normal/darby_izquierda.png","/images/Inky/vulnerable/darby_arriba_debil.png","/images/Inky/vulnerable/darby_derecha_debil.png","/images/Inky/vulnerable/darby_abajo_debil.png","/images/Inky/vulnerable/darby_izquierda_debil.png"};
 	}
 
 	@Override
 	public String[] getImagenesFantasma4() {
-		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Clyde/normal/vanilla_arriba.gif","/images/Clyde/normal/vanilla_derecha.gif","/images/Clyde/normal/vanilla_abajo.gif","/images/Clyde/normal/vanilla_izquierda.gif","/images/Clyde/vulnerable/vanilla_arriba_debil.gif","/images/Clyde/vulnerable/vanilla_derecha_debil.gif","/images/Clyde/vulnerable/vanilla_abajo_debil.gif","/images/Clyde/vulnerable/vanilla_izquierda_debil.gif"};
+		return new String[] {"/images/Blinky/enemigo_muerto.gif","/images/Clyde/normal/vanilla_arriba.png","/images/Clyde/normal/vanilla_derecha.png","/images/Clyde/normal/vanilla_abajo.png","/images/Clyde/normal/vanilla_izquierda.png","/images/Clyde/vulnerable/vanilla_arriba_debil.png","/images/Clyde/vulnerable/vanilla_derecha_debil.png","/images/Clyde/vulnerable/vanilla_abajo_debil.png","/images/Clyde/vulnerable/vanilla_izquierda_debil.png"};
 	}
 
 	@Override

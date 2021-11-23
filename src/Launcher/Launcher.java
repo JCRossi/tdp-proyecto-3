@@ -16,7 +16,6 @@ public class Launcher {
 					SeleccionTematica a = new SeleccionTematica(juego);
 					a.setVisible(true);
 					
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

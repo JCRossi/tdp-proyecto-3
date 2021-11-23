@@ -26,9 +26,9 @@ public class GUI extends JFrame {
 
 	private JPanel contentPane;
 	private static Fondo panel;
+	private static FondoLat panelPuntaje;
 	private JLabel lblPuntajeNumero;
 	private JLabel lblVidasNumero, lblPausa;
-	private JLayeredPane layeredPane;
 	
 
 	/**
@@ -36,8 +36,8 @@ public class GUI extends JFrame {
 	 */
 	public GUI(Logica logica,String pathMusical) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 656, 564);
-		contentPane = new FondoJuego("/images/GUI/fondoJuego.png");
+		setBounds(100, 100, 655, 564);
+		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,45 +50,51 @@ public class GUI extends JFrame {
 		panel.setLayout(null);
 		panel.setFocusable(true);
 		
+		panelPuntaje = new FondoLat("/images/GUI/jojopanellateral.png");
+		panelPuntaje.setBounds(525, 0, 114, 525);
+		contentPane.add(panelPuntaje);
+		panelPuntaje.setLayout(null);
+		panelPuntaje.setFocusable(true);
+		
 		JLabel lblPuntaje = new JLabel("Puntaje:");
 		lblPuntaje.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntaje.setForeground(Color.BLACK);
-		lblPuntaje.setBounds(535, 29, 79, 14);
-		contentPane.add(lblPuntaje);
+		lblPuntaje.setBounds(20, 29, 79, 14);
+		panelPuntaje.add(lblPuntaje);
 		
 		lblPuntajeNumero = new JLabel("0");
 		lblPuntajeNumero.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPuntajeNumero.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblPuntajeNumero.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntajeNumero.setForeground(Color.BLACK);
-		lblPuntajeNumero.setBounds(568, 54, 46, 14);
-		contentPane.add(lblPuntajeNumero);
+		lblPuntajeNumero.setBounds(20, 54, 79, 25);
+		panelPuntaje.add(lblPuntajeNumero);
 		
 		JLabel lblVidas = new JLabel("Vidas:");
 		lblVidas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidas.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblVidas.setForeground(Color.BLACK);
-		lblVidas.setBounds(535, 106, 79, 14);
-		contentPane.add(lblVidas);
+		lblVidas.setBounds(20, 109, 79, 14);
+		panelPuntaje.add(lblVidas);
 		
 		lblVidasNumero = new JLabel("0");
-		lblVidasNumero.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblVidasNumero.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidasNumero.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblVidasNumero.setForeground(Color.BLACK);
-		lblVidasNumero.setBounds(568, 135, 46, 14);
-		contentPane.add(lblVidasNumero);
+		lblVidasNumero.setBounds(20, 134, 79, 25);
+		panelPuntaje.add(lblVidasNumero);
 		
 		lblPausa = new JLabel("");
-		lblPausa.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblPausa.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPausa.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPausa.setForeground(Color.BLACK);
-		lblPausa.setBounds(550, 250, 80, 100);
-		contentPane.add(lblPausa);
+		lblPausa.setBounds(19, 252, 80, 100);
+		panelPuntaje.add(lblPausa);
 		
 		File archivo = new File(pathMusical);
 		PlayMusic p = new PlayMusic(archivo);
 		
-		JButton btnNewButton = new JButton("BOTON MUSICA");
+		JButton btnNewButton = new JButton("|| / >");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnNewButton.setFocusable(false);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -96,20 +102,35 @@ public class GUI extends JFrame {
 				p.activarYDesactivar();
 			}
 		});
-		btnNewButton.setBounds(561, 475, 46, 39);
-		contentPane.add(btnNewButton);
+		btnNewButton.setBounds(20, 446, 80, 39);
+		panelPuntaje.add(btnNewButton);
 		
-		layeredPane = new JLayeredPane();
-		layeredPane.setBounds(0, 0, 1, 1);
-		contentPane.add(layeredPane);
+		JButton btnNewButton1 = new JButton("Invencible");
+		btnNewButton1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnNewButton1.setFocusable(false);
+		btnNewButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				logica.invencible();
+				btnNewButton1.setEnabled(false);
+			}
+		});
+		btnNewButton1.setBounds(20, 400, 80, 39);
+		panelPuntaje.add(btnNewButton1);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 10, 10);
-		layeredPane.add(panel_1);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(0, 0, 10, 10);
-		layeredPane.add(panel_2);
+		JButton btnNewButton2 = new JButton("Menu");
+		btnNewButton2.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnNewButton2.setFocusable(false);
+		btnNewButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p.Desactivar();
+				Logica juego = new Logica();
+				SeleccionTematica a = new SeleccionTematica(juego);
+				a.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton2.setBounds(20, 354, 80, 39);
+		panelPuntaje.add(btnNewButton2);
 		
 		logica.iniciarLogica(this);
 		

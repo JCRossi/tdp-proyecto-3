@@ -25,6 +25,11 @@ public class PlayMusic{
 		else
 			clip.loop(clip.LOOP_CONTINUOUSLY);
 	}
+	
+	public void Desactivar() {
+		if(clip.isActive())
+			clip.stop();
+	}
 
 	
 }
