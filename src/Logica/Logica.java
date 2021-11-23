@@ -158,27 +158,33 @@ public class Logica {
 	}
 	
 	public void estallido(Posicion pos) {
-		if (!juegoPausado) {
-			Personaje[] personajes = new Personaje[5];
-			ListaSimplementeEnlazada<Personaje> listaEntidades;
-			System.out.println("EXPLOTO LA BOMBA");
-			
-			personajes[0] = this.personajePrincipal;
-			
-			for(int i=1; i<=enemigos.length;i++) {
-				personajes[i] = enemigos[i-1];
-			}
-			
-			listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
-			
-			for(Personaje ent: listaEntidades) {
-				if(ent !=null) {
-					System.out.println("SE MURIO ALGUIEN");
-					ent.morir();
-				}
-			}
-		}	
-	}
+        if (!juegoPausado) {
+            Personaje[] personajes = new Personaje[5];
+            ListaSimplementeEnlazada<Personaje> listaEntidades;
+            System.out.println("EXPLOTO LA BOMBA");
+
+            personajes[0] = this.personajePrincipal;
+
+            listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
+
+            if(listaEntidades == null) {
+                for(int i=0; i<enemigos.length;i++) {
+                    personajes[i] = enemigos[i];
+                }
+
+                listaEntidades = laberinto.chequeoColisionMasivoRIPSeresVivos(pos, personajes);
+            }
+
+
+
+            for(Personaje ent: listaEntidades) {
+                if(ent !=null) {
+                    System.out.println("SE MURIO ALGUIEN");
+                    ent.morir();
+                }
+            }
+        }
+    }
 	
 	//Chequear si se esta en el ultimo nivel o no tambien chequear si pacman perdio todas las vidas cuando muere
 	/*public boolean chequearFinalizacionJuego(int vidasJugador) {
@@ -273,12 +279,14 @@ public class Logica {
         this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
 
         //ROMPE LA SALIDA DE LOS FANTASMAS DE LA CASA
+        /*
         try {
         	if(debeEsperar)
         		Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
 
         posJugador.setX(250);
         posJugador.setY(350);
