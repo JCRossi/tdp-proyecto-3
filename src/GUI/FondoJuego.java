@@ -20,7 +20,7 @@ public class FondoJuego extends JPanel {
 	
 	public void paint(Graphics g) {
 		fondo = new ImageIcon(GUI.class.getResource(direccion)).getImage();
-		g.drawImage(fondo, -16, 0, 656, 564, this); 
+		g.drawImage(fondo, 0, 0, 639, 525, this); 
 		setOpaque(false);
 		super.paint(g);
 	}

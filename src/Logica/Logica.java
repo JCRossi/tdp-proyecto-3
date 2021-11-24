@@ -140,6 +140,7 @@ public class Logica {
 						generarNivel(nivel.getNumeroNivel() + 1);
 						reseteoEnNivel();
 						personajePrincipal.setVidas(personajePrincipal.getVidas() + 1);
+						interfaz.actualizarVidaGrafica(personajePrincipal.getVidas());
 					}
 					else
 						finalizarJuego(2);
@@ -155,7 +156,7 @@ public class Logica {
 		
 		switch(condicionDeFinalizacion) {
 			case 1:
-				interfaz.perdiste(puntajePartida.obtenerPuntaje(), nivel);
+				interfaz.perdiste(puntajePartida.obtenerPuntaje(), nivel.getNumeroNivel());
 				break;
 			case 2:
 				interfaz.ganaste(puntajePartida.obtenerPuntaje());

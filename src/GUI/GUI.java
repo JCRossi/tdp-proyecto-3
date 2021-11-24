@@ -10,17 +10,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import Logica.Logica;
-import Logica.Nivel;
 import Musica.PlayMusic;
 
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLayeredPane;
 
 public class GUI extends JFrame {
 
@@ -29,7 +29,10 @@ public class GUI extends JFrame {
 	private static FondoLat panelPuntaje;
 	private JLabel lblPuntajeNumero;
 	private JLabel lblVidasNumero, lblPausa;
-	
+	private JPanel panelBase, panelVictoria, panelDerrota;
+	private JButton btnNewButton1, btnNewButton2, btnNewButton3, btnNewButton4, btnNewButton;
+	private JLabel lblVidas, lblPuntaje, lblPuntuacionFinalDerrota, lblNumeroPuntajeFinalDerrota, lblnivel, lblDerrota, lblNumeroPuntajeFinal, lblPuntuacionFinal, lblVictoria;
+	private JLayeredPane layeredPane;
 
 	/**
 	 * Create the frame.
@@ -43,20 +46,79 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//Poner new Fondo() despues
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 639, 525);
+		contentPane.add(layeredPane);
+		
+		panelVictoria = new FondoJuego("/images/GUI/fondojuegoVictoria.png");
+		panelVictoria.setBounds(0, 0, 639, 525);
+		panelVictoria.setLayout(null);
+		
+		lblVictoria = new JLabel("Ganaste!");
+		lblVictoria.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVictoria.setFont(new Font("Tahoma", Font.PLAIN, 60));
+		lblVictoria.setBounds(121, 11, 397, 73);
+		panelVictoria.add(lblVictoria);
+		
+		lblPuntuacionFinal = new JLabel("Tu puntuacion:");
+		lblPuntuacionFinal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPuntuacionFinal.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblPuntuacionFinal.setBounds(147, 129, 345, 57);
+		panelVictoria.add(lblPuntuacionFinal);
+		
+		lblNumeroPuntajeFinal = new JLabel("");
+		lblNumeroPuntajeFinal.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblNumeroPuntajeFinal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNumeroPuntajeFinal.setBounds(215, 186, 209, 57);
+		panelVictoria.add(lblNumeroPuntajeFinal);
+		
+		panelDerrota = new FondoJuego("/images/GUI/fondojuegoDerrota.png");
+		panelDerrota.setBounds(0, 0, 639, 525);
+		panelDerrota.setLayout(null);
+		
+		lblDerrota = new JLabel("Fin del juego!");
+		lblDerrota.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDerrota.setFont(new Font("Tahoma", Font.PLAIN, 55));
+		lblDerrota.setBounds(121, 11, 397, 73);
+		panelDerrota.add(lblDerrota);
+		
+		lblPuntuacionFinalDerrota = new JLabel("Tu puntuacion:");
+		lblPuntuacionFinalDerrota.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPuntuacionFinalDerrota.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblPuntuacionFinalDerrota.setBounds(147, 129, 345, 57);
+		panelDerrota.add(lblPuntuacionFinalDerrota);
+		
+		lblNumeroPuntajeFinalDerrota = new JLabel("");
+		lblNumeroPuntajeFinalDerrota.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblNumeroPuntajeFinalDerrota.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNumeroPuntajeFinalDerrota.setBounds(215, 186, 209, 57);
+		panelDerrota.add(lblNumeroPuntajeFinalDerrota);
+		
+		lblnivel = new JLabel("");
+		lblnivel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblnivel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblnivel.setBounds(10, 245, 619, 78);
+		panelDerrota.add(lblnivel);
+		
+		
+		panelBase = new JPanel();
+		panelBase.setBounds(0, 0, 639, 525);
+		layeredPane.add(panelBase);
+		panelBase.setLayout(null);
+		
 		panel = new Fondo("/images/maxresdefault.png");
 		panel.setBounds(0, 0, 525, 525);
-		contentPane.add(panel);
+		panelBase.add(panel);
 		panel.setLayout(null);
 		panel.setFocusable(true);
 		
 		panelPuntaje = new FondoLat("/images/GUI/jojopanellateral.png");
 		panelPuntaje.setBounds(525, 0, 114, 525);
-		contentPane.add(panelPuntaje);
+		panelBase.add(panelPuntaje);
 		panelPuntaje.setLayout(null);
 		panelPuntaje.setFocusable(true);
 		
-		JLabel lblPuntaje = new JLabel("Puntaje:");
+		lblPuntaje = new JLabel("Puntaje:");
 		lblPuntaje.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntaje.setForeground(Color.BLACK);
@@ -70,7 +132,7 @@ public class GUI extends JFrame {
 		lblPuntajeNumero.setBounds(20, 54, 79, 25);
 		panelPuntaje.add(lblPuntajeNumero);
 		
-		JLabel lblVidas = new JLabel("Vidas:");
+		lblVidas = new JLabel("Vidas:");
 		lblVidas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidas.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblVidas.setForeground(Color.BLACK);
@@ -88,13 +150,13 @@ public class GUI extends JFrame {
 		lblPausa.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPausa.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPausa.setForeground(Color.BLACK);
-		lblPausa.setBounds(19, 252, 80, 100);
+		lblPausa.setBounds(20, 226, 80, 100);
 		panelPuntaje.add(lblPausa);
 		
 		File archivo = new File(pathMusical);
 		PlayMusic p = new PlayMusic(archivo);
 		
-		JButton btnNewButton = new JButton("|| / >");
+		btnNewButton = new JButton("|| / >");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnNewButton.setFocusable(false);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -105,7 +167,7 @@ public class GUI extends JFrame {
 		btnNewButton.setBounds(20, 446, 80, 39);
 		panelPuntaje.add(btnNewButton);
 		
-		JButton btnNewButton1 = new JButton("Invencible");
+		btnNewButton1 = new JButton("Invencible");
 		btnNewButton1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnNewButton1.setFocusable(false);
 		btnNewButton1.addActionListener(new ActionListener() {
@@ -117,7 +179,7 @@ public class GUI extends JFrame {
 		btnNewButton1.setBounds(20, 400, 80, 39);
 		panelPuntaje.add(btnNewButton1);
 		
-		JButton btnNewButton2 = new JButton("Menu");
+		btnNewButton2 = new JButton("Menu");
 		btnNewButton2.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnNewButton2.setFocusable(false);
 		btnNewButton2.addActionListener(new ActionListener() {
@@ -132,6 +194,37 @@ public class GUI extends JFrame {
 		btnNewButton2.setBounds(20, 354, 80, 39);
 		panelPuntaje.add(btnNewButton2);
 		
+		btnNewButton3 = new JButton("Menu");
+		btnNewButton3.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnNewButton3.setFocusable(false);
+		btnNewButton3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p.Desactivar();
+				Logica juego = new Logica();
+				SeleccionTematica a = new SeleccionTematica(juego);
+				a.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton3.setBounds(279, 445, 80, 39);
+		panelVictoria.add(btnNewButton3);
+		
+		btnNewButton4 = new JButton("Menu");
+		btnNewButton4.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnNewButton4.setFocusable(false);
+		btnNewButton4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p.Desactivar();
+				Logica juego = new Logica();
+				SeleccionTematica a = new SeleccionTematica(juego);
+				a.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton4.setBounds(279, 445, 80, 39);
+		panelDerrota.add(btnNewButton4);
+		layeredPane.add(panelDerrota);
+		layeredPane.add(panelVictoria);
 		logica.iniciarLogica(this);
 		
 		
@@ -231,15 +324,22 @@ public class GUI extends JFrame {
 	}
 
 
-	public void perdiste(int puntaje, Nivel nivel) {
-		// TODO Auto-generated method stub
-		
+	public void perdiste(int puntaje, int nivel) {
+		lblNumeroPuntajeFinalDerrota.setText(""+puntaje);
+		layeredPane.removeAll();
+		layeredPane.add(panelDerrota);
+		layeredPane.repaint();
+		layeredPane.revalidate();
+		lblnivel.setText("El nivel alcanzado fue el " + nivel);
 	}
 
 
 	public void ganaste(int puntaje) {
-		// TODO Auto-generated method stub
-		
+		lblNumeroPuntajeFinal.setText(""+puntaje);
+		layeredPane.removeAll();
+		layeredPane.add(panelVictoria);
+		layeredPane.repaint();
+		layeredPane.revalidate();
 	}
 }
 
