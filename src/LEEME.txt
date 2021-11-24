@@ -1,0 +1,16 @@
+----------------------------------
+	   ADVERTENCIA
+----------------------------------
+el volumen de la musica esta muy alto, proceder con precaución
+
+-notas adicionales-
+
+Al activar el modo inmune los pacdots no dan puntos para conservar este modo como practica.
+
+Al pausar el juego el tiempo de los power ups sigue bajando por lo que pausar el juego
+durante el uso de uno es una desventaja
+
+Las bombas son acumulables y se pueden conservar entre niveles
+
+El resto de los controles y tutoriales estan en el menu del juego ;D
+
