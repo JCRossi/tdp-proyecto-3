@@ -18,6 +18,8 @@ import javax.swing.JLayeredPane;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -38,6 +40,8 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI(Logica logica,String pathMusical) {
+		setTitle("JOJO'S PacMan");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GUI.class.getResource("/images/GUI/Icono.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 655, 564);
 		contentPane = new JPanel();

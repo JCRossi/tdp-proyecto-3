@@ -184,8 +184,6 @@ public class Logica {
 	public void reseteoEnNivel() {
         this.enTransicion = true;
         
-        //this.hiloEnemigos.frenar();
-
         for(Enemigo enemig : enemigos) {
         	enemig.setPuedeCaminar(false);
             enemig.setPuedeCaminar(false);
@@ -200,15 +198,13 @@ public class Logica {
         this.personajePrincipal.getEntidadGrafica().actualizarImagen(0, posJugador);
         this.laberinto.desenlistarEntidad(personajePrincipal, laberinto.identificarZona(posJugador.getX()),  laberinto.identificarZona(posJugador.getY()));
 
-        //ROMPE LA SALIDA DE LOS FANTASMAS DE LA CASA
-        /*
+        
         try {
-        	if(debeEsperar)
         		Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        */
+        
 
         posJugador.setX(250);
         posJugador.setY(350);
@@ -231,7 +227,6 @@ public class Logica {
         }
 
         this.enTransicion = false;
-       // this.hiloEnemigos.continuar();
 
 		
 	}

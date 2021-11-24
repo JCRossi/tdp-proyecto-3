@@ -26,6 +26,8 @@ public class SeleccionTematica extends JFrame {
 
 	public SeleccionTematica(Logica juego) {
 		finalizado = false;
+		setTitle("JOJO'S PacMan");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GUI.class.getResource("/images/GUI/Icono.png")));
 		setResizable(false);
 		setBounds(100, 100, 500, 575);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,14 +46,12 @@ public class SeleccionTematica extends JFrame {
 		JPanel panelControles = new FondoGUI("/images/GUI/jojofondoAyuda.png");
 		panelControles.setBounds(0, 0, 484, 536);
 		panelControles.setLayout(null);
-		//layeredPane.add(panelControles);
 		
 		
 		
 		JPanel panelTematica = new FondoGUI("/images/GUI/jojofondoTematica.png");
 		panelTematica.setBounds(0, 0, 484, 536);
 		panelTematica.setLayout(null);
-		//layeredPane.add(panelTematica);
 		
 		JLabel lblNewLabel = new JLabel("Seleccione la tem\u00E1tica:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -206,10 +206,7 @@ public class SeleccionTematica extends JFrame {
 		finalizado = true;
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	
+
 	
 	public Tematica getTematicaSeleccionada() {
 		return this.tem;
@@ -223,7 +220,6 @@ public class SeleccionTematica extends JFrame {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
