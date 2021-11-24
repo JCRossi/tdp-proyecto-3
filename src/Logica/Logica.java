@@ -183,9 +183,10 @@ public class Logica {
 	public void reseteoEnNivel() {
         this.enTransicion = true;
         
-        this.hiloEnemigos.frenar();
+        //this.hiloEnemigos.frenar();
 
         for(Enemigo enemig : enemigos) {
+        	enemig.setPuedeCaminar(false);
             enemig.setPuedeCaminar(false);
             this.laberinto.desenlistarEntidad(enemig, laberinto.identificarZona( enemig.getPosicion().getX()),  laberinto.identificarZona(enemig.getPosicion().getY()));
         }
@@ -229,7 +230,7 @@ public class Logica {
         }
 
         this.enTransicion = false;
-        this.hiloEnemigos.continuar();
+       // this.hiloEnemigos.continuar();
 
 		
 	}
