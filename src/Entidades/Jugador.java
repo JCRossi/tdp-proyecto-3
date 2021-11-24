@@ -106,19 +106,18 @@ public class Jugador extends Personaje {
 
 	@Override
 	public boolean colisionasteConEnemigo(Personaje personaje) {
-		char estadoEnemigo = personaje.getEstado();
-		char estadoJugador = estadoActual.estadoActual();
-		if(estadoJugador == 'n' || estadoJugador == 'r') {
-			if(estadoEnemigo == 'p' || estadoEnemigo == 'i') {
-				this.morir();
-			}
-		}
-		
-		if(personaje.getEstado() == 'h')
-			personaje.morir();
-		
-		return false;
-	}
+        char estadoJugador = estadoActual.estadoActual();
+        if(estadoJugador == 'n' || estadoJugador == 'r') {
+            if(personaje.puedeMatar()) {
+                this.morir();
+            }
+        }
+
+        if(personaje.esComible())
+            personaje.morir();
+
+        return false;
+    }
 
 	public void actualizarPosGrafica() {
 		entGrafica.actualizarPos(pos);
@@ -248,4 +247,11 @@ public class Jugador extends Personaje {
 		this.estadoActual = estados[2];
 	}
 	
+	public boolean esComible() {
+        return (estadoActual.estadoActual() == 'n' || estadoActual.estadoActual() == 'r');
+    }
+
+    public boolean puedeMatar() {
+        return false;
+    }
 }

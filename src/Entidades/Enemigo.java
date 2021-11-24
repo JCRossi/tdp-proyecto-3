@@ -132,17 +132,17 @@ public abstract class Enemigo extends Personaje{
 
 	@Override
 	public boolean colisionasteConJugador(Personaje personaje) {
-		char estado = estadoActual.estadoActual();
-		if((estado == 'p' || estado == 'i') && (personaje.getEstado() == 'n' || personaje.getEstado() == 'r')) {
-			personaje.morir();
-		}
-		
-		if(this.getEstado() == 'h') {
-			this.morir();
-		}
-		
-		return false;
-	}
+        char estado = estadoActual.estadoActual();
+        if((estado == 'p' || estado == 'i') && (personaje.esComible())) {
+            personaje.morir();
+        }
+
+        if(this.getEstado() == 'h') {
+            this.morir();
+        }
+
+        return false;
+    }
 
 	public LinkedHashSet<Entidad> chequearMovimiento(char direc, int mov) {
 		return miLaberinto.chequearColision(pos, mov, direc);
@@ -264,4 +264,12 @@ public abstract class Enemigo extends Personaje{
 		if(estadoActual == estados[1])
 			estadoActual = estados[0];
 	}
+	
+	public boolean esComible() {
+        return (estadoActual.estadoActual() == 'h');
+    }
+
+    public boolean puedeMatar() {
+        return (estadoActual.estadoActual() == 'i' || estadoActual.estadoActual() =='p' );
+    }
 }

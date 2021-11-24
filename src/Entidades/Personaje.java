@@ -26,4 +26,7 @@ public abstract class Personaje extends Entidad{
 
 	public abstract LinkedHashSet<Entidad> chequearMovimiento(char direc, int movimiento);
 	
+	public abstract boolean esComible();
+	
+	public abstract boolean puedeMatar();
 }
