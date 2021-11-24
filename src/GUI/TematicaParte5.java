@@ -64,7 +64,7 @@ public class TematicaParte5 extends Tematica{
 
 	@Override
 	public String pathDeMusica() {
-		return "src/Musica/Tetris.wav";
+		return "src/Musica/parte5.wav";
 	}
 	
 	public String[] niveles() {
